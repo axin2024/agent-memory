@@ -1,0 +1,709 @@
+{
+  "cases": [
+    {
+      "case": "subject-000",
+      "duration_us": 5242,
+      "expected": "traceable-hit",
+      "slot": "notifications",
+      "source": "13f8d780e9fab3cdb3f13aaa241ddacfd3d668158673dc41c5e26e8ea0b301ef",
+      "version": 1
+    },
+    {
+      "case": "subject-001",
+      "duration_us": 5931,
+      "expected": "traceable-hit",
+      "slot": "language",
+      "source": "50a78176f0117071077849fed14f96e2a75c33996eee68a03f1f22fd82039008",
+      "version": 1
+    },
+    {
+      "case": "subject-002",
+      "duration_us": 6848,
+      "expected": "traceable-hit",
+      "slot": "units",
+      "source": "62cd85e72a740bbbbf8ad210a80c7542e0f28c6ae7bda9f56f83165efb96f16f",
+      "version": 1
+    },
+    {
+      "case": "subject-003",
+      "duration_us": 6726,
+      "expected": "traceable-hit",
+      "slot": "timezone",
+      "source": "cdb572e1bc72f1d9d6d17b6997295568fbff3b3d57a9373677767e22b6b3ef8f",
+      "version": 1
+    },
+    {
+      "case": "subject-004",
+      "duration_us": 7280,
+      "expected": "traceable-hit",
+      "slot": "delivery-method",
+      "source": "c95ebcded97eedbf5e7e67a55916e4dcce765167d225b3ff2b386912d1033854",
+      "version": 1
+    },
+    {
+      "case": "subject-005",
+      "duration_us": 6739,
+      "expected": "corrected-version",
+      "slot": "notifications",
+      "source": "fa2a858df8edbed07a2fab45b722d807c3d82d71f2839aada399a863c6d86d49",
+      "version": 2
+    },
+    {
+      "case": "subject-006",
+      "duration_us": 6674,
+      "expected": "corrected-version",
+      "slot": "language",
+      "source": "a768756a430a1a4e430d1edc68b9de1cb35bb1fd78f4ea2a0dfc527146cda812",
+      "version": 2
+    },
+    {
+      "case": "subject-007",
+      "duration_us": 5817,
+      "expected": "corrected-version",
+      "slot": "units",
+      "source": "d09aa9934e7dedc93deb3566bb36aa0859e393b58706132c48ce5695bcf01bd1",
+      "version": 2
+    },
+    {
+      "case": "subject-008",
+      "duration_us": 11210,
+      "expected": "corrected-version",
+      "slot": "timezone",
+      "source": "68bad0cd8802da0e666f210ed33b051437de48765cd5468bb5f71584ae7af2fd",
+      "version": 2
+    },
+    {
+      "case": "subject-009",
+      "duration_us": 7377,
+      "expected": "corrected-version",
+      "slot": "delivery-method",
+      "source": "0c7c606c09bd71e82554e83fd2fcdd843a6fdb2c8977581a87bb22ea82f27b97",
+      "version": 2
+    },
+    {
+      "case": "subject-010",
+      "duration_us": 7351,
+      "expected": "forgotten",
+      "slot": "notifications"
+    },
+    {
+      "case": "subject-011",
+      "duration_us": 6122,
+      "expected": "forgotten",
+      "slot": "language"
+    },
+    {
+      "case": "subject-012",
+      "duration_us": 4626,
+      "expected": "forgotten",
+      "slot": "units"
+    },
+    {
+      "case": "subject-013",
+      "duration_us": 5422,
+      "expected": "forgotten",
+      "slot": "timezone"
+    },
+    {
+      "case": "subject-014",
+      "duration_us": 6218,
+      "expected": "forgotten",
+      "slot": "delivery-method"
+    },
+    {
+      "case": "subject-015",
+      "duration_us": 1833,
+      "expected": "currently-unauthorized",
+      "slot": "notifications"
+    },
+    {
+      "case": "subject-016",
+      "duration_us": 1764,
+      "expected": "currently-unauthorized",
+      "slot": "language"
+    },
+    {
+      "case": "subject-017",
+      "duration_us": 1658,
+      "expected": "currently-unauthorized",
+      "slot": "units"
+    },
+    {
+      "case": "subject-018",
+      "duration_us": 1794,
+      "expected": "currently-unauthorized",
+      "slot": "timezone"
+    },
+    {
+      "case": "subject-019",
+      "duration_us": 1457,
+      "expected": "currently-unauthorized",
+      "slot": "delivery-method"
+    },
+    {
+      "case": "subject-020",
+      "duration_us": 5987,
+      "expected": "traceable-hit",
+      "slot": "notifications",
+      "source": "df364ad3ff2ac44619616da86b158cc51f77171632e5055338d642709868542c",
+      "version": 1
+    },
+    {
+      "case": "subject-021",
+      "duration_us": 6989,
+      "expected": "traceable-hit",
+      "slot": "language",
+      "source": "8ba2bd98ec7c3f622b0bf27be707a8f55bb51288542e264a9a99bfc81f9fc226",
+      "version": 1
+    },
+    {
+      "case": "subject-022",
+      "duration_us": 5798,
+      "expected": "traceable-hit",
+      "slot": "units",
+      "source": "bbea4673fe7d5a672a77fbc61b932c76fe532a69deae6b4c79778ebead05e583",
+      "version": 1
+    },
+    {
+      "case": "subject-023",
+      "duration_us": 2352,
+      "expected": "traceable-hit",
+      "slot": "timezone",
+      "source": "05f2e1a2ef18a1a8d2df10d4b1efbd93b8ca3c12af9f987d6fa88edde75ca5d6",
+      "version": 1
+    },
+    {
+      "case": "subject-024",
+      "duration_us": 10018,
+      "expected": "traceable-hit",
+      "slot": "delivery-method",
+      "source": "70a9b49c12473aed47182e567b6bd539318112d1c5b760e81aaf34e6833e9269",
+      "version": 1
+    },
+    {
+      "case": "subject-025",
+      "duration_us": 5113,
+      "expected": "corrected-version",
+      "slot": "notifications",
+      "source": "a4128be9d8e02a0119d14a603baf4a66bcfdb78f08a313fc3abbbdc3a53473ab",
+      "version": 2
+    },
+    {
+      "case": "subject-026",
+      "duration_us": 5944,
+      "expected": "corrected-version",
+      "slot": "language",
+      "source": "919938a65d0089c9edb864f06669324edd42651f8bffb45be928afc655dd5873",
+      "version": 2
+    },
+    {
+      "case": "subject-027",
+      "duration_us": 6201,
+      "expected": "corrected-version",
+      "slot": "units",
+      "source": "cf388141ee3dad457e3e6283efe6905ba823035a99d098e0524ccb25649bda07",
+      "version": 2
+    },
+    {
+      "case": "subject-028",
+      "duration_us": 6212,
+      "expected": "corrected-version",
+      "slot": "timezone",
+      "source": "92bd9bec7156cc127f6d920b1fcd975f09b10f3854a04991f73ccd4e0395ee00",
+      "version": 2
+    },
+    {
+      "case": "subject-029",
+      "duration_us": 6757,
+      "expected": "corrected-version",
+      "slot": "delivery-method",
+      "source": "2f5adb11c5934f97d3c4fbf074e1c3e4f0abcbd3dac4650708c32b00832bc187",
+      "version": 2
+    },
+    {
+      "case": "subject-030",
+      "duration_us": 6422,
+      "expected": "forgotten",
+      "slot": "notifications"
+    },
+    {
+      "case": "subject-031",
+      "duration_us": 4992,
+      "expected": "forgotten",
+      "slot": "language"
+    },
+    {
+      "case": "subject-032",
+      "duration_us": 6398,
+      "expected": "forgotten",
+      "slot": "units"
+    },
+    {
+      "case": "subject-033",
+      "duration_us": 7368,
+      "expected": "forgotten",
+      "slot": "timezone"
+    },
+    {
+      "case": "subject-034",
+      "duration_us": 7663,
+      "expected": "forgotten",
+      "slot": "delivery-method"
+    },
+    {
+      "case": "subject-035",
+      "duration_us": 1806,
+      "expected": "currently-unauthorized",
+      "slot": "notifications"
+    },
+    {
+      "case": "subject-036",
+      "duration_us": 1619,
+      "expected": "currently-unauthorized",
+      "slot": "language"
+    },
+    {
+      "case": "subject-037",
+      "duration_us": 2662,
+      "expected": "currently-unauthorized",
+      "slot": "units"
+    },
+    {
+      "case": "subject-038",
+      "duration_us": 1058,
+      "expected": "currently-unauthorized",
+      "slot": "timezone"
+    },
+    {
+      "case": "subject-039",
+      "duration_us": 1567,
+      "expected": "currently-unauthorized",
+      "slot": "delivery-method"
+    },
+    {
+      "case": "subject-040",
+      "duration_us": 5744,
+      "expected": "traceable-hit",
+      "slot": "notifications",
+      "source": "82740e116ab166fbd616b890f37b0c23f477a6c616281c9ea3f1c0d40fc5e8cb",
+      "version": 1
+    },
+    {
+      "case": "subject-041",
+      "duration_us": 4941,
+      "expected": "traceable-hit",
+      "slot": "language",
+      "source": "cf6a5b77f7c531a0ce59d7bd7c3667cd930d23a9990b16a8d629cae698f5a492",
+      "version": 1
+    },
+    {
+      "case": "subject-042",
+      "duration_us": 7410,
+      "expected": "traceable-hit",
+      "slot": "units",
+      "source": "6006b72a7dcb2cd8a1cdc9c924493674df2978c33784daf6296432f692392594",
+      "version": 1
+    },
+    {
+      "case": "subject-043",
+      "duration_us": 9763,
+      "expected": "traceable-hit",
+      "slot": "timezone",
+      "source": "826448ffd358aa6676f5bdfcd4cf6915effaa8fc3fec4439cf85ddf87c110a40",
+      "version": 1
+    },
+    {
+      "case": "subject-044",
+      "duration_us": 6654,
+      "expected": "traceable-hit",
+      "slot": "delivery-method",
+      "source": "77122e9e96a59b6cc3ccb091e67de5b63c6b752a9b99800a751fe6c2f1ed1049",
+      "version": 1
+    },
+    {
+      "case": "subject-045",
+      "duration_us": 6315,
+      "expected": "corrected-version",
+      "slot": "notifications",
+      "source": "f55b01ce40aee56974783c198fecb9a1877189d2d44d47b653bbab7de521c825",
+      "version": 2
+    },
+    {
+      "case": "subject-046",
+      "duration_us": 6409,
+      "expected": "corrected-version",
+      "slot": "language",
+      "source": "d2847cdbac7a6b76938f9809a2df05d726b5b41d0fde151f3211a599fcde32cc",
+      "version": 2
+    },
+    {
+      "case": "subject-047",
+      "duration_us": 5313,
+      "expected": "corrected-version",
+      "slot": "units",
+      "source": "9210b14548156222affd51b0792cb2fb7c62559bf5131a66a89ea920f08bde75",
+      "version": 2
+    },
+    {
+      "case": "subject-048",
+      "duration_us": 5000,
+      "expected": "corrected-version",
+      "slot": "timezone",
+      "source": "40b300b7c48ae94f6efc107faa112f91cc6e0dc66130147eb0dd99b8a3eaea63",
+      "version": 2
+    },
+    {
+      "case": "subject-049",
+      "duration_us": 5436,
+      "expected": "corrected-version",
+      "slot": "delivery-method",
+      "source": "8b8bfd5cc78ba865792d91e19feb5f33750e3cdfa0081a9095917d7e4a3d3d06",
+      "version": 2
+    },
+    {
+      "case": "subject-050",
+      "duration_us": 13641,
+      "expected": "forgotten",
+      "slot": "notifications"
+    },
+    {
+      "case": "subject-051",
+      "duration_us": 5279,
+      "expected": "forgotten",
+      "slot": "language"
+    },
+    {
+      "case": "subject-052",
+      "duration_us": 10612,
+      "expected": "forgotten",
+      "slot": "units"
+    },
+    {
+      "case": "subject-053",
+      "duration_us": 5313,
+      "expected": "forgotten",
+      "slot": "timezone"
+    },
+    {
+      "case": "subject-054",
+      "duration_us": 6136,
+      "expected": "forgotten",
+      "slot": "delivery-method"
+    },
+    {
+      "case": "subject-055",
+      "duration_us": 1076,
+      "expected": "currently-unauthorized",
+      "slot": "notifications"
+    },
+    {
+      "case": "subject-056",
+      "duration_us": 1094,
+      "expected": "currently-unauthorized",
+      "slot": "language"
+    },
+    {
+      "case": "subject-057",
+      "duration_us": 1022,
+      "expected": "currently-unauthorized",
+      "slot": "units"
+    },
+    {
+      "case": "subject-058",
+      "duration_us": 1794,
+      "expected": "currently-unauthorized",
+      "slot": "timezone"
+    },
+    {
+      "case": "subject-059",
+      "duration_us": 1581,
+      "expected": "currently-unauthorized",
+      "slot": "delivery-method"
+    },
+    {
+      "case": "subject-060",
+      "duration_us": 6846,
+      "expected": "traceable-hit",
+      "slot": "notifications",
+      "source": "577646c1db18d9329031bf1c759556cc22a5ae90f31d16dc4e286660a27f32b1",
+      "version": 1
+    },
+    {
+      "case": "subject-061",
+      "duration_us": 2201,
+      "expected": "traceable-hit",
+      "slot": "language",
+      "source": "8512a0d3eb7624ff7da07c7151925911d27c7e7299405c894bf3f9d880eab3c0",
+      "version": 1
+    },
+    {
+      "case": "subject-062",
+      "duration_us": 5638,
+      "expected": "traceable-hit",
+      "slot": "units",
+      "source": "0ed2c1224aeae827c1f252bf97ca8a6574aae760d6d59c7e8d9061d997a947f0",
+      "version": 1
+    },
+    {
+      "case": "subject-063",
+      "duration_us": 5384,
+      "expected": "traceable-hit",
+      "slot": "timezone",
+      "source": "dd08e9692ae4f05d822f2ebf174ec7be92bba9032a0611282e06046cf71c7972",
+      "version": 1
+    },
+    {
+      "case": "subject-064",
+      "duration_us": 5443,
+      "expected": "traceable-hit",
+      "slot": "delivery-method",
+      "source": "06128439f50f0caa660445dac73231b34d3b57fed0c04d5c2c32fcb2c9e4cbff",
+      "version": 1
+    },
+    {
+      "case": "subject-065",
+      "duration_us": 9633,
+      "expected": "corrected-version",
+      "slot": "notifications",
+      "source": "1d69a6cbefea619dc534c3b096859d1fb90078f8a2d494594fca04f0936d634b",
+      "version": 2
+    },
+    {
+      "case": "subject-066",
+      "duration_us": 6305,
+      "expected": "corrected-version",
+      "slot": "language",
+      "source": "5c00222d8149fa9408c12f773d979c98012b6d37774a411880858de4139ad1e7",
+      "version": 2
+    },
+    {
+      "case": "subject-067",
+      "duration_us": 5800,
+      "expected": "corrected-version",
+      "slot": "units",
+      "source": "b7081d30237c1623028aa64e87dd6f428957f4d010b45c0f8e1789275104743e",
+      "version": 2
+    },
+    {
+      "case": "subject-068",
+      "duration_us": 6521,
+      "expected": "corrected-version",
+      "slot": "timezone",
+      "source": "0904451f341b189fabd1aed9a24c9276c6bd2fd6d89cf7b64879167712ad5a80",
+      "version": 2
+    },
+    {
+      "case": "subject-069",
+      "duration_us": 6085,
+      "expected": "corrected-version",
+      "slot": "delivery-method",
+      "source": "0ccca2c9be8f4159f403c4d376c60c98675c733f7895f0a38e863c0c7aedccc3",
+      "version": 2
+    },
+    {
+      "case": "subject-070",
+      "duration_us": 6280,
+      "expected": "forgotten",
+      "slot": "notifications"
+    },
+    {
+      "case": "subject-071",
+      "duration_us": 5831,
+      "expected": "forgotten",
+      "slot": "language"
+    },
+    {
+      "case": "subject-072",
+      "duration_us": 6197,
+      "expected": "forgotten",
+      "slot": "units"
+    },
+    {
+      "case": "subject-073",
+      "duration_us": 5822,
+      "expected": "forgotten",
+      "slot": "timezone"
+    },
+    {
+      "case": "subject-074",
+      "duration_us": 5893,
+      "expected": "forgotten",
+      "slot": "delivery-method"
+    },
+    {
+      "case": "subject-075",
+      "duration_us": 1120,
+      "expected": "currently-unauthorized",
+      "slot": "notifications"
+    },
+    {
+      "case": "subject-076",
+      "duration_us": 524,
+      "expected": "currently-unauthorized",
+      "slot": "language"
+    },
+    {
+      "case": "subject-077",
+      "duration_us": 1576,
+      "expected": "currently-unauthorized",
+      "slot": "units"
+    },
+    {
+      "case": "subject-078",
+      "duration_us": 1590,
+      "expected": "currently-unauthorized",
+      "slot": "timezone"
+    },
+    {
+      "case": "subject-079",
+      "duration_us": 1290,
+      "expected": "currently-unauthorized",
+      "slot": "delivery-method"
+    },
+    {
+      "case": "subject-080",
+      "duration_us": 9157,
+      "expected": "traceable-hit",
+      "slot": "notifications",
+      "source": "ab70464882106b7ba4db2a3e52ea34e6ded2301f2eccdfd0a10fa0481ef95c10",
+      "version": 1
+    },
+    {
+      "case": "subject-081",
+      "duration_us": 4572,
+      "expected": "traceable-hit",
+      "slot": "language",
+      "source": "f58b7f566c88d2c577595ceb2afe59ebb9dba8275558dfd74461a1963f47d1fd",
+      "version": 1
+    },
+    {
+      "case": "subject-082",
+      "duration_us": 4826,
+      "expected": "traceable-hit",
+      "slot": "units",
+      "source": "c434f9341c097df70663c7d692e5ee20c5bb1dd99514b2f94d85cf2ecaed39ba",
+      "version": 1
+    },
+    {
+      "case": "subject-083",
+      "duration_us": 5379,
+      "expected": "traceable-hit",
+      "slot": "timezone",
+      "source": "75183275dc3318052797a590872def794f3674e3b8524f3ae11f9033f351ef2c",
+      "version": 1
+    },
+    {
+      "case": "subject-084",
+      "duration_us": 4997,
+      "expected": "traceable-hit",
+      "slot": "delivery-method",
+      "source": "bf676ff16968df7776e007d159dd836bb4e8b126ebf3986eaa8589a2f0ad229f",
+      "version": 1
+    },
+    {
+      "case": "subject-085",
+      "duration_us": 5349,
+      "expected": "corrected-version",
+      "slot": "notifications",
+      "source": "ead2d013d48e8e852a6b1459a0aa35e227535a1d25835a71517521ec86a82ab8",
+      "version": 2
+    },
+    {
+      "case": "subject-086",
+      "duration_us": 5161,
+      "expected": "corrected-version",
+      "slot": "language",
+      "source": "a38a46cb5e3e910991cafd500fb5b9c4643cb9f41ae012fe13185c4895bd37de",
+      "version": 2
+    },
+    {
+      "case": "subject-087",
+      "duration_us": 5725,
+      "expected": "corrected-version",
+      "slot": "units",
+      "source": "ff9e40665938debccc3e4788ad9b0366764df0c07c228df927263ef014c798e5",
+      "version": 2
+    },
+    {
+      "case": "subject-088",
+      "duration_us": 7473,
+      "expected": "corrected-version",
+      "slot": "timezone",
+      "source": "faef5e44aa6249c0a85763aa629e23645112bacf4f9026135176b48d1dd355c0",
+      "version": 2
+    },
+    {
+      "case": "subject-089",
+      "duration_us": 5623,
+      "expected": "corrected-version",
+      "slot": "delivery-method",
+      "source": "55461856d0846faea94491ecf68e18bfad4e1ff2cb75f5b3b10554e429d0702b",
+      "version": 2
+    },
+    {
+      "case": "subject-090",
+      "duration_us": 5005,
+      "expected": "forgotten",
+      "slot": "notifications"
+    },
+    {
+      "case": "subject-091",
+      "duration_us": 6880,
+      "expected": "forgotten",
+      "slot": "language"
+    },
+    {
+      "case": "subject-092",
+      "duration_us": 4473,
+      "expected": "forgotten",
+      "slot": "units"
+    },
+    {
+      "case": "subject-093",
+      "duration_us": 7497,
+      "expected": "forgotten",
+      "slot": "timezone"
+    },
+    {
+      "case": "subject-094",
+      "duration_us": 5967,
+      "expected": "forgotten",
+      "slot": "delivery-method"
+    },
+    {
+      "case": "subject-095",
+      "duration_us": 2246,
+      "expected": "currently-unauthorized",
+      "slot": "notifications"
+    },
+    {
+      "case": "subject-096",
+      "duration_us": 3084,
+      "expected": "currently-unauthorized",
+      "slot": "language"
+    },
+    {
+      "case": "subject-097",
+      "duration_us": 4986,
+      "expected": "currently-unauthorized",
+      "slot": "units"
+    },
+    {
+      "case": "subject-098",
+      "duration_us": 4419,
+      "expected": "currently-unauthorized",
+      "slot": "timezone"
+    },
+    {
+      "case": "subject-099",
+      "duration_us": 4725,
+      "expected": "currently-unauthorized",
+      "slot": "delivery-method"
+    }
+  ],
+  "cross_scope_leaks": 0,
+  "groups": 100,
+  "misses": 0,
+  "mode": "deterministic",
+  "p95_us": 9633
+}

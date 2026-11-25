@@ -1,0 +1,71 @@
+{
+  "auto_promotions": 0,
+  "inputs": [
+    "I prefer receiving notifications by text message every time.",
+    "My preferred language for future conversations is Spanish.",
+    "I want all future measurements in metric units.",
+    "I prefer the timezone UTC for future appointments.",
+    "I need to send a card for an event."
+  ],
+  "pending": [
+    {
+      "id": "a8843137973067486d5e5ba967fafcca",
+      "slot": "timezone",
+      "value": "UTC",
+      "status": "pending",
+      "extraction": "model",
+      "source": "936c5a232ef0493086b729634457b900d6ff9953b71de0a05305fc789b0c1953",
+      "purpose": "support",
+      "occurred": "2026-11-25T10:22:17.365835Z",
+      "evidence": "I prefer the timezone UTC for future appointments.",
+      "current_version": 0
+    }
+  ],
+  "results": [
+    {
+      "source": "3a6e3b504b9e44dc2f2fb204e490cce24e494ac7b006c1da905ef01f0e8b9698",
+      "status": "no-proposal",
+      "model": "qwen2.5-0.5b",
+      "prompt_tokens": 70,
+      "completion_tokens": 29,
+      "duration_ms": 1102,
+      "response_sha256": "c4cb9bc8394dfec720a25dbb06e5de643ce6f3e238b7069e64390774ded84290"
+    },
+    {
+      "source": "d53f1c6f3a118b63ee717b04c968222679e608ae621fd7e1a3cdb87099c2cae9",
+      "status": "no-proposal",
+      "model": "qwen2.5-0.5b",
+      "prompt_tokens": 69,
+      "completion_tokens": 37,
+      "duration_ms": 1323,
+      "response_sha256": "c8de73b64962feb3a2955a902a17021399a44a061e9c3bc9b2667cc975fd5364"
+    },
+    {
+      "source": "32179bfee7841debc9a77e35a2603133adb279375eefb81384c113d8d3e27343",
+      "status": "no-proposal",
+      "model": "qwen2.5-0.5b",
+      "prompt_tokens": 69,
+      "completion_tokens": 45,
+      "duration_ms": 1665,
+      "response_sha256": "128b8835ef0c136e16b7bd34b47246853bc5de09aa2d15860cc7c33dfa338700"
+    },
+    {
+      "source": "936c5a232ef0493086b729634457b900d6ff9953b71de0a05305fc789b0c1953",
+      "candidate": "a8843137973067486d5e5ba967fafcca",
+      "status": "pending",
+      "model": "qwen2.5-0.5b",
+      "prompt_tokens": 69,
+      "completion_tokens": 37,
+      "duration_ms": 1487,
+      "response_sha256": "2cc6f18c8bda324fce374a352a14993e7b69a5878f15a2e73e934397642f5029"
+    },
+    {
+      "source": "f3c770a7c16a58c2ee965d6b75cfe441c2ef95f931e07a220e71bae9632afd20",
+      "status": "",
+      "model": "qwen2.5-0.5b",
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "duration_ms": 0
+    }
+  ]
+}

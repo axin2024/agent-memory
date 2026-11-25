@@ -1,0 +1,63 @@
+name: Memory privacy acceptance
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  acceptance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      mysql:
+        image: mysql:8.4
+        env:
+          MYSQL_ROOT_PASSWORD: memory-ci-root
+        ports:
+          - 3306/tcp
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=5s
+          --health-timeout=5s
+          --health-retries=24
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version-file: go.mod
+          cache-dependency-path: go.sum
+      - name: Create disposable schemas
+        env:
+          MYSQL_CONTAINER: ${{ job.services.mysql.id }}
+        run: |
+          docker exec -i -e MYSQL_PWD=memory-ci-root "$MYSQL_CONTAINER" mysql --user=root <<'SQL'
+          CREATE DATABASE memory_test CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_bin;
+          CREATE DATABASE memory_before CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_bin;
+          CREATE DATABASE memory_eval CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_bin;
+          CREATE DATABASE memory_web CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_bin;
+          CREATE USER 'memory_test'@'%' IDENTIFIED BY 'memory-ci-app';
+          GRANT ALL PRIVILEGES ON memory_test.* TO 'memory_test'@'%';
+          GRANT ALL PRIVILEGES ON memory_before.* TO 'memory_test'@'%';
+          GRANT ALL PRIVILEGES ON memory_eval.* TO 'memory_test'@'%';
+          GRANT ALL PRIVILEGES ON memory_web.* TO 'memory_test'@'%';
+          SQL
+      - name: Verify browser script, journal and MySQL behavior
+        env:
+          MYSQL_TEST_PORT: ${{ job.services.mysql.ports[3306] }}
+        run: |
+          test -z "$(gofmt -l cmd internal)"
+          node --check internal/web/ui/console.js
+          go vet ./...
+          export MEMORY_TEST_DSN="memory_test:memory-ci-app@tcp(127.0.0.1:$MYSQL_TEST_PORT)/memory_test"
+          export MEMORY_TEST_RESTORE_DSN="memory_test:memory-ci-app@tcp(127.0.0.1:$MYSQL_TEST_PORT)/memory_before"
+          export MEMORY_TEST_EVAL_DSN="memory_test:memory-ci-app@tcp(127.0.0.1:$MYSQL_TEST_PORT)/memory_eval"
+          export MEMORY_TEST_WEB_DSN="memory_test:memory-ci-app@tcp(127.0.0.1:$MYSQL_TEST_PORT)/memory_web"
+          go test -race -count=1 -timeout=6m -v ./...
+          go build -trimpath -o "$RUNNER_TEMP/agent-memory" ./cmd/agent-memory
