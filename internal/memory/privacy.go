@@ -208,6 +208,10 @@ func (s *Service) Sweep(ctx context.Context, who Identity) (map[string]int64, er
 			return err
 		}
 		statements := []struct{ kind, query string }{
+			{"source_conflicts", `DELETE c FROM source_conflicts c JOIN sources x ON x.scope_hash=c.scope_hash AND x.source_hash=c.source_hash
+				JOIN subjects u ON u.scope_hash=x.scope_hash WHERE u.tenant=? AND x.expires<=UTC_TIMESTAMP(6)`},
+			{"model_jobs", `DELETE j FROM model_jobs j JOIN sources x ON x.scope_hash=j.scope_hash AND x.source_hash=j.source_hash
+				JOIN subjects u ON u.scope_hash=x.scope_hash WHERE u.tenant=? AND x.expires<=UTC_TIMESTAMP(6)`},
 			{"candidates", `DELETE c FROM candidates c JOIN sources x ON x.scope_hash=c.scope_hash AND x.source_hash=c.source_hash
 				JOIN subjects u ON u.scope_hash=x.scope_hash WHERE u.tenant=? AND x.expires<=UTC_TIMESTAMP(6)`},
 			{"source_bodies", `UPDATE sources x JOIN subjects u ON u.scope_hash=x.scope_hash SET x.statement=NULL

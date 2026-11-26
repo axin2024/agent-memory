@@ -20,7 +20,11 @@ async function api(path, body, method = body === undefined ? 'GET' : 'POST') {
   if (body !== undefined) headers['Content-Type'] = 'application/json';
   const response = await fetch('/api/' + path, { method, headers, body: body === undefined ? undefined : JSON.stringify(body) });
   const decoded = await response.json();
-  if (!response.ok) throw new Error(labels[decoded.error] || '请求失败');
+  if (!response.ok) {
+    if (decoded.conflict_id) throw new Error('来源编号已被使用，冲突回执 #' + decoded.conflict_id);
+    if (decoded.job_id) throw new Error('模型处理失败，任务编号 ' + decoded.job_id);
+    throw new Error(labels[decoded.error] || '请求失败');
+  }
   return decoded;
 }
 
@@ -153,19 +157,88 @@ const sections = {
     if (!target.isConnected) return;
     if (!rows.length) target.append(el('p','当前没有待审核候选。','hint'));
     const cards = el('div', undefined, 'grid');
+    const selections = new Map();
+    const entries = new Map();
+    const summary = el('p');
+    function reviewInput(item, accept) {
+      return { candidate:item.id, expected_version:item.current_version, accept };
+    }
+    async function decideSelected(accept) {
+      if (!selections.size || selections.size > 50) throw new Error('请选择 1 至 50 条候选');
+      const results = await api('review/batch', [...selections.values()].map(item => reviewInput(item, accept)));
+      let completed = 0;
+      for (const result of results) {
+        const entry = entries.get(result.candidate);
+        if (result.error) {
+          entry.message.textContent = labels[result.error] || '尚未处理';
+        } else {
+          entry.card.remove();
+          selections.delete(result.candidate);
+          completed++;
+        }
+      }
+      summary.textContent = '已处理 ' + completed + ' 条，保留 ' + (results.length - completed) + ' 条待处理选项';
+    }
+    if (rows.length) {
+      const batch = panel('批量裁决');
+      batch.append(button('接受所选', () => decideSelected(true)), button('拒绝所选', () => decideSelected(false), true), summary);
+      target.append(batch);
+    }
     for (const item of rows) {
       const card = panel(item.slot + ' · ' + item.status);
-      card.append(el('p', item.value), el('blockquote', item.evidence), el('small', item.purpose + ' / ' + item.extraction));
+      const confidenceLabels = { 'explicit-preference':'明确的长期偏好', 'evidence-matched':'证据与原文吻合，待本人确认' };
+      card.append(el('p', item.value), el('blockquote', item.evidence),
+        el('small', item.purpose + ' / ' + (confidenceLabels[item.confidence] || item.extraction)));
+      card.append(el('small', item.provenance.app + ' / ' + item.provenance.session + ' / ' + item.provenance.external_id));
+      if (item.current) {
+        card.append(el('p', '当前记忆 R' + item.current_version + ' · ' + item.current.value),
+          el('small', item.current.source.app + ' / ' + item.current.source.session + ' / ' + item.current.source.external_id));
+        if (item.current.source.evidence) card.append(el('blockquote', item.current.source.evidence));
+      }
       const actions = el('div', undefined, 'actions');
       async function decide(accept) {
-        await api('review',{ candidate:item.id, expected_version:item.current_version, accept });
-        await switchTo('pending');
+        await api('review', reviewInput(item, accept));
+        selections.delete(item.id);
+        card.remove();
       }
+      const checkbox = el('input');
+      checkbox.type = 'checkbox';
+      checkbox.addEventListener('change', () => {
+        if (checkbox.checked) selections.set(item.id, item);
+        else selections.delete(item.id);
+      });
+      const choice = el('label','选中此候选','choice');
+      choice.prepend(checkbox);
+      const message = el('p');
+      entries.set(item.id, {card, message});
       actions.append(button('接受', () => decide(true)), button('拒绝', () => decide(false), true));
-      card.append(actions);
+      card.append(choice,actions,message);
       cards.append(card);
     }
     target.append(cards);
+  }],
+  conflicts: ['来源冲突', async target => {
+    const cards = el('div', undefined, 'grid');
+    target.append(cards);
+    async function load(after) {
+      const page = await api('source-conflicts?after=' + encodeURIComponent(after));
+      if (!target.isConnected) return;
+      cards.replaceChildren();
+      if (!page.items.length) cards.append(el('p', '当前页没有待处理的来源冲突。', 'hint'));
+      for (const item of page.items) {
+        const card = panel(item.external_id);
+        card.append(el('p', '冲突回执 #' + item.id), el('small', item.app + ' / ' + item.purpose + ' / ' + item.session),
+          el('p', new Date(item.recorded).toLocaleString()),
+          button('确认保留原记录', async () => {
+            await api('source-conflicts/dismiss', { id:item.id });
+            await load(after);
+          }));
+        cards.append(card);
+      }
+      if (after !== '0') cards.append(button('返回第一页', () => load('0'), true));
+      if (page.next_after) cards.append(button('下一页', () => load(page.next_after)));
+    }
+    await load('0');
   }],
   consent: ['用途授权', async target => {
     const data = await api('export');
@@ -212,22 +285,36 @@ const sections = {
       ['kind','来源分类（user / quotation / transient）','text','user'],['statement','来源文本','area']],
     values => api('source',{ subject:values.subject, purpose:values.purpose, session:values.session, external_id:values.external_id,
       occurred:iso(values.time), kind:values.kind, statement:values.statement.trim() }));
-    const extract = receipt('模型提取候选', [['subject','用户标识'],['purpose','用途','text','support'],['source','来源摘要']],
-      values => api('extract',values));
-    grid.append(source,extract);
+    const status = receipt('查询提取进度', [['id','任务编号']],
+      values => api('extract/jobs?id=' + encodeURIComponent(values.id)));
+    const extract = receipt('提交提取任务', [['subject','用户标识'],['purpose','用途','text','support'],['source','来源摘要']],
+      async values => {
+        const result = await api('extract/jobs', values);
+        if (result.job_id) status.querySelector('input[name="id"]').value = result.job_id;
+        return result;
+      });
+    grid.append(source,extract,status);
     target.append(grid);
   }],
   forget: ['遗忘与撤回', target => {
+    const status = receipt('查询遗忘进度', [['id','操作编号']],
+      values => api('forget?id=' + encodeURIComponent(values.id)));
     const node = receipt('遗忘记忆', [['slot','事实键（留空时清除本人全部记忆）','text','',true],
-      ['confirm','输入 forget 以确认']], values => {
+      ['confirm','输入 forget 以确认']], async values => {
       if (values.confirm !== 'forget') throw new Error('请输入 forget');
-      return api('forget',{ slot:values.slot, all:values.slot === '', key:key() });
+      const result = await api('forget',{ slot:values.slot, all:values.slot === '', key:key() });
+      status.querySelector('input[name="id"]').value = result.id;
+      return result;
     });
-    target.append(node,receipt('撤回分享链接', [['url','分享链接']], values => {
+    target.append(node,status,receipt('撤回分享链接', [['url','分享链接']], values => {
       const url = new URL(values.url);
       if (url.origin !== location.origin || url.pathname !== '/share') throw new Error('请使用本站分享链接');
       return api('share/revoke',{ token:url.hash.slice(1), key:key() });
     }));
+  }],
+  extraction: ['提取进度', target => {
+    target.append(receipt('按编号查询提取进度', [['id','任务编号']],
+      values => api('extract/jobs?id=' + encodeURIComponent(values.id))));
   }],
   audit: ['操作审计', target => {
     target.append(receipt('读取摘要', [['after','起始游标','number','0']], values => api('audit?after=' + encodeURIComponent(values.after))));
@@ -278,7 +365,7 @@ if (get('#shared')) {
       session.token = token.trim();
       try { session.who = await api('session'); }
       catch (error) { session.token = ''; throw error; }
-      const allowed = { owner:['facts','pending','consent','recall','forget','audit'], app:['source','recall'],
+      const allowed = { owner:['facts','pending','conflicts','consent','recall','forget','extraction','audit'], app:['source','recall'],
         admin:['audit'], audit:['audit'] }[session.who.role];
       for (const section of allowed) {
         const item = button(sections[section][0], () => switchTo(section), true);

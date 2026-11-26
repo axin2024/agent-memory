@@ -10,16 +10,25 @@ import (
 )
 
 type Candidate struct {
-	ID         string    `json:"id"`
-	Slot       string    `json:"slot"`
-	Value      string    `json:"value"`
-	Status     string    `json:"status"`
-	Extraction string    `json:"extraction"`
-	Source     string    `json:"source"`
-	Purpose    string    `json:"purpose"`
-	At         time.Time `json:"occurred"`
-	Evidence   string    `json:"evidence"`
-	Version    uint64    `json:"current_version"`
+	ID         string           `json:"id"`
+	Slot       string           `json:"slot"`
+	Value      string           `json:"value"`
+	Status     string           `json:"status"`
+	Extraction string           `json:"extraction"`
+	Confidence string           `json:"confidence"`
+	Source     string           `json:"source"`
+	Purpose    string           `json:"purpose"`
+	At         time.Time        `json:"occurred"`
+	Evidence   string           `json:"evidence"`
+	Version    uint64           `json:"current_version"`
+	Provenance SourceRef        `json:"provenance"`
+	Current    *CurrentEvidence `json:"current,omitempty"`
+}
+
+type CurrentEvidence struct {
+	Value     string    `json:"value"`
+	Source    SourceRef `json:"source"`
+	Effective time.Time `json:"effective"`
 }
 
 type Fact struct {
@@ -167,6 +176,14 @@ func (s *Service) Review(ctx context.Context, who Identity, id string, expected 
 		if p.Evidence == "" || !p.Expires.After(time.Now().UTC()) {
 			return ErrConflict
 		}
+		var excerpt string
+		err = tx.QueryRowContext(ctx, "SELECT excerpt FROM model_jobs WHERE scope_hash=? AND candidate=? AND excerpt IS NOT NULL",
+			scope, id).Scan(&excerpt)
+		if err == nil {
+			p.Evidence = excerpt
+		} else if !errors.Is(err, sql.ErrNoRows) {
+			return err
+		}
 		c, err := latest(ctx, tx, scope, label, p.Purpose)
 		if err != nil {
 			return err
@@ -292,9 +309,16 @@ func (s *Service) Pending(ctx context.Context, who Identity) ([]Candidate, error
 		if err := authorize(ctx, tx, who); err != nil {
 			return err
 		}
-		rows, err := tx.QueryContext(ctx, `SELECT c.candidate,c.slot,c.value,c.status,c.extraction,c.source_hash,s.purpose,s.occurred,s.statement,
-			COALESCE((SELECT MAX(f.version) FROM facts f WHERE f.scope_hash=c.scope_hash AND f.slot_hash=c.slot_hash AND f.purpose=s.purpose),0)
+		rows, err := tx.QueryContext(ctx, `SELECT c.candidate,c.slot,c.value,c.status,c.extraction,c.source_hash,s.purpose,s.occurred,
+			COALESCE(m.excerpt,s.statement),
+			s.app,s.session_id,s.external_id,
+			COALESCE(f.version,0), f.expires>UTC_TIMESTAMP(6), COALESCE(f.value,''),
+			COALESCE(f.source_hash,''), COALESCE(f.app,''), COALESCE(f.session_id,''), COALESCE(f.external_id,''),
+			CASE WHEN previous.expires>UTC_TIMESTAMP(6) THEN COALESCE(f.evidence,'') ELSE '' END, f.effective
 			FROM candidates c JOIN sources s ON s.scope_hash=c.scope_hash AND s.source_hash=c.source_hash
+			LEFT JOIN model_jobs m ON m.scope_hash=c.scope_hash AND m.candidate=c.candidate
+			LEFT JOIN facts f ON f.scope_hash=c.scope_hash AND f.slot_hash=c.slot_hash AND f.purpose=s.purpose AND f.replaced IS NULL
+			LEFT JOIN sources previous ON previous.scope_hash=f.scope_hash AND previous.source_hash=f.source_hash
 			WHERE c.scope_hash=? AND s.statement IS NOT NULL AND s.expires>UTC_TIMESTAMP(6) AND c.status IN ('pending','conflict')
 			ORDER BY s.occurred DESC,c.candidate LIMIT 200`, scope)
 		if err != nil {
@@ -303,14 +327,39 @@ func (s *Service) Pending(ctx context.Context, who Identity) ([]Candidate, error
 		defer rows.Close()
 		for rows.Next() {
 			var c Candidate
-			if err = rows.Scan(&c.ID, &c.Slot, &c.Value, &c.Status, &c.Extraction, &c.Source, &c.Purpose, &c.At, &c.Evidence, &c.Version); err != nil {
+			var comparison CurrentEvidence
+			var active sql.NullBool
+			var effective sql.NullTime
+			if err := rows.Scan(&c.ID, &c.Slot, &c.Value, &c.Status, &c.Extraction, &c.Source, &c.Purpose, &c.At, &c.Evidence,
+				&c.Provenance.App, &c.Provenance.Session, &c.Provenance.External, &c.Version,
+				&active, &comparison.Value, &comparison.Source.ID, &comparison.Source.App, &comparison.Source.Session,
+				&comparison.Source.External, &comparison.Source.Evidence, &effective); err != nil {
 				return err
+			}
+			c.Provenance.ID = c.Source
+			c.Confidence = confidence(c.Extraction)
+			if active.Bool && effective.Valid && comparison.Value != c.Value {
+				comparison.Effective = effective.Time
+				c.Current = &comparison
 			}
 			found = append(found, c)
 		}
 		return rows.Err()
 	})
 	return found, err
+}
+
+func confidence(extraction string) string {
+	switch extraction {
+	case "rule":
+		return "explicit-preference"
+	case "model":
+		return "evidence-matched"
+	case "manual":
+		return "owner-confirmed"
+	default:
+		return ""
+	}
 }
 
 type Recall struct {

@@ -105,12 +105,28 @@ func TestPrivacyLifecycle(t *testing.T) {
 	one := Source{owner.Actor, "support", "first", "notice", time.Now().Add(-time.Hour), "user", "My long-term preference for notifications is email."}
 	base := write(t, ctx, s, a, one)
 	verify(t, base.Status == "applied", "first write: %s", base.Status)
+	query := Recall{Subject: owner.Actor, Purpose: "support", Slot: "notifications"}
+	for _, who := range []Identity{a, b} {
+		found := ask(t, ctx, s, who, query)
+		verify(t, len(found) == 1 && found[0].Value == "email" && found[0].Source.ID == base.Source, "the two applications did not recall the same source")
+	}
 	replayed := write(t, ctx, s, a, one)
 	verify(t, replayed.Replayed && replayed.Source == base.Source && replayed.Candidate == base.Candidate, "source replay created another record")
 	changed := one
 	changed.Statement = "My long-term preference for notifications is letter."
 	_, err := s.Ingest(ctx, a, changed)
-	verify(t, errors.Is(err, ErrConflict), "changed replay was accepted: %v", err)
+	var conflict *SourceConflictError
+	verify(t, errors.As(err, &conflict) && conflict.ID != 0 && !conflict.Replayed, "changed replay was not queued: %v", err)
+	_, err = s.Ingest(ctx, a, changed)
+	var secondConflict *SourceConflictError
+	verify(t, errors.As(err, &secondConflict) && secondConflict.ID == conflict.ID && secondConflict.Replayed, "changed replay duplicated the queue: %v", err)
+	var storedSources, queued int
+	noError(t, db.QueryRowContext(ctx, "SELECT COUNT(*) FROM sources WHERE source_hash=?", base.Source).Scan(&storedSources))
+	noError(t, db.QueryRowContext(ctx, "SELECT COUNT(*) FROM source_conflicts WHERE source_hash=?", base.Source).Scan(&queued))
+	verify(t, storedSources == 1 && queued == 1, "source or conflict was duplicated")
+	page, err := s.SourceConflicts(ctx, owner, 0)
+	page = must(t, page, err)
+	verify(t, len(page.Items) == 1 && page.Items[0].ID == conflict.ID && page.Items[0].Source == base.Source, "queued conflict lacks provenance")
 	for _, who := range []Identity{untrusted, other, auditor} {
 		_, err = s.Recall(ctx, who, Recall{Subject: owner.Actor, Purpose: "support", Slot: "notifications"})
 		verify(t, errors.Is(err, ErrDenied), "unauthorized recall: %v", err)
@@ -129,10 +145,18 @@ func TestPrivacyLifecycle(t *testing.T) {
 	newer.Session, newer.External, newer.Statement, newer.Occurred = "later", "notice", "Remember my notifications as sms.", time.Now().Add(-time.Minute)
 	pending := write(t, ctx, s, b, newer)
 	verify(t, pending.Status == "conflict", "different applications should produce a conflict")
+	options, err := s.Pending(ctx, owner)
+	options = must(t, options, err)
+	verify(t, len(options) == 1 && options[0].Evidence == newer.Statement && options[0].Current != nil &&
+		options[0].Current.Source.Evidence == one.Statement && options[0].Current.Source.ID == base.Source, "comparison omitted one of the two proofs")
 	status, err := s.Review(ctx, owner, pending.Candidate, 1, true)
 	verify(t, err == nil && status == "applied", "direct conflict review: %s %v", status, err)
+	for _, who := range []Identity{a, b} {
+		found := ask(t, ctx, s, who, query)
+		verify(t, len(found) == 1 && found[0].Value == "sms" && found[0].Source.ID == pending.Source &&
+			found[0].Source.Session == newer.Session && found[0].Source.Evidence == newer.Statement, "missing SMS correction provenance")
+	}
 	at := time.Now().Add(-30 * time.Minute)
-	query := Recall{Subject: owner.Actor, Purpose: "support", Slot: "notifications"}
 	historical := query
 	historical.AsOf = at
 	old := ask(t, ctx, s, b, historical)
@@ -188,6 +212,12 @@ func TestPrivacyLifecycle(t *testing.T) {
 	verify(t, err == nil && retry == receipt, "forget replay did not preserve receipt")
 	_, err = s.Ingest(ctx, a, one)
 	verify(t, errors.Is(err, ErrForgotten), "old source was accepted after forgetting")
+	_, err = s.Ingest(ctx, a, changed)
+	verify(t, errors.Is(err, ErrForgotten), "conflicting body was accepted after forgetting")
+	page, err = s.SourceConflicts(ctx, owner, 0)
+	verify(t, err == nil && len(page.Items) == 0, "forgetting left a queue item")
+	noError(t, db.QueryRowContext(ctx, "SELECT COUNT(*) FROM source_conflicts WHERE source_hash=?", base.Source).Scan(&queued))
+	verify(t, queued == 0, "forgetting left durable conflict metadata")
 	freshIdentity := one
 	freshIdentity.External, freshIdentity.Session = "old-other", "backlog"
 	_, err = s.Ingest(ctx, a, freshIdentity)
@@ -207,6 +237,8 @@ func TestPrivacyLifecycle(t *testing.T) {
 		var count int
 		noError(t, standby.QueryRowContext(ctx, "SELECT COUNT(*) FROM facts WHERE value='text message'").Scan(&count))
 		verify(t, count == 1, "backup did not contain pre-deletion facts")
+		noError(t, standby.QueryRowContext(ctx, "SELECT COUNT(*) FROM source_conflicts WHERE source_hash=?", base.Source).Scan(&count))
+		verify(t, count == 1, "backup did not contain the original conflict")
 		noError(t, s.Close())
 		backup, err := Open(ctx, standby, path, key)
 		backup = must(t, backup, err)
@@ -218,6 +250,8 @@ func TestPrivacyLifecycle(t *testing.T) {
 		verify(t, errors.Is(err, ErrMissing), "restore revived withdrawn capability")
 		_, err = backup.Ingest(ctx, a, one)
 		verify(t, errors.Is(err, ErrForgotten), "restored backup accepted forbidden replay")
+		noError(t, standby.QueryRowContext(ctx, "SELECT COUNT(*) FROM source_conflicts WHERE source_hash=?", base.Source).Scan(&count))
+		verify(t, count == 0, "restored backup retained deleted conflict metadata")
 		t.Logf("old MySQL backup caught up through sequence %d", receipt.Watermark)
 	}
 }
@@ -235,7 +269,7 @@ func copySnapshot(t *testing.T, ctx context.Context, source, standby *sql.DB) {
 	tx, err := standby.BeginTx(ctx, nil)
 	tx = must(t, tx, err)
 	defer tx.Rollback()
-	for _, table := range []string{"subjects", "principals", "policy", "consent", "sources", "candidates", "facts", "shares", "journal_state", "forget_cuts", "forgotten_sources", "events"} {
+	for _, table := range []string{"subjects", "principals", "policy", "consent", "sources", "source_conflicts", "candidates", "model_jobs", "facts", "shares", "journal_state", "forget_cuts", "forgotten_sources", "events"} {
 		if table == "journal_state" {
 			_, err = tx.ExecContext(ctx, "DELETE FROM journal_state")
 			noError(t, err)
@@ -257,16 +291,20 @@ func TestFrozenRecall(t *testing.T) {
 		subject := fmt.Sprintf("subject-%03d", i)
 		owner := actor(t, ctx, s, a.Tenant, subject, "owner")
 		other := actor(t, ctx, s, b.Tenant, subject, "owner")
+		neighbor := actor(t, ctx, s, a.Tenant, fmt.Sprintf("neighbor-%03d", i), "owner")
 		grant(t, ctx, s, owner, a.Actor, "support", true)
 		grant(t, ctx, s, other, b.Actor, "support", true)
+		grant(t, ctx, s, neighbor, a.Actor, "support", true)
 		slot := slots[i%len(slots)]
 		at := time.Now().Add(-2 * time.Hour)
-		request := Recall{Subject: subject, Purpose: "support", Slot: slot, Query: slot}
+		request := Recall{Subject: subject, Purpose: "support", Query: slot + " deliberate match"}
 		input := Source{subject, "support", "initial", "pref", at, "user", "Remember my " + slot + " as approved-" + fmt.Sprint(i) + "."}
 		expected := write(t, ctx, s, a, input)
-		input.Statement = "Remember my " + slot + " as unrelated-" + fmt.Sprint(i) + "."
+		input.Statement = "Remember my " + slot + " as unrelated deliberate match " + fmt.Sprint(i) + "."
 		distractor := write(t, ctx, s, b, input)
-		verify(t, distractor.Source != expected.Source, "cross-tenant source identity collision")
+		input.Subject = neighbor.Actor
+		nearby := write(t, ctx, s, a, input)
+		verify(t, distractor.Source != expected.Source && nearby.Source != expected.Source, "source identity collision across tenants or users")
 		group := map[string]any{"case": subject, "slot": slot, "expected": "traceable-hit"}
 		switch (i / 5) % 4 {
 		case 1:
@@ -302,7 +340,7 @@ func TestFrozenRecall(t *testing.T) {
 			verify(t, err == nil && len(result) == 1 && result[0].Source.ID == expected.Source && result[0].Source.Evidence != "", "attribution mismatch %d: %v", i, err)
 		}
 		if len(result) == 1 {
-			verify(t, result[0].Source.ID != distractor.Source, "unrelated tenant source leaked")
+			verify(t, result[0].Source.ID != distractor.Source && result[0].Source.ID != nearby.Source, "an unrelated source leaked")
 			group["source"] = result[0].Source.ID
 			group["version"] = result[0].Version
 		}
@@ -310,7 +348,8 @@ func TestFrozenRecall(t *testing.T) {
 	}
 	slices.Sort(latencies)
 	doc := map[string]any{"groups": len(records), "cross_scope_leaks": 0, "misses": 0,
-		"p95_us": latencies[94], "mode": "deterministic", "cases": records}
+		"higher_scoring_decoys": map[string]int{"different_tenant": 100, "different_user": 100},
+		"p95_us":                latencies[94], "mode": "deterministic", "cases": records}
 	if path := os.Getenv("MEMORY_TEST_EVIDENCE"); path != "" {
 		encoded, err := json.MarshalIndent(doc, "", "  ")
 		encoded = must(t, encoded, err)
@@ -359,11 +398,16 @@ func TestLiveModel(t *testing.T) {
 	for i, input := range inputs {
 		source := write(t, ctx, s, app, Source{owner.Actor, "support", "model-evaluation", fmt.Sprintf("case-%d", i),
 			time.Now().Add(-time.Second), "user", input})
-		result, err := s.Enrich(ctx, app, owner.Actor, "support", source.Source, model)
+		job, err := s.QueueEnrichment(ctx, app, owner.Actor, "support", source.Source, model)
+		verify(t, err == nil && job.Status == "queued" && job.ID != "", "did not queue live inference: %v", err)
+		worked, err := s.ProcessExtraction(ctx, model)
+		verify(t, err == nil && worked, "did not process live inference: %v", err)
+		result, err := s.ExtractionStatus(ctx, app, job.ID)
+		verify(t, err == nil && result.Attempt == 1 && result.DurationMillis > 0, "did not recover the measured model receipt: %v", err)
 		records = append(records, result)
 		t.Logf("case %d: %s, %d ms, error=%v", i, result.Status, result.DurationMillis, err)
-		if err != nil {
-			t.Log("provider refused result")
+		if result.Status == "failed" {
+			t.Log("provider response did not pass validation")
 		}
 	}
 	verify(t, len(ask(t, ctx, s, app, Recall{Subject: owner.Actor, Purpose: "support"})) == 0, "model promoted an unconfirmed proposal")

@@ -125,6 +125,17 @@ func serve(args []string, service *memory.Service) error {
 		ReadTimeout: 12 * time.Second, WriteTimeout: 25 * time.Second, IdleTimeout: 45 * time.Second, MaxHeaderBytes: 16 * 1024}
 	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt)
 	defer cancel()
+	if model != nil {
+		stopped := make(chan struct{})
+		go func() {
+			defer close(stopped)
+			runModelWorker(ctx, service, model, logger)
+		}()
+		defer func() {
+			cancel()
+			<-stopped
+		}()
+	}
 	exited := make(chan error, 1)
 	go func() {
 		if *cert != "" {
@@ -143,5 +154,24 @@ func serve(args []string, service *memory.Service) error {
 		shutdown, stop := context.WithTimeout(context.Background(), 10*time.Second)
 		defer stop()
 		return server.Shutdown(shutdown)
+	}
+}
+
+func runModelWorker(ctx context.Context, service *memory.Service, model *memory.Model, logger *slog.Logger) {
+	poll := time.NewTicker(500 * time.Millisecond)
+	defer poll.Stop()
+	for ctx.Err() == nil {
+		worked, err := service.ProcessExtraction(ctx, model)
+		if err != nil && ctx.Err() == nil {
+			logger.Error("model job processing failed", "error_type", fmt.Sprintf("%T", err))
+		}
+		if err == nil && worked {
+			continue
+		}
+		select {
+		case <-ctx.Done():
+			return
+		case <-poll.C:
+		}
 	}
 }

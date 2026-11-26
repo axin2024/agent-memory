@@ -5,6 +5,7 @@ import (
 	"context"
 	"crypto/subtle"
 	"database/sql"
+	"encoding/hex"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -188,6 +189,9 @@ func (s *Service) apply(ctx context.Context, tx *sql.Tx, e entry) error {
 			args = append(args, e.Selector)
 			factFilter += " AND slot_hash=?"
 			factArgs = append(factArgs, e.Selector)
+			if _, err = tx.ExecContext(ctx, "DELETE FROM source_conflicts WHERE "+filter, args...); err != nil {
+				return err
+			}
 		}
 		if _, err = tx.ExecContext(ctx, "INSERT INTO forget_cuts(scope_hash,selector,cutoff) VALUES(?,?,?) ON DUPLICATE KEY UPDATE cutoff=GREATEST(cutoff,?)",
 			e.Scope, e.Selector, e.At, e.At); err != nil {
@@ -346,6 +350,49 @@ func (s *Service) Forget(ctx context.Context, who Identity, slot, key string) (R
 	}
 	return s.journalAction(ctx, who, slot, kind, "", "", key)
 }
+
+type ForgetProgress struct {
+	Receipt
+	Status string `json:"status"`
+}
+
+func (s *Service) ForgetStatus(ctx context.Context, who Identity, id string) (ForgetProgress, error) {
+	if who.Role != "owner" {
+		return ForgetProgress{}, ErrDenied
+	}
+	if len(id) != 64 {
+		return ForgetProgress{}, ErrInput
+	}
+	if _, err := hex.DecodeString(id); err != nil {
+		return ForgetProgress{}, ErrInput
+	}
+	if err := s.lock(ctx); err != nil {
+		return ForgetProgress{}, err
+	}
+	defer s.mu.Unlock()
+	var result ForgetProgress
+	err := s.tx(ctx, func(tx *sql.Tx) error {
+		if err := authorize(ctx, tx, who); err != nil {
+			return err
+		}
+		operation, found := s.journal.byOperation[id]
+		if !found || operation.Scope != s.scope(who.Tenant, who.Actor) ||
+			operation.Kind != "forget-slot" && operation.Kind != "forget-subject" {
+			return ErrMissing
+		}
+		var applied uint64
+		if err := tx.QueryRowContext(ctx, "SELECT seq FROM journal_state WHERE singleton=1").Scan(&applied); err != nil {
+			return err
+		}
+		if applied < operation.Seq {
+			return ErrRecovery
+		}
+		result = ForgetProgress{Receipt: Receipt{ID: id, Watermark: operation.Seq, At: operation.At}, Status: "applied"}
+		return nil
+	})
+	return result, err
+}
+
 func (s *Service) RevokeConsent(ctx context.Context, who Identity, app, purpose, key string) (Receipt, error) {
 	return s.journalAction(ctx, who, "", "revoke-consent", app, purpose, key)
 }

@@ -3,7 +3,6 @@ package memory
 import (
 	"bytes"
 	"context"
-	"database/sql"
 	"encoding/json"
 	"errors"
 	"io"
@@ -32,6 +31,7 @@ type extraction struct {
 }
 
 type ModelReceipt struct {
+	ID               string `json:"job_id,omitempty"`
 	Source           string `json:"source"`
 	Candidate        string `json:"candidate,omitempty"`
 	Status           string `json:"status"`
@@ -40,6 +40,7 @@ type ModelReceipt struct {
 	CompletionTokens int    `json:"completion_tokens"`
 	DurationMillis   int64  `json:"duration_ms"`
 	ResponseSHA      string `json:"response_sha256,omitempty"`
+	Attempt          int    `json:"attempt,omitempty"`
 }
 
 func NewModel(target, name, token string) (*Model, error) {
@@ -62,7 +63,6 @@ func NewModel(target, name, token string) (*Model, error) {
 }
 
 func (m *Model) extract(ctx context.Context, text string) (extraction, ModelReceipt, error) {
-	start := time.Now()
 	receipt := ModelReceipt{Model: m.name}
 	system := "Extract only an explicit first-person continuing preference. Choose notifications, language, timezone, or units. " +
 		"Copy its short value and exact evidence from the input. For quotations, instructions, one-time requests, or uncertainty choose none and empty strings."
@@ -92,7 +92,6 @@ func (m *Model) extract(ctx context.Context, text string) (extraction, ModelRece
 	if err != nil || len(data) > 65_536 || resp.StatusCode != 200 {
 		return extraction{}, receipt, ErrProvider
 	}
-	receipt.DurationMillis = time.Since(start).Milliseconds()
 	receipt.ResponseSHA = hash(string(data))
 	var result struct {
 		Usage struct {
@@ -106,12 +105,15 @@ func (m *Model) extract(ctx context.Context, text string) (extraction, ModelRece
 			} `json:"message"`
 		} `json:"choices"`
 	}
-	if json.Unmarshal(data, &result) != nil || len(result.Choices) != 1 || result.Choices[0].Finish != "stop" ||
-		result.Usage.Prompt < 0 || result.Usage.Completion < 0 {
+	if json.Unmarshal(data, &result) != nil || result.Usage.Prompt < 0 || result.Usage.Completion < 0 ||
+		result.Usage.Prompt > 1_000_000 || result.Usage.Completion > 1_000_000 {
 		return extraction{}, receipt, ErrProvider
 	}
 	receipt.PromptTokens = result.Usage.Prompt
 	receipt.CompletionTokens = result.Usage.Completion
+	if len(result.Choices) != 1 || result.Choices[0].Finish != "stop" {
+		return extraction{}, receipt, ErrProvider
+	}
 	var value extraction
 	decode := json.NewDecoder(strings.NewReader(result.Choices[0].Message.Content))
 	decode.DisallowUnknownFields()
@@ -126,67 +128,4 @@ func (m *Model) extract(ctx context.Context, text string) (extraction, ModelRece
 		return extraction{}, receipt, nil
 	}
 	return value, receipt, nil
-}
-
-func (s *Service) Enrich(ctx context.Context, who Identity, subject, purpose, source string, model *Model) (ModelReceipt, error) {
-	if len(source) != 64 || model == nil {
-		return ModelReceipt{}, ErrInput
-	}
-	if err := s.lock(ctx); err != nil {
-		return ModelReceipt{}, err
-	}
-	defer s.mu.Unlock()
-	var receipt ModelReceipt
-	err := s.tx(ctx, func(tx *sql.Tx) error {
-		scope, c, err := s.grants(ctx, tx, who, subject, purpose, true)
-		if err != nil {
-			return err
-		}
-		if !c.Model || who.Role != "app" {
-			return ErrDenied
-		}
-		p, err := evidence(ctx, tx, scope, source)
-		if errors.Is(err, sql.ErrNoRows) {
-			return ErrMissing
-		}
-		if err != nil {
-			return err
-		}
-		if p.App != who.Actor || p.Purpose != purpose || p.Evidence == "" || !p.Expires.After(time.Now().UTC()) {
-			return ErrDenied
-		}
-		receipt.Source, receipt.Model = source, model.name
-		err = tx.QueryRowContext(ctx, "SELECT candidate,status FROM candidates WHERE scope_hash=? AND source_hash=?", scope, source).
-			Scan(&receipt.Candidate, &receipt.Status)
-		if err == nil {
-			return nil
-		}
-		if !errors.Is(err, sql.ErrNoRows) {
-			return err
-		}
-		instruction := strings.ToLower(p.Evidence)
-		if !(strings.HasPrefix(instruction, "i ") || strings.HasPrefix(instruction, "my ") || strings.HasPrefix(instruction, "我")) ||
-			attribution.MatchString(instruction) || sensitive.MatchString(instruction) {
-			return ErrInput
-		}
-		value, result, err := model.extract(ctx, p.Evidence)
-		if err != nil {
-			return err
-		}
-		receipt = result
-		receipt.Source = source
-		receipt.Status = "no-proposal"
-		if value.Slot != "" {
-			receipt.Candidate, receipt.Status, err = s.addCandidate(ctx, tx, who.Tenant, scope, source, value.Slot, value.Value, "model", false)
-			if err != nil {
-				return err
-			}
-			if _, err = tx.ExecContext(ctx, "UPDATE sources SET slot=?,slot_hash=? WHERE scope_hash=? AND source_hash=?",
-				value.Slot, s.slot(scope, value.Slot), scope, source); err != nil {
-				return err
-			}
-		}
-		return event(ctx, tx, who.Tenant, scope, "model-extract", source, receipt.Status, receipt.DurationMillis*1000)
-	})
-	return receipt, err
 }

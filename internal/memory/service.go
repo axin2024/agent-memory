@@ -30,6 +30,8 @@ var (
 //go:embed schema/*.sql
 var schema embed.FS
 
+var migrations = []string{"schema/01.sql", "schema/02.sql", "schema/03.sql", "schema/04.sql"}
+
 type Service struct {
 	db          *sql.DB
 	guard       *sql.Conn
@@ -104,29 +106,27 @@ func Migrate(ctx context.Context, db *sql.DB) error {
 	if _, err = conn.ExecContext(ctx, "CREATE TABLE IF NOT EXISTS migrations(version INT PRIMARY KEY)"); err != nil {
 		return err
 	}
-	for _, entry := range []struct {
-		version int
-		file    string
-	}{{1, "schema/01.sql"}, {2, "schema/02.sql"}} {
+	for index, file := range migrations {
+		version := index + 1
 		var count int
-		if err := conn.QueryRowContext(ctx, "SELECT COUNT(*) FROM migrations WHERE version=?", entry.version).Scan(&count); err != nil {
+		if err := conn.QueryRowContext(ctx, "SELECT COUNT(*) FROM migrations WHERE version=?", version).Scan(&count); err != nil {
 			return err
 		}
 		if count != 0 {
 			continue
 		}
-		data, err := schema.ReadFile(entry.file)
+		data, err := schema.ReadFile(file)
 		if err != nil {
 			return err
 		}
 		for part := range strings.SplitSeq(string(data), ";") {
 			if query := strings.TrimSpace(part); query != "" {
 				if _, err := conn.ExecContext(ctx, query); err != nil {
-					return fmt.Errorf("migration %d: %w", entry.version, err)
+					return fmt.Errorf("migration %d: %w", version, err)
 				}
 			}
 		}
-		if _, err = conn.ExecContext(ctx, "INSERT INTO migrations(version) VALUES(?)", entry.version); err != nil {
+		if _, err = conn.ExecContext(ctx, "INSERT INTO migrations(version) VALUES(?)", version); err != nil {
 			return err
 		}
 	}
@@ -137,6 +137,12 @@ func Open(ctx context.Context, db *sql.DB, path string, key []byte) (*Service, e
 	guard, name, err := acquire(ctx, db)
 	if err != nil {
 		return nil, err
+	}
+	var migrated int
+	err = guard.QueryRowContext(ctx, "SELECT COUNT(*) FROM migrations WHERE version BETWEEN 1 AND ?", len(migrations)).Scan(&migrated)
+	if err != nil || migrated != len(migrations) {
+		unlock(guard, name)
+		return nil, fmt.Errorf("%w: run agent-memory migrate before opening this database", ErrRecovery)
 	}
 	journal, err := OpenJournal(path, key)
 	if err != nil {

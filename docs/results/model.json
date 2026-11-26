@@ -9,63 +9,110 @@
   ],
   "pending": [
     {
-      "id": "a8843137973067486d5e5ba967fafcca",
+      "id": "77cd14b642d7c445273e1107fc7fe8cd",
       "slot": "timezone",
       "value": "UTC",
       "status": "pending",
       "extraction": "model",
-      "source": "936c5a232ef0493086b729634457b900d6ff9953b71de0a05305fc789b0c1953",
+      "confidence": "evidence-matched",
+      "source": "5060ca67206f600ed76394750e9869fc8f04e4c01620efd150495d71d400bcec",
       "purpose": "support",
-      "occurred": "2026-11-25T10:22:17.365835Z",
-      "evidence": "I prefer the timezone UTC for future appointments.",
-      "current_version": 0
+      "occurred": "2026-11-26T07:22:01.514657Z",
+      "evidence": "UTC",
+      "current_version": 0,
+      "provenance": {
+        "id": "5060ca67206f600ed76394750e9869fc8f04e4c01620efd150495d71d400bcec",
+        "app": "assistant",
+        "session": "model-evaluation",
+        "external_id": "case-3"
+      }
+    },
+    {
+      "id": "312f840fa0cd29620d1cc70a142ed76f",
+      "slot": "notifications",
+      "value": "text message",
+      "status": "pending",
+      "extraction": "model",
+      "confidence": "evidence-matched",
+      "source": "5c2dc851de1d3b9f7e019f77d6d4695abaf350c1aca7b1e2db03a00c65498230",
+      "purpose": "support",
+      "occurred": "2026-11-26T07:21:58.823742Z",
+      "evidence": "text message",
+      "current_version": 0,
+      "provenance": {
+        "id": "5c2dc851de1d3b9f7e019f77d6d4695abaf350c1aca7b1e2db03a00c65498230",
+        "app": "assistant",
+        "session": "model-evaluation",
+        "external_id": "case-0"
+      }
     }
   ],
   "results": [
     {
-      "source": "3a6e3b504b9e44dc2f2fb204e490cce24e494ac7b006c1da905ef01f0e8b9698",
-      "status": "no-proposal",
-      "model": "qwen2.5-0.5b",
-      "prompt_tokens": 70,
-      "completion_tokens": 29,
-      "duration_ms": 1102,
-      "response_sha256": "c4cb9bc8394dfec720a25dbb06e5de643ce6f3e238b7069e64390774ded84290"
-    },
-    {
-      "source": "d53f1c6f3a118b63ee717b04c968222679e608ae621fd7e1a3cdb87099c2cae9",
-      "status": "no-proposal",
-      "model": "qwen2.5-0.5b",
-      "prompt_tokens": 69,
-      "completion_tokens": 37,
-      "duration_ms": 1323,
-      "response_sha256": "c8de73b64962feb3a2955a902a17021399a44a061e9c3bc9b2667cc975fd5364"
-    },
-    {
-      "source": "32179bfee7841debc9a77e35a2603133adb279375eefb81384c113d8d3e27343",
-      "status": "no-proposal",
-      "model": "qwen2.5-0.5b",
-      "prompt_tokens": 69,
-      "completion_tokens": 45,
-      "duration_ms": 1665,
-      "response_sha256": "128b8835ef0c136e16b7bd34b47246853bc5de09aa2d15860cc7c33dfa338700"
-    },
-    {
-      "source": "936c5a232ef0493086b729634457b900d6ff9953b71de0a05305fc789b0c1953",
-      "candidate": "a8843137973067486d5e5ba967fafcca",
+      "job_id": "25cc5bbb71a64706138fcdcb590166d2",
+      "source": "5c2dc851de1d3b9f7e019f77d6d4695abaf350c1aca7b1e2db03a00c65498230",
+      "candidate": "312f840fa0cd29620d1cc70a142ed76f",
       "status": "pending",
-      "model": "qwen2.5-0.5b",
-      "prompt_tokens": 69,
-      "completion_tokens": 37,
-      "duration_ms": 1487,
-      "response_sha256": "2cc6f18c8bda324fce374a352a14993e7b69a5878f15a2e73e934397642f5029"
+      "model": "memory-qwen",
+      "prompt_tokens": 70,
+      "completion_tokens": 26,
+      "duration_ms": 856,
+      "response_sha256": "286b051785eb74f689e1a833e1e8aae39e16609932f7549072139077b45782b6",
+      "attempt": 1
     },
     {
-      "source": "f3c770a7c16a58c2ee965d6b75cfe441c2ef95f931e07a220e71bae9632afd20",
-      "status": "",
-      "model": "qwen2.5-0.5b",
-      "prompt_tokens": 0,
-      "completion_tokens": 0,
-      "duration_ms": 0
+      "job_id": "41b691675700ab722c05e4ebcb6c7ed6",
+      "source": "bc832df2e0e3e32967320ef6352d6caa228e42891ae950ced049bc54853877ff",
+      "status": "no-proposal",
+      "model": "memory-qwen",
+      "prompt_tokens": 69,
+      "completion_tokens": 40,
+      "duration_ms": 874,
+      "response_sha256": "e9db384733d78e07591699b1e61581e356f67ff876752404357ae83ce611f693",
+      "attempt": 1
+    },
+    {
+      "job_id": "33200ae39f87408472f7a947f3464601",
+      "source": "1a74fcb01fefc0f49685ae59e44b27e32ccb16180a48378cc0e94d837b1e95ba",
+      "status": "no-proposal",
+      "model": "memory-qwen",
+      "prompt_tokens": 69,
+      "completion_tokens": 38,
+      "duration_ms": 841,
+      "response_sha256": "8ac4df4c8e1686813f11bd2d17a3bcd75afd2502c01b4bd94b7adc46adc48a05",
+      "attempt": 1
+    },
+    {
+      "job_id": "3d12ac674d7a1a5fcad6f506dffed119",
+      "source": "5060ca67206f600ed76394750e9869fc8f04e4c01620efd150495d71d400bcec",
+      "candidate": "77cd14b642d7c445273e1107fc7fe8cd",
+      "status": "pending",
+      "model": "memory-qwen",
+      "prompt_tokens": 69,
+      "completion_tokens": 37,
+      "duration_ms": 937,
+      "response_sha256": "7a27bd383b6d593ca02a8805ddfa9e8d0a78842506c3c81f06ba918906026e4b",
+      "attempt": 1
+    },
+    {
+      "job_id": "9ccf0e3b424bdb7f3f13eb582caed2cf",
+      "source": "da78f2227a5213becef3afa30c623df84a20a8d4811f87bbe2cda1d2feea1d44",
+      "status": "failed",
+      "model": "memory-qwen",
+      "prompt_tokens": 70,
+      "completion_tokens": 140,
+      "duration_ms": 2419,
+      "response_sha256": "5254239a0df7fded2b28cf0d3153c800c8c3e8416a58f247c97d3a9d29468b22",
+      "attempt": 1
     }
-  ]
+  ],
+  "provenance": {
+    "runtime": "llama.cpp b12686",
+    "model": "Qwen/Qwen2.5-0.5B-Instruct-GGUF Q4_K_M",
+    "weights_sha256": "74a4da8c9fdbcd15bd1f6d01d621410d31c6fc00986f5eb687824e7b93d7a9db",
+    "execution": "CPU",
+    "threads": 4,
+    "context_tokens": 1024,
+    "captured_at": "2026-11-26T07:22:08.7934706Z"
+  }
 }

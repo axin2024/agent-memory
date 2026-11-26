@@ -33,10 +33,11 @@ type Source struct {
 }
 
 type Submission struct {
-	Source    string `json:"source"`
-	Candidate string `json:"candidate,omitempty"`
-	Status    string `json:"status"`
-	Replayed  bool   `json:"replayed"`
+	Source     string `json:"source"`
+	Candidate  string `json:"candidate,omitempty"`
+	Status     string `json:"status"`
+	Replayed   bool   `json:"replayed"`
+	Confidence string `json:"confidence,omitempty"`
 }
 
 var (
@@ -229,7 +230,7 @@ func (s *Service) Ingest(ctx context.Context, who Identity, source Source) (Subm
 		slot, value = claim(source.Statement)
 	}
 	var state Submission
-	conflict := false
+	var conflict *SourceConflictError
 	err := s.tx(ctx, func(tx *sql.Tx) error {
 		scope, c, err := s.grants(ctx, tx, who, source.Subject, source.Purpose, true)
 		if err != nil {
@@ -243,18 +244,30 @@ func (s *Service) Ingest(ctx context.Context, who Identity, source Source) (Subm
 		}
 		digest := s.journal.digest("content", sourceHash, source.Purpose, at.Format(time.RFC3339Nano), originalKind, source.Statement)
 		var old string
-		err = tx.QueryRowContext(ctx, "SELECT digest,kind FROM sources WHERE scope_hash=? AND source_hash=?", scope, sourceHash).Scan(&old, &state.Status)
+		var expires time.Time
+		err = tx.QueryRowContext(ctx, "SELECT digest,kind,expires FROM sources WHERE scope_hash=? AND source_hash=?", scope, sourceHash).
+			Scan(&old, &state.Status, &expires)
 		switch {
 		case err == nil && old != digest:
-			conflict = true
-			return event(ctx, tx, who.Tenant, scope, "source-conflict", sourceHash, "conflict", time.Since(begun).Microseconds())
+			state.Status = "conflict"
+			conflict = &SourceConflictError{}
+			if !expires.After(now) {
+				return nil
+			}
+			conflict.ID, conflict.Replayed, err = queueSourceConflict(ctx, tx, scope, sourceHash, digest, label, at)
+			if err != nil || conflict.Replayed {
+				return err
+			}
+			return event(ctx, tx, who.Tenant, scope, "source-conflict", sourceHash, "queued", time.Since(begun).Microseconds())
 		case err == nil:
 			state.Replayed = true
-			err = tx.QueryRowContext(ctx, "SELECT candidate,status FROM candidates WHERE scope_hash=? AND source_hash=?", scope, sourceHash).
-				Scan(&state.Candidate, &state.Status)
+			var mode string
+			err = tx.QueryRowContext(ctx, "SELECT candidate,status,extraction FROM candidates WHERE scope_hash=? AND source_hash=?", scope, sourceHash).
+				Scan(&state.Candidate, &state.Status, &mode)
 			if errors.Is(err, sql.ErrNoRows) {
 				return nil
 			}
+			state.Confidence = confidence(mode)
 			return err
 		case !errors.Is(err, sql.ErrNoRows):
 			return err
@@ -263,7 +276,7 @@ func (s *Service) Ingest(ctx context.Context, who Identity, source Source) (Subm
 		if err != nil {
 			return err
 		}
-		expires := at.AddDate(0, 0, raw)
+		expires = at.AddDate(0, 0, raw)
 		var statement, storedSlot, storedHash any
 		state.Status = source.Kind
 		if source.Kind == "user" && expires.After(now) {
@@ -282,11 +295,12 @@ func (s *Service) Ingest(ctx context.Context, who Identity, source Source) (Subm
 			if err != nil {
 				return err
 			}
+			state.Confidence = confidence("rule")
 		}
 		return event(ctx, tx, who.Tenant, scope, "source", sourceHash, state.Status, time.Since(begun).Microseconds())
 	})
-	if err == nil && conflict {
-		err = ErrConflict
+	if err == nil && conflict != nil {
+		err = conflict
 	}
 	return state, err
 }

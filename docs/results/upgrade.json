@@ -1,0 +1,10 @@
+{
+  "previous": "agent-memory v1.0.0 648cab0aa1b0cb124a64a210a8543a10feadc1b8",
+  "exact_export": true,
+  "historical_source_replayed": true,
+  "conflict_replay": true,
+  "assistants_recalling_original": 2,
+  "post_forget_queue_size": 0,
+  "watermark": 1,
+  "backup_sha256": "5500bb652e1ef49688d609ddc35a8017967fa2a18b883f180acd2f84c29de91c"
+}

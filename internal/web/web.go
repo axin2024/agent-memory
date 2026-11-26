@@ -83,30 +83,45 @@ func read(w http.ResponseWriter, r *http.Request, target any) error {
 	return nil
 }
 
+func failureCode(err error) (int, string) {
+	switch {
+	case errors.Is(err, memory.ErrInput):
+		return http.StatusBadRequest, "invalid-input"
+	case errors.Is(err, memory.ErrDenied):
+		return http.StatusForbidden, "access-denied"
+	case errors.Is(err, memory.ErrMissing):
+		return http.StatusNotFound, "missing"
+	case errors.Is(err, memory.ErrConflict):
+		return http.StatusConflict, "conflict"
+	case errors.Is(err, memory.ErrForgotten):
+		return http.StatusGone, "forgotten"
+	case errors.Is(err, memory.ErrRecovery):
+		return http.StatusServiceUnavailable, "recovery-required"
+	case errors.Is(err, memory.ErrProvider):
+		return http.StatusBadGateway, "model-unavailable"
+	default:
+		return http.StatusInternalServerError, "internal"
+	}
+}
+
 func (e Endpoint) reply(w http.ResponseWriter, r *http.Request, body any, err error) {
 	status := http.StatusOK
 	if err != nil {
 		var code string
-		switch {
-		case errors.Is(err, memory.ErrInput):
-			status, code = http.StatusBadRequest, "invalid-input"
-		case errors.Is(err, memory.ErrDenied):
-			status, code = http.StatusForbidden, "access-denied"
-		case errors.Is(err, memory.ErrMissing):
-			status, code = http.StatusNotFound, "missing"
-		case errors.Is(err, memory.ErrConflict):
-			status, code = http.StatusConflict, "conflict"
-		case errors.Is(err, memory.ErrForgotten):
-			status, code = http.StatusGone, "forgotten"
-		case errors.Is(err, memory.ErrRecovery):
-			status, code = http.StatusServiceUnavailable, "recovery-required"
-		case errors.Is(err, memory.ErrProvider):
-			status, code = http.StatusBadGateway, "model-unavailable"
-		default:
-			status, code = http.StatusInternalServerError, "internal"
+		status, code = failureCode(err)
+		if status == http.StatusInternalServerError {
 			e.log.Error("request failed", "method", r.Method, "path", r.URL.Path, "error_type", fmt.Sprintf("%T", err))
 		}
-		body = map[string]string{"error": code}
+		failure := map[string]any{"error": code}
+		if receipt, ok := body.(memory.ModelReceipt); ok && errors.Is(err, memory.ErrProvider) && receipt.ID != "" {
+			failure["job_id"] = receipt.ID
+		}
+		var conflict *memory.SourceConflictError
+		if errors.As(err, &conflict) && conflict.ID != 0 {
+			failure["conflict_id"] = strconv.FormatUint(conflict.ID, 10)
+			failure["replayed"] = conflict.Replayed
+		}
+		body = failure
 	}
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(status)
@@ -145,6 +160,56 @@ type policyRequest struct {
 	FactDays   int `json:"fact_days"`
 }
 
+type dismissConflictRequest struct {
+	ID uint64 `json:"id,string"`
+}
+
+type reviewOutcome struct {
+	Candidate string `json:"candidate"`
+	Status    string `json:"status,omitempty"`
+	Error     string `json:"error,omitempty"`
+}
+
+func (e Endpoint) reviewBatch(r *http.Request, who memory.Identity, items []reviewRequest) ([]reviewOutcome, error) {
+	if who.Role != "owner" {
+		return nil, memory.ErrDenied
+	}
+	if len(items) == 0 || len(items) > 50 {
+		return nil, memory.ErrInput
+	}
+	seen := make(map[string]bool, len(items))
+	for _, item := range items {
+		if seen[item.Candidate] {
+			return nil, memory.ErrInput
+		}
+		seen[item.Candidate] = true
+	}
+	ctx := r.Context()
+	outcomes := make([]reviewOutcome, 0, len(items))
+	for _, item := range items {
+		result := reviewOutcome{Candidate: item.Candidate}
+		switch {
+		case ctx.Err() != nil:
+			result.Error = "not-started"
+		case item.Accept == nil:
+			result.Error = "invalid-input"
+		default:
+			status, err := e.service.Review(ctx, who, item.Candidate, item.Version, *item.Accept)
+			if err == nil {
+				result.Status = status
+			} else {
+				httpStatus, code := failureCode(err)
+				result.Error = code
+				if httpStatus == http.StatusInternalServerError {
+					e.log.Error("batch review failed", "error_type", fmt.Sprintf("%T", err))
+				}
+			}
+		}
+		outcomes = append(outcomes, result)
+	}
+	return outcomes, nil
+}
+
 func (e Endpoint) api(w http.ResponseWriter, r *http.Request) {
 	token, ok := strings.CutPrefix(r.Header.Get("Authorization"), "Bearer ")
 	if !ok {
@@ -165,8 +230,22 @@ func (e Endpoint) api(w http.ResponseWriter, r *http.Request) {
 		body = who
 	case "GET /api/pending":
 		body, err = s.Pending(ctx, who)
+	case "GET /api/extract/jobs":
+		body, err = s.ExtractionStatus(ctx, who, r.URL.Query().Get("id"))
+	case "GET /api/source-conflicts":
+		var after uint64
+		if raw := r.URL.Query().Get("after"); raw != "" {
+			after, err = strconv.ParseUint(raw, 10, 64)
+			if err != nil {
+				err = memory.ErrInput
+				break
+			}
+		}
+		body, err = s.SourceConflicts(ctx, who, after)
 	case "GET /api/export":
 		body, err = s.Export(ctx, who)
+	case "GET /api/forget":
+		body, err = s.ForgetStatus(ctx, who, r.URL.Query().Get("id"))
 	case "GET /api/audit":
 		var after uint64
 		if raw := r.URL.Query().Get("after"); raw != "" {
@@ -183,6 +262,10 @@ func (e Endpoint) api(w http.ResponseWriter, r *http.Request) {
 		body, err = input(w, r, func(in operation) (any, error) { return s.RevokeConsent(ctx, who, in.App, in.Purpose, in.Key) })
 	case "POST /api/source":
 		body, err = input(w, r, func(in memory.Source) (any, error) { return s.Ingest(ctx, who, in) })
+	case "POST /api/source-conflicts/dismiss":
+		body, err = input(w, r, func(in dismissConflictRequest) (any, error) {
+			return done, s.DismissSourceConflict(ctx, who, in.ID)
+		})
 	case "POST /api/extract":
 		if e.model == nil {
 			err = memory.ErrProvider
@@ -190,6 +273,14 @@ func (e Endpoint) api(w http.ResponseWriter, r *http.Request) {
 		}
 		body, err = input(w, r, func(in extractionRequest) (any, error) {
 			return s.Enrich(ctx, who, in.Subject, in.Purpose, in.Source, e.model)
+		})
+	case "POST /api/extract/jobs":
+		if e.model == nil {
+			err = memory.ErrProvider
+			break
+		}
+		body, err = input(w, r, func(in extractionRequest) (any, error) {
+			return s.QueueEnrichment(ctx, who, in.Subject, in.Purpose, in.Source, e.model)
 		})
 	case "POST /api/review":
 		body, err = input(w, r, func(in reviewRequest) (any, error) {
@@ -199,6 +290,8 @@ func (e Endpoint) api(w http.ResponseWriter, r *http.Request) {
 			status, err := s.Review(ctx, who, in.Candidate, in.Version, *in.Accept)
 			return map[string]string{"status": status}, err
 		})
+	case "POST /api/review/batch":
+		body, err = input(w, r, func(in []reviewRequest) (any, error) { return e.reviewBatch(r, who, in) })
 	case "POST /api/edit":
 		body, err = input(w, r, func(in memory.Edit) (any, error) {
 			version, err := s.Edit(ctx, who, in)

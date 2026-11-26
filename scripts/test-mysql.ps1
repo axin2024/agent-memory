@@ -1,6 +1,7 @@
 param(
     [Parameter(Mandatory)][string]$MySQLBin,
-    [ValidateSet('All','Live')][string]$Scenario = 'All'
+    [ValidateSet('All','Live','Upgrade')][string]$Scenario = 'All',
+    [string]$PreviousBinary
 )
 
 $ErrorActionPreference = 'Stop'
@@ -65,10 +66,13 @@ GRANT ALL ON memory_web.* TO 'memory_test'@'127.0.0.1';
     Write-Output "Disposable MySQL $version"
     Push-Location -LiteralPath $project
     try {
-        if ($Scenario -eq 'Live') {
-            go test -v -count=1 -run '^TestLiveModel$' ./internal/memory
-        } else {
-            go test -v -count=1 -timeout 5m ./...
+        switch ($Scenario) {
+            'Live' { go test -v -count=1 -run '^TestLiveModel$' ./internal/memory }
+            'Upgrade' {
+                if (!$PreviousBinary) { throw 'Pass the previous release binary with -PreviousBinary.' }
+                & "$PSScriptRoot/test-upgrade.ps1" -PreviousBinary $PreviousBinary -MySQLBin $mysqlBinPath -SQLPort $port -Fixture $fixture
+            }
+            'All' { go test -v -count=1 -timeout 5m ./... }
         }
     } finally {
         Pop-Location
