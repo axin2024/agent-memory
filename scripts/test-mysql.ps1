@@ -1,6 +1,6 @@
 param(
     [Parameter(Mandatory)][string]$MySQLBin,
-    [ValidateSet('All','Live','Upgrade')][string]$Scenario = 'All',
+    [ValidateSet('All','Live','Upgrade','Team','TeamLive','TeamCapacity')][string]$Scenario = 'All',
     [string]$PreviousBinary
 )
 
@@ -31,6 +31,8 @@ $variables = @{
     MEMORY_TEST_EVAL_DSN = "memory_test:$password@tcp(127.0.0.1:$port)/memory_eval"
     MEMORY_TEST_MODEL_DSN = "memory_test:$password@tcp(127.0.0.1:$port)/memory_model"
     MEMORY_TEST_WEB_DSN = "memory_test:$password@tcp(127.0.0.1:$port)/memory_web"
+    MEMORY_TEST_TEAM_DSN = "memory_test:$password@tcp(127.0.0.1:$port)/memory_team"
+    MEMORY_TEST_TEAM_RESTORE_DSN = "memory_test:$password@tcp(127.0.0.1:$port)/memory_team_restore"
 }
 $original = @{}
 $process = $null
@@ -51,6 +53,10 @@ CREATE DATABASE memory_model CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_bin;
 GRANT ALL ON memory_model.* TO 'memory_test'@'127.0.0.1';
 CREATE DATABASE memory_web CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_bin;
 GRANT ALL ON memory_web.* TO 'memory_test'@'127.0.0.1';
+CREATE DATABASE memory_team CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_bin;
+GRANT ALL ON memory_team.* TO 'memory_test'@'127.0.0.1';
+CREATE DATABASE memory_team_restore CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_bin;
+GRANT ALL ON memory_team_restore.* TO 'memory_test'@'127.0.0.1';
 "@ | Set-Content -LiteralPath $init -Encoding ascii
     $process = Start-Process -FilePath $mysqld -ArgumentList ($argsForMySQL + @('--bind-address=127.0.0.1', "--port=$port", ('--init-file="{0}"' -f $init))) -PassThru -WindowStyle Hidden
     foreach ($item in $variables.Keys) { [Environment]::SetEnvironmentVariable($item, $variables[$item], 'Process') }
@@ -68,6 +74,9 @@ GRANT ALL ON memory_web.* TO 'memory_test'@'127.0.0.1';
     try {
         switch ($Scenario) {
             'Live' { go test -v -count=1 -run '^TestLiveModel$' ./internal/memory }
+            'Team' { go test -v -count=1 -timeout 5m -run '^TestTeamLifecycle$' ./internal/memory }
+            'TeamLive' { go test -v -count=1 -timeout 10m -run '^TestTeamLive$' ./internal/memory }
+            'TeamCapacity' { go test -v -count=1 -timeout 8m -run '^TestTeamCapacity$' ./internal/memory }
             'Upgrade' {
                 if (!$PreviousBinary) { throw 'Pass the previous release binary with -PreviousBinary.' }
                 & "$PSScriptRoot/test-upgrade.ps1" -PreviousBinary $PreviousBinary -MySQLBin $mysqlBinPath -SQLPort $port -Fixture $fixture

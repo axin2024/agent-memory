@@ -40,13 +40,14 @@ function Start-TestServer($Binary) {
     if (!$started.HasExited) { Stop-Process -InputObject $started; $started.WaitForExit() }
     throw 'The application did not become healthy.'
 }
-function Invoke-API($Method, $Path, $Token, $Payload, [int]$Status = 200) {
+function Invoke-API($Method, $Path, $Token, $Payload, [int]$Status = 200, [string]$IdempotencyKey) {
     $options = @{Method=$Method; Uri="$address/api/$Path"; Headers=@{Authorization="Bearer $Token"};
         SkipHttpErrorCheck=$true; TimeoutSec=8}
     if ($null -ne $Payload) {
         $options.ContentType = 'application/json'
         $options.Body = $Payload | ConvertTo-Json -Depth 6 -Compress
     }
+    if ($IdempotencyKey) { $options.Headers['Idempotency-Key'] = $IdempotencyKey }
     $response = Invoke-WebRequest @options
     if ($response.StatusCode -ne $Status) { throw "$Method $Path returned $($response.StatusCode), expected $Status." }
     $response.Content | ConvertFrom-Json -AsHashtable -NoEnumerate
@@ -90,10 +91,69 @@ try {
     Invoke-Binary $current @('migrate')
     Invoke-Binary $current @('migrate')
     Invoke-Binary $current @('recover')
+    $author = Invoke-Binary $current @('provision','upgrade','casey','owner','1')
+    $reviewer = Invoke-Binary $current @('provision','upgrade','jamie','owner','1')
+    $reader = Invoke-Binary $current @('provision','upgrade','reader','owner','1')
     $process = Start-TestServer $current
     $restored = Invoke-API Get export $owner
     if (($restored | ConvertTo-Json -Depth 12 -Compress) -cne ($baseline | ConvertTo-Json -Depth 12 -Compress)) {
         throw 'The export from the previous release changed after upgrading.'
+    }
+    $teamBefore = Invoke-API Get 'team-spaces' $owner
+    if ($teamBefore.Count -ne 0) { throw 'Personal history appeared in a new team space.' }
+    $space = Invoke-API Put 'team-spaces/shop-floor' $owner @{label='Shop floor';purpose='operations';policy_rev=0;active=$true}
+    foreach ($who in @(@{actor='casey';role='author'},@{actor='jamie';role='reviewer'},@{actor='reader';role='reader'})) {
+        $space = Invoke-API Put 'team-spaces/shop-floor/membership' $owner ($who + @{
+            purpose='operations';policy_rev=$space.policy_rev;active=$true;can_export=$who.role -eq 'reader'
+        })
+    }
+    $statement = 'Starlight crates are inspected in the north loading bay.'
+    $personal = Invoke-API Post source $author @{subject='casey';purpose='personal';session='rehearsal';external_id='inspection';
+        kind='user';occurred=[datetime]::UtcNow.AddSeconds(-10).ToString('o');statement=$statement}
+    $nomination = Invoke-API Post 'team-spaces/shop-floor/nominations' $author @{purpose='operations';source=$personal.source;
+        grant_rev=1;start=0;end=$statement.Length;expires_at=[datetime]::UtcNow.AddMinutes(30).ToString('o');allow_model=$false}
+    $draft = @{purpose='operations';topic='starlight';applicability='north loading bay';valid_from=[datetime]::UtcNow.AddSeconds(-5).ToString('o');
+        nomination_ids=@($nomination.nomination_id);grant_revisions=@(1);sentences=@($statement);
+        evidence_spans=@(@{nomination_id=$nomination.nomination_id;sentence=0;start=0;end=$statement.Length})}
+    $savedClaim = Invoke-API Post 'team-spaces/shop-floor/claims' $author $draft 201 'first-team-claim'
+    $changed = $draft.Clone()
+    $changed['applicability'] = 'south loading bay'
+    $null = Invoke-API Post 'team-spaces/shop-floor/claims' $author $changed 409 'first-team-claim'
+    $invalid = $draft.Clone()
+    $invalid['grant_revisions'] = @(2)
+    $blocked = Invoke-API Post 'team-spaces/shop-floor/claims' $author $invalid 422 'invalid-team-claim'
+    if ($blocked.field -cne 'grant_revisions' -or $blocked.missing_grants[0] -cne $nomination.nomination_id) {
+        throw 'Missing grant receipt is invalid.'
+    }
+    Stop-Process -InputObject $process
+    $process.WaitForExit()
+    $process = Start-TestServer $current
+    $ref = "team-spaces/shop-floor/claims/$($savedClaim.claim_id)"
+    $recoveredClaim = Invoke-API Post 'team-spaces/shop-floor/claims' $author $draft 200 'first-team-claim'
+    if (!$recoveredClaim.replayed -or $recoveredClaim.claim_id -cne $savedClaim.claim_id -or $recoveredClaim.citations[0].source -cne $personal.source) {
+        throw 'Team draft did not recover after the first write.'
+    }
+    $null = Invoke-API Get "${ref}?purpose=operations" $reader $null 404
+    foreach ($token in @($reviewer,$owner)) {
+        $published = Invoke-API Post "$ref/votes?purpose=operations" $token @{claim_rev=1;decision='approve';reason='Compared with the nominated evidence'}
+    }
+    if ($published.review_state -cne 'published' -or $published.review_votes.Count -ne 2) { throw 'Team claim did not receive two independent reviews.' }
+    $search = Invoke-API Post 'team-spaces/shop-floor/search' $reader @{purpose='operations';query='Starlight crates'}
+    if ($search.hits.Count -ne 1 -or $search.hits[0].citations[0].excerpt -cne $statement) { throw 'Team source did not search after restart.' }
+    $browserProof = $null
+    if ($env:MEMORY_TEST_BROWSER_SCRIPT) {
+        $env:MEMORY_BROWSER_ORIGIN = $address
+        $env:MEMORY_BROWSER_READER = $reader
+        $env:MEMORY_BROWSER_OWNER = $owner
+        $env:MEMORY_BROWSER_CLAIM = $savedClaim.claim_id
+        $browserProof = & node $env:MEMORY_TEST_BROWSER_SCRIPT
+        if ($LASTEXITCODE) { throw 'Team workbench browser checks failed.' }
+        $browserProof = $browserProof | ConvertFrom-Json -AsHashtable
+    }
+    $withdrawn = Invoke-API Post "team-nominations/$($nomination.nomination_id)/withdraw" $author $null 200 'withdraw-upgrade-rehearsal'
+    $search = Invoke-API Post 'team-spaces/shop-floor/search' $reader @{purpose='operations';query='Starlight crates'}
+    if ($search.hits.Count -ne 0 -or $withdrawn.affected_claims.Count -ne 1 -or $withdrawn.index_caught_up) {
+        throw 'The service exposed a claim before its rebuilt search index caught up.'
     }
     $replay = Invoke-API Post source $first $source
     if (!$written.source -or !$replay.replayed -or $replay.source -cne $written.source) {
@@ -117,7 +177,9 @@ try {
     if ($queue.items.Count -ne 0) { throw 'Forgetting left a queued conflict after upgrade.' }
     [ordered]@{previous=$previous; exact_export=$true; historical_source_replayed=$true; conflict_replay=$true;
         assistants_recalling_original=2; post_forget_queue_size=0; watermark=$receipt.watermark;
-        backup_sha256=(Get-FileHash -LiteralPath $dump -Algorithm SHA256).Hash.ToLowerInvariant()} | ConvertTo-Json -Compress
+        backup_sha256=(Get-FileHash -LiteralPath $dump -Algorithm SHA256).Hash.ToLowerInvariant(); no_personal_backfill=$true;
+        first_team_claim_restarted=$true; claim_id=$savedClaim.claim_id; grant_validation_422=$true; idempotency_conflict_409=$true;
+        distinct_approvals=$published.review_votes.Count; post_withdrawal_hits=$search.hits.Count; browser=$browserProof} | ConvertTo-Json -Depth 6 -Compress
 } finally {
     if ($process -and !$process.HasExited) { Stop-Process -InputObject $process; $process.WaitForExit() }
     foreach ($name in $saved.Keys) { [Environment]::SetEnvironmentVariable($name, $saved[$name], 'Process') }

@@ -42,11 +42,15 @@ jobs:
           CREATE DATABASE memory_before CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_bin;
           CREATE DATABASE memory_eval CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_bin;
           CREATE DATABASE memory_web CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_bin;
+          CREATE DATABASE memory_team CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_bin;
+          CREATE DATABASE memory_team_restore CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_bin;
           CREATE USER 'memory_test'@'%' IDENTIFIED BY 'memory-ci-app';
           GRANT ALL PRIVILEGES ON memory_test.* TO 'memory_test'@'%';
           GRANT ALL PRIVILEGES ON memory_before.* TO 'memory_test'@'%';
           GRANT ALL PRIVILEGES ON memory_eval.* TO 'memory_test'@'%';
           GRANT ALL PRIVILEGES ON memory_web.* TO 'memory_test'@'%';
+          GRANT ALL PRIVILEGES ON memory_team.* TO 'memory_test'@'%';
+          GRANT ALL PRIVILEGES ON memory_team_restore.* TO 'memory_test'@'%';
           SQL
       - name: Verify browser script, journal and MySQL behavior
         env:
@@ -54,10 +58,14 @@ jobs:
         run: |
           test -z "$(gofmt -l cmd internal)"
           node --check internal/web/ui/console.js
+          node --check internal/web/ui/team.js
+          node --check scripts/team-browser.cjs
           go vet ./...
           export MEMORY_TEST_DSN="memory_test:memory-ci-app@tcp(127.0.0.1:$MYSQL_TEST_PORT)/memory_test"
           export MEMORY_TEST_RESTORE_DSN="memory_test:memory-ci-app@tcp(127.0.0.1:$MYSQL_TEST_PORT)/memory_before"
           export MEMORY_TEST_EVAL_DSN="memory_test:memory-ci-app@tcp(127.0.0.1:$MYSQL_TEST_PORT)/memory_eval"
           export MEMORY_TEST_WEB_DSN="memory_test:memory-ci-app@tcp(127.0.0.1:$MYSQL_TEST_PORT)/memory_web"
+          export MEMORY_TEST_TEAM_DSN="memory_test:memory-ci-app@tcp(127.0.0.1:$MYSQL_TEST_PORT)/memory_team"
+          export MEMORY_TEST_TEAM_RESTORE_DSN="memory_test:memory-ci-app@tcp(127.0.0.1:$MYSQL_TEST_PORT)/memory_team_restore"
           go test -race -count=1 -timeout=6m -v ./...
           go build -trimpath -o "$RUNNER_TEMP/agent-memory" ./cmd/agent-memory

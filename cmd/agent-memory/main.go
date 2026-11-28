@@ -120,8 +120,16 @@ func serve(args []string, service *memory.Service) error {
 			return err
 		}
 	}
+	var embedding *memory.TeamEmbedder
+	if target := strings.TrimSpace(os.Getenv("MEMORY_TEAM_EMBED_URL")); target != "" {
+		embedding, err = memory.NewTeamEmbedder(target, os.Getenv("MEMORY_TEAM_EMBED_NAME"),
+			os.Getenv("MEMORY_TEAM_EMBED_TOKEN"), os.Getenv("MEMORY_TEAM_EMBED_WEIGHTS_SHA256"))
+		if err != nil {
+			return err
+		}
+	}
 	logger := slog.New(slog.NewJSONHandler(os.Stderr, nil))
-	server := &http.Server{Addr: *address, Handler: web.New(service, model, logger), ReadHeaderTimeout: 4 * time.Second,
+	server := &http.Server{Addr: *address, Handler: web.New(service, model, logger, embedding), ReadHeaderTimeout: 4 * time.Second,
 		ReadTimeout: 12 * time.Second, WriteTimeout: 25 * time.Second, IdleTimeout: 45 * time.Second, MaxHeaderBytes: 16 * 1024}
 	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt)
 	defer cancel()

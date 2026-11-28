@@ -172,6 +172,9 @@ func (s *Service) apply(ctx context.Context, tx *sql.Tx, e entry) error {
 	var err error
 	switch e.Kind {
 	case "forget-slot", "forget-subject":
+		if err = withdrawTeamDependencies(ctx, tx, e); err != nil {
+			return err
+		}
 		for _, source := range e.Sources {
 			if _, err = tx.ExecContext(ctx, "INSERT IGNORE INTO forgotten_sources VALUES(?,?)", e.Scope, source); err != nil {
 				return err
@@ -222,10 +225,14 @@ func (s *Service) apply(ctx context.Context, tx *sql.Tx, e entry) error {
 		if _, err = tx.ExecContext(ctx, "DELETE FROM shares WHERE scope_hash=? AND share_hash=?", e.Scope, e.Selector); err != nil {
 			return err
 		}
+	case "withdraw-team-nomination":
+		if err = withdrawTeamDependencies(ctx, tx, e); err != nil {
+			return err
+		}
 	default:
 		return ErrRecovery
 	}
-	if e.Kind != "revoke-share" {
+	if e.Kind != "revoke-share" && e.Kind != "withdraw-team-nomination" {
 		if _, err = tx.ExecContext(ctx, "UPDATE subjects SET epoch=epoch+1 WHERE scope_hash=?", e.Scope); err != nil {
 			return err
 		}
@@ -278,6 +285,11 @@ func (s *Service) journalAction(ctx context.Context, who Identity, slot, kind, a
 			return Receipt{}, ErrInput
 		}
 		selector = hash(slot)
+	case "withdraw-team-nomination":
+		if len(slot) != 32 || strings.Trim(slot, "0123456789abcdef") != "" {
+			return Receipt{}, ErrInput
+		}
+		selector = slot
 	}
 	operation := s.journal.digest("operation", scope, key)
 	var completed entry
@@ -292,6 +304,16 @@ func (s *Service) journalAction(ctx context.Context, who Identity, slot, kind, a
 			}
 			completed = prior
 			return nil
+		}
+		if kind == "withdraw-team-nomination" {
+			var found bool
+			if err := tx.QueryRowContext(ctx, `SELECT EXISTS(SELECT 1 FROM team_nominations WHERE nomination=? AND source_scope=?)`,
+				selector, scope).Scan(&found); err != nil {
+				return err
+			}
+			if !found {
+				return ErrMissing
+			}
 		}
 		draft := entry{Kind: kind, Scope: scope, Selector: selector, Operation: operation, At: time.Now().UTC().Truncate(time.Microsecond)}
 		if kind == "forget-slot" {

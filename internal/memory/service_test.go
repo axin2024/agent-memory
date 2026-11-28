@@ -269,12 +269,19 @@ func copySnapshot(t *testing.T, ctx context.Context, source, standby *sql.DB) {
 	tx, err := standby.BeginTx(ctx, nil)
 	tx = must(t, tx, err)
 	defer tx.Rollback()
-	for _, table := range []string{"subjects", "principals", "policy", "consent", "sources", "source_conflicts", "candidates", "model_jobs", "facts", "shares", "journal_state", "forget_cuts", "forgotten_sources", "events"} {
+	for _, table := range []string{"subjects", "principals", "policy", "consent", "sources", "source_conflicts", "candidates", "model_jobs",
+		"facts", "shares", "journal_state", "forget_cuts", "forgotten_sources", "events", "team_spaces", "team_purposes", "team_memberships",
+		"team_nominations", "team_claims", "team_claim_evidence", "team_votes", "team_watermarks", "team_search_terms", "team_vectors",
+		"team_withdrawals", "team_evaluations"} {
 		if table == "journal_state" {
 			_, err = tx.ExecContext(ctx, "DELETE FROM journal_state")
 			noError(t, err)
 		}
-		_, err = tx.ExecContext(ctx, fmt.Sprintf("INSERT INTO %s SELECT * FROM %s.%s", table, original, table))
+		order := ""
+		if table == "team_claims" {
+			order = " ORDER BY claim_rev"
+		}
+		_, err = tx.ExecContext(ctx, fmt.Sprintf("INSERT INTO %s SELECT * FROM %s.%s%s", table, original, table, order))
 		noError(t, err)
 	}
 	noError(t, tx.Commit())

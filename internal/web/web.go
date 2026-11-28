@@ -21,16 +21,21 @@ var assets embed.FS
 type Endpoint struct {
 	service *memory.Service
 	model   *memory.Model
+	embed   *memory.TeamEmbedder
 	log     *slog.Logger
 }
 
-func New(service *memory.Service, model *memory.Model, logger *slog.Logger) http.Handler {
-	e := Endpoint{service, model, logger}
+func New(service *memory.Service, model *memory.Model, logger *slog.Logger, embedding ...*memory.TeamEmbedder) http.Handler {
+	e := Endpoint{service: service, model: model, log: logger}
+	if len(embedding) > 0 {
+		e.embed = embedding[0]
+	}
 	mux := http.NewServeMux()
 	mux.HandleFunc("GET /{$}", static("index.html", "text/html"))
 	mux.HandleFunc("GET /share", static("share.html", "text/html"))
 	mux.HandleFunc("GET /console.css", static("console.css", "text/css"))
 	mux.HandleFunc("GET /console.js", static("console.js", "text/javascript"))
+	mux.HandleFunc("GET /team.js", static("team.js", "text/javascript"))
 	mux.HandleFunc("GET /healthz", func(w http.ResponseWriter, r *http.Request) {
 		e.reply(w, r, map[string]string{"status": "ready"}, service.Check(r.Context()))
 	})
@@ -46,6 +51,7 @@ func New(service *memory.Service, model *memory.Model, logger *slog.Logger) http
 		e.reply(w, r, fact, err)
 	})
 	mux.HandleFunc("/api/", e.api)
+	e.teamRoutes(mux)
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Cache-Control", "no-store")
 		w.Header().Set("X-Content-Type-Options", "nosniff")
@@ -68,11 +74,15 @@ func static(file, kind string) http.HandlerFunc {
 }
 
 func read(w http.ResponseWriter, r *http.Request, target any) error {
+	return readBounded(w, r, target, 16*1024)
+}
+
+func readBounded(w http.ResponseWriter, r *http.Request, target any, maximum int64) error {
 	media, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil || media != "application/json" {
 		return memory.ErrInput
 	}
-	d := json.NewDecoder(http.MaxBytesReader(w, r.Body, 16*1024))
+	d := json.NewDecoder(http.MaxBytesReader(w, r.Body, maximum))
 	d.DisallowUnknownFields()
 	if err = d.Decode(target); err != nil {
 		return memory.ErrInput

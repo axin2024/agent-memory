@@ -30,14 +30,15 @@ var (
 //go:embed schema/*.sql
 var schema embed.FS
 
-var migrations = []string{"schema/01.sql", "schema/02.sql", "schema/03.sql", "schema/04.sql"}
+var migrations = []string{"schema/01.sql", "schema/02.sql", "schema/03.sql", "schema/04.sql", "schema/05.sql"}
 
 type Service struct {
 	db          *sql.DB
 	guard       *sql.Conn
+	guardID     uint64
 	lockName    string
 	journal     *Journal
-	mu          sync.Mutex
+	mu          sync.RWMutex
 	unavailable bool
 }
 
@@ -139,7 +140,8 @@ func Open(ctx context.Context, db *sql.DB, path string, key []byte) (*Service, e
 		return nil, err
 	}
 	var migrated int
-	err = guard.QueryRowContext(ctx, "SELECT COUNT(*) FROM migrations WHERE version BETWEEN 1 AND ?", len(migrations)).Scan(&migrated)
+	var guardID uint64
+	err = guard.QueryRowContext(ctx, "SELECT CONNECTION_ID(), COUNT(*) FROM migrations WHERE version BETWEEN 1 AND ?", len(migrations)).Scan(&guardID, &migrated)
 	if err != nil || migrated != len(migrations) {
 		unlock(guard, name)
 		return nil, fmt.Errorf("%w: run agent-memory migrate before opening this database", ErrRecovery)
@@ -149,7 +151,7 @@ func Open(ctx context.Context, db *sql.DB, path string, key []byte) (*Service, e
 		unlock(guard, name)
 		return nil, err
 	}
-	service := &Service{db: db, guard: guard, lockName: name, journal: journal}
+	service := &Service{db: db, guard: guard, guardID: guardID, lockName: name, journal: journal}
 	if err = service.recover(ctx); err != nil {
 		service.Close()
 		return nil, err
@@ -185,13 +187,17 @@ func (s *Service) ready(ctx context.Context) error {
 	if s.unavailable {
 		return ErrRecovery
 	}
-	var owns bool
-	err := s.guard.QueryRowContext(ctx, "SELECT COALESCE(IS_USED_LOCK(?)=CONNECTION_ID(),0)", s.lockName).Scan(&owns)
-	if err != nil || !owns {
+	if !s.holdsGuard(ctx) {
 		s.unavailable = true
 		return ErrRecovery
 	}
 	return nil
+}
+
+func (s *Service) holdsGuard(ctx context.Context) bool {
+	var owns bool
+	err := s.guard.QueryRowContext(ctx, "SELECT COALESCE(IS_USED_LOCK(?)=CONNECTION_ID(),0)", s.lockName).Scan(&owns)
+	return err == nil && owns
 }
 
 func (s *Service) tx(ctx context.Context, fn func(*sql.Tx) error) error {

@@ -1,0 +1,104 @@
+{
+  "after_index": {
+    "processed": 0,
+    "remaining": false,
+    "indexed_seq": 1
+  },
+  "models": "one replay fixture; manual operations otherwise",
+  "restore_leaks": 0,
+  "restored_withdrawal": {
+    "id": "eccb6b68126f6d066662e29b659c225e49a63cf845e369b87c3b6f923c95935b",
+    "watermark": 1,
+    "at": "2026-11-28T03:24:15.474048Z",
+    "affected_claims": [
+      {
+        "space_id": "north",
+        "claim_id": "4ca02afd4b96bf2894802e3ab18180be",
+        "indexed_seq": 0,
+        "needs_new_evidence": false
+      },
+      {
+        "space_id": "north",
+        "claim_id": "daff6211beb520c05d1a81fc3037da1f",
+        "indexed_seq": 0,
+        "needs_new_evidence": false
+      },
+      {
+        "space_id": "north",
+        "claim_id": "e3c6774cad406a15cf9a823496300212",
+        "indexed_seq": 0,
+        "needs_new_evidence": false
+      }
+    ],
+    "affected_count": 3,
+    "index_caught_up": false
+  },
+  "reviewed_claims": [
+    "91e605fb1ab8609c5af75af6012233c3",
+    "78a9d63c3faea1a9e93f0bd27ed9243a",
+    "8755b1390ef943b140a7f957023c0c83"
+  ],
+  "unsupported_model": {
+    "claim_id": "7808ca87d7061cb70e127c020c9bdb0f",
+    "space_id": "north",
+    "purpose": "operations",
+    "claim_rev": 1,
+    "author": "author",
+    "topic": "unsupported",
+    "applicability": "all stations",
+    "valid_from": "2026-11-28T03:23:13Z",
+    "expires_at": "2026-11-28T13:23:13Z",
+    "review_state": "disputed",
+    "review_votes": [],
+    "missing_grants": [],
+    "citations": [
+      {
+        "nomination_id": "fc00805b7f80530ea7c7936969f0002e",
+        "sentence": 0,
+        "start": 0,
+        "end": 56,
+        "source": "f5a3d13da39a091eb3f6c0100879bbe6e66ff5b69cdae736313bede46cf33b05",
+        "grant_rev": 1,
+        "expires_at": "2026-11-28T13:23:13Z",
+        "excerpt": "Aurora returns must be recorded at the northern station."
+      }
+    ],
+    "review_reason": "model-evidence-missing",
+    "model_provenance": {
+      "model": "frozen-fixture",
+      "mode": "model-endpoint",
+      "request_sha256": "2e3bd639761988e113129b9362c3b1757bdf9d5d0370c5dec1652ee26986db24",
+      "response_sha256": "3dee03466bef66128190f49f3f39ee6ae3a7afd51759ceeac75b151173b026cb",
+      "duration_ms": 1,
+      "prompt_tokens": 0
+    }
+  },
+  "withdrawal": {
+    "id": "eccb6b68126f6d066662e29b659c225e49a63cf845e369b87c3b6f923c95935b",
+    "watermark": 1,
+    "at": "2026-11-28T03:24:15.474048Z",
+    "affected_claims": [
+      {
+        "space_id": "north",
+        "claim_id": "4ca02afd4b96bf2894802e3ab18180be",
+        "indexed_seq": 0,
+        "needs_new_evidence": false
+      },
+      {
+        "space_id": "north",
+        "claim_id": "daff6211beb520c05d1a81fc3037da1f",
+        "indexed_seq": 0,
+        "needs_new_evidence": false
+      },
+      {
+        "space_id": "north",
+        "claim_id": "e3c6774cad406a15cf9a823496300212",
+        "indexed_seq": 0,
+        "needs_new_evidence": false
+      }
+    ],
+    "affected_count": 3,
+    "index_caught_up": false
+  },
+  "withdrawn_sources_returned": 0
+}

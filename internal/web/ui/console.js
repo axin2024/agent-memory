@@ -14,8 +14,8 @@ function el(tag, content, css) {
   return node;
 }
 
-async function api(path, body, method = body === undefined ? 'GET' : 'POST') {
-  const headers = {};
+async function api(path, body, method = body === undefined ? 'GET' : 'POST', additional = {}) {
+  const headers = { ...additional };
   if (session.token) headers.Authorization = 'Bearer ' + session.token;
   if (body !== undefined) headers['Content-Type'] = 'application/json';
   const response = await fetch('/api/' + path, { method, headers, body: body === undefined ? undefined : JSON.stringify(body) });
@@ -23,7 +23,10 @@ async function api(path, body, method = body === undefined ? 'GET' : 'POST') {
   if (!response.ok) {
     if (decoded.conflict_id) throw new Error('来源编号已被使用，冲突回执 #' + decoded.conflict_id);
     if (decoded.job_id) throw new Error('模型处理失败，任务编号 ' + decoded.job_id);
-    throw new Error(labels[decoded.error] || '请求失败');
+    const error = new Error((labels[decoded.error] || '请求失败') + (decoded.field ? ' · ' + decoded.field : ''));
+    error.status = response.status;
+    error.payload = decoded;
+    throw error;
   }
   return decoded;
 }
@@ -365,8 +368,8 @@ if (get('#shared')) {
       session.token = token.trim();
       try { session.who = await api('session'); }
       catch (error) { session.token = ''; throw error; }
-      const allowed = { owner:['facts','pending','conflicts','consent','recall','forget','extraction','audit'], app:['source','recall'],
-        admin:['audit'], audit:['audit'] }[session.who.role];
+      const allowed = { owner:['facts','pending','conflicts','consent','recall','team','forget','extraction','audit'], app:['source','recall'],
+        admin:['audit','team'], audit:['audit'] }[session.who.role];
       for (const section of allowed) {
         const item = button(sections[section][0], () => switchTo(section), true);
         item.dataset.section = section;

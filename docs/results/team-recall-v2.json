@@ -1,0 +1,4672 @@
+{
+  "backend": "real loopback embedding model",
+  "embed_fingerprint": "06351d84ecc3588f39f58ac88d0ef3fab38e1ab84335b704579287c143bdef8e",
+  "engine": "llama.cpp b12686, CPU, 4 threads, last pooling",
+  "evaluation_ms": 13989,
+  "go": "go1.26.0",
+  "index_ms": 11323,
+  "indexed_before_revocation": 100,
+  "input": {
+    "purpose": "operations",
+    "cases": [
+      {
+        "id": "supported-00",
+        "group": "supported",
+        "question": "For Cedar, where are pump seals replaced?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "f1ba8052613c58a2af41cbbab6a698fc",
+        "expected_source": "0ba1123c3f490e5b9986abaa1df89cdd48a93f56f0b3d35dcef07861ac951ad5"
+      },
+      {
+        "id": "nearby-00",
+        "group": "cross-project",
+        "question": "Does Cedar pump equipment go to the restricted annex?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "f493a3edf0e5135f7f52ee7afc54be47682d5cca293200d3a88f19dad7cbe444"
+        ]
+      },
+      {
+        "id": "withdrawn-00",
+        "group": "withdrawn",
+        "question": "What was the Cedar pump exception at the closed satellite facility?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "950f5de5f8fde30eca9f8ec7b418f916801b3200881c65e93ee97660354e9bce"
+        ]
+      },
+      {
+        "id": "supported-01",
+        "group": "supported",
+        "question": "For Maple, where are pump seals replaced?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "d7d770cbfb93a693b492f6a4f536bce5",
+        "expected_source": "b41c126652b1e03e7d338a7068777e893dd942a3c8f58116dae2ef73a847235f"
+      },
+      {
+        "id": "nearby-01",
+        "group": "cross-project",
+        "question": "Does Maple pump equipment go to the restricted annex?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "94ed573d7d0a84861862102aceb683ce7c274ea1d08d53a53a397657635b0b3d"
+        ]
+      },
+      {
+        "id": "withdrawn-01",
+        "group": "withdrawn",
+        "question": "What was the Maple pump exception at the closed satellite facility?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "362d1134a3183eacf6695b4a7610d95a5ee758925974cd2676c2b005c351c724"
+        ]
+      },
+      {
+        "id": "supported-02",
+        "group": "supported",
+        "question": "For Birch, where are pump seals replaced?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "bcc3ccaa916ad07e49430767e0dda046",
+        "expected_source": "47bb799f5f26614b754c2e833b53dc73c597ee5bba2518d28b0024bcec79245d"
+      },
+      {
+        "id": "nearby-02",
+        "group": "cross-project",
+        "question": "Does Birch pump equipment go to the restricted annex?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "de01c294178eeb8941fd9e2b50dd028873abcf0b3edce8f431a9efe4d8c0b314"
+        ]
+      },
+      {
+        "id": "withdrawn-02",
+        "group": "withdrawn",
+        "question": "What was the Birch pump exception at the closed satellite facility?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "a21b2cac97409c2fc591030d8f6799928834f8281ff5ec3c6875447259538e30"
+        ]
+      },
+      {
+        "id": "supported-03",
+        "group": "supported",
+        "question": "For Spruce, which workshop renews the seals?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "461a5bd7e5f9c3a0b17e26c5c73a83b9",
+        "expected_source": "65532b229ff9267b15b1c71c57fb1d4f5553616d4b04e19515dd6342d685ea6e"
+      },
+      {
+        "id": "nearby-03",
+        "group": "cross-project",
+        "question": "Does Spruce pump equipment go to the restricted annex?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "ffdd5669e94c215f6cdb0b2779c31c211c4e57f5376c43f08431bed69012ffdc"
+        ]
+      },
+      {
+        "id": "withdrawn-03",
+        "group": "withdrawn",
+        "question": "What was the Spruce pump exception at the closed satellite facility?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "f6041fea3a3532b438868e232739ac2085c9268ecbc325e592df9630e2a6a085"
+        ]
+      },
+      {
+        "id": "supported-04",
+        "group": "supported",
+        "question": "For Yew, where are pump seals replaced?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "1c1b850e7c07e1e6a6ce2b65a4c9245d",
+        "expected_source": "16d39dfd12a2ed9dc5f784b1aa4710613002cd0986988c919d88b68240ec5de9"
+      },
+      {
+        "id": "nearby-04",
+        "group": "cross-project",
+        "question": "Does Yew pump equipment go to the restricted annex?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "f54d6461bdee5628f0ae50ff8f404735e706bc8d4a4a6f2760892e19089ded25"
+        ]
+      },
+      {
+        "id": "withdrawn-04",
+        "group": "withdrawn",
+        "question": "What was the Yew pump exception at the closed satellite facility?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "17b0872fbfa59b18a2d708fa57d23cc61bf0f545e1ed8587675081259679efc3"
+        ]
+      },
+      {
+        "id": "supported-05",
+        "group": "supported",
+        "question": "For Bamboo, where does coil inspection start?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "35d342fa23bde56c2f73396d9e077a63",
+        "expected_source": "13ab814e2c53b46b31007e4633a5dcad3e2d40f5fdd30cd0ed749c8daee612e6"
+      },
+      {
+        "id": "nearby-05",
+        "group": "cross-project",
+        "question": "Does Bamboo coil equipment go to the restricted annex?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "42b2ae47de1ae6df38570826a6e0ae62049d16194280394ba60bde3d1d5f9aa4"
+        ]
+      },
+      {
+        "id": "withdrawn-05",
+        "group": "withdrawn",
+        "question": "What was the Bamboo coil exception at the closed satellite facility?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "07a4c95960f5f7aa84fbb2c925532a4a8a71e90407cfc8d1df15cb41078e1bee"
+        ]
+      },
+      {
+        "id": "supported-06",
+        "group": "supported",
+        "question": "For Juniper, where does coil inspection start?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "fb318382f0d61ca8678da8b172c80699",
+        "expected_source": "71c8a0e24f21575ee6a50de19ad88a79a50dfa5fcd5dd6026bcd2f22c1c09f4b"
+      },
+      {
+        "id": "nearby-06",
+        "group": "cross-project",
+        "question": "Does Juniper coil equipment go to the restricted annex?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "6e03957308a81db20e6c64692719951adfc672402a9d07ec6c27388958241764"
+        ]
+      },
+      {
+        "id": "withdrawn-06",
+        "group": "withdrawn",
+        "question": "What was the Juniper coil exception at the closed satellite facility?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "0c3aa2351c4c15ce0efa9b53057c7faac06f816c1e75844a7dcfadc9d50693b3"
+        ]
+      },
+      {
+        "id": "supported-07",
+        "group": "supported",
+        "question": "For Willow, where does coil inspection start?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "22bf58821e81c9dd300d64a760406a71",
+        "expected_source": "e74fd0738e160785b229f93eb4c2538877e4bd102bad6b66d535ba4a4a58f001"
+      },
+      {
+        "id": "nearby-07",
+        "group": "cross-project",
+        "question": "Does Willow coil equipment go to the restricted annex?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "76ab047c254d224efaebded20cc25340abc55f60fc20000073c097d071e6e4a3"
+        ]
+      },
+      {
+        "id": "withdrawn-07",
+        "group": "withdrawn",
+        "question": "What was the Willow coil exception at the closed satellite facility?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "d5c409d479fe4b5601c31c9d5d72d1aa3c38f6bc4bfcf5c42b3a85a720148aac"
+        ]
+      },
+      {
+        "id": "supported-08",
+        "group": "supported",
+        "question": "For Ash, where should a technician examine the winding?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "203dd99a27dea5eade14ae9891354c27",
+        "expected_source": "e9173b88e7d62ed4c35411fa896d02d00085d8e0bb17abb10d6170c477dbb646"
+      },
+      {
+        "id": "nearby-08",
+        "group": "cross-project",
+        "question": "Does Ash coil equipment go to the restricted annex?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "c98ccb76ad3aea4a26f66005d4620a39a41f7f080399484c6992e128804a24ab"
+        ]
+      },
+      {
+        "id": "withdrawn-08",
+        "group": "withdrawn",
+        "question": "What was the Ash coil exception at the closed satellite facility?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "e5cc973a47ee04c4200fca27d79002c5bd96f410e63abb8be6ec22b570cf390a"
+        ]
+      },
+      {
+        "id": "supported-09",
+        "group": "supported",
+        "question": "For Elm, where does coil inspection start?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "342f04c70d9a5f975c64971dfb6ef26b",
+        "expected_source": "d8a07158112cab354dcb1275016de3a5f335033bf8f2bca901fdffaadfad9982"
+      },
+      {
+        "id": "nearby-09",
+        "group": "cross-project",
+        "question": "Does Elm coil equipment go to the restricted annex?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "557f1f4f100922558d86b0c95a320f9c2f8c11e351542417db174e54364564e9"
+        ]
+      },
+      {
+        "id": "withdrawn-09",
+        "group": "withdrawn",
+        "question": "What was the Elm coil exception at the closed satellite facility?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "0e665a95f69ec26f223c3e47c9580ffbb98a0d76d10e2598ffa2f64a89db116b"
+        ]
+      },
+      {
+        "id": "supported-10",
+        "group": "supported",
+        "question": "For Lark, where do crate returns go?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "5fe3fcea5eb25dd6e49437533cfc7862",
+        "expected_source": "05c9419872390edf6c8e1d142181b9211f8c133a6aa1168d088b7012306b8639"
+      },
+      {
+        "id": "nearby-10",
+        "group": "cross-project",
+        "question": "Does Lark crate equipment go to the restricted annex?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "4cc5ccefd3da671ab9252aaab6264f4194769407dbe22eb4af4f80ccdc768b84"
+        ]
+      },
+      {
+        "id": "withdrawn-10",
+        "group": "withdrawn",
+        "question": "What was the Lark crate exception at the closed satellite facility?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "35895f8f0ec289dff74089db5878d7da6f5f58c43947ae68186d55e1efa73f55"
+        ]
+      },
+      {
+        "id": "supported-11",
+        "group": "supported",
+        "question": "For Raven, where do crate returns go?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "0176ea54c35e573950fb45c945a470d5",
+        "expected_source": "8fd49b50d552a4fab46c5b1efeb8bf2be82648ceb8b7042e2dcd85daae6cd0fa"
+      },
+      {
+        "id": "nearby-11",
+        "group": "cross-project",
+        "question": "Does Raven crate equipment go to the restricted annex?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "09cd671f67157f3d6df7b578bcb9fdf780717340b667877b5908dc2c606d0029"
+        ]
+      },
+      {
+        "id": "withdrawn-11",
+        "group": "withdrawn",
+        "question": "What was the Raven crate exception at the closed satellite facility?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "05aadec2971902a616bcfe61acf609beafc9e2443b2c86774283022273a83cef"
+        ]
+      },
+      {
+        "id": "supported-12",
+        "group": "supported",
+        "question": "For Crane, where do crate returns go?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "d16e578883ea45da5e1354c4ac68bc63",
+        "expected_source": "6fa0749144f140e8c4b1bc1772913367bcd9619426b833d83f9bcf820f21b64d"
+      },
+      {
+        "id": "nearby-12",
+        "group": "cross-project",
+        "question": "Does Crane crate equipment go to the restricted annex?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "63763c3493c020223a5d5456763bd2ce771c16fec919d89ba4e97a890484effa"
+        ]
+      },
+      {
+        "id": "withdrawn-12",
+        "group": "withdrawn",
+        "question": "What was the Crane crate exception at the closed satellite facility?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "ee2c76c1ef962c02b0246302f953b545d65b41e7b8e8075c4dc25725857884f8"
+        ]
+      },
+      {
+        "id": "supported-13",
+        "group": "supported",
+        "question": "For Heron, which dock handles returned containers?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "a31e05ee13c260604de1c2853a9de2b1",
+        "expected_source": "345eb78fe1cc58520ab5f836975813065b11e813d70eb19cca595d65d3864e8e"
+      },
+      {
+        "id": "nearby-13",
+        "group": "cross-project",
+        "question": "Does Heron crate equipment go to the restricted annex?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "d3ad24306963880f23a5eaa61900551d3315adc93b7593c076777f45c66b67eb"
+        ]
+      },
+      {
+        "id": "withdrawn-13",
+        "group": "withdrawn",
+        "question": "What was the Heron crate exception at the closed satellite facility?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "4e021d11c49aad58770d7a0a616c715a7967e2ccdf258365834a5696a5ebeb32"
+        ]
+      },
+      {
+        "id": "supported-14",
+        "group": "supported",
+        "question": "For Wren, where do crate returns go?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "6a107753cf88bda1819b3bc44bd63ba8",
+        "expected_source": "7f876093fe690fcc11504de062da9112f98cf9187484d703f89ccc2567538c63"
+      },
+      {
+        "id": "nearby-14",
+        "group": "cross-project",
+        "question": "Does Wren crate equipment go to the restricted annex?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "7acb4ed251ba797ede4e17d86a4c143cc5b56c9362f6fe050519ad4f8b14ae80"
+        ]
+      },
+      {
+        "id": "withdrawn-14",
+        "group": "withdrawn",
+        "question": "What was the Wren crate exception at the closed satellite facility?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "6844349d016f10ec439d748f8a987730c5f6c8f7d8df8b25734e27a3ee616b8e"
+        ]
+      },
+      {
+        "id": "supported-15",
+        "group": "supported",
+        "question": "For Robin, where is trolley calibration carried out?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "33cd47a6c11b7ccc27a0988063188a3a",
+        "expected_source": "78dedcc2c0d43cb6daa47aafce529e3105cab75c8dba21047c58403049c46a71"
+      },
+      {
+        "id": "nearby-15",
+        "group": "cross-project",
+        "question": "Does Robin trolley equipment go to the restricted annex?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "c5d5edaae2a6390ad5103dce9fe3af78e5eb173eb6adb4a21189b7ab045ac374"
+        ]
+      },
+      {
+        "id": "withdrawn-15",
+        "group": "withdrawn",
+        "question": "What was the Robin trolley exception at the closed satellite facility?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "1a4b23e3d73676f4cba1af396e3f01dc38d3c8afe8b8e3a9c04e3ab207251aac"
+        ]
+      },
+      {
+        "id": "supported-16",
+        "group": "supported",
+        "question": "For Kestrel, where is trolley calibration carried out?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "e5c77dea798ec17a9558b52daff1e3b9",
+        "expected_source": "f6c9c3bdd15cc3f41a4d904256f0c8decb15dfb8a37bc0e1b0ba5caaf95e2724"
+      },
+      {
+        "id": "nearby-16",
+        "group": "cross-project",
+        "question": "Does Kestrel trolley equipment go to the restricted annex?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "e04e729e8e4bcdde9e2a54be31428572511135cda930e28a00455c253d8c6cd7"
+        ]
+      },
+      {
+        "id": "withdrawn-16",
+        "group": "withdrawn",
+        "question": "What was the Kestrel trolley exception at the closed satellite facility?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "6b6f3c81ad78d36f79ab89e85681fc87ed18ef05b00de27023c03230aee75eb7"
+        ]
+      },
+      {
+        "id": "supported-17",
+        "group": "supported",
+        "question": "For Egret, where is trolley calibration carried out?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "3786aae2260ac49356345d46e71d6bd5",
+        "expected_source": "9ef03a85002a7117e8501234e29331251a860facc9a0ae2e9c1d0333b8987059"
+      },
+      {
+        "id": "nearby-17",
+        "group": "cross-project",
+        "question": "Does Egret trolley equipment go to the restricted annex?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "1f0e708bc1762eff150e9c275c5f7900234134fc80a467d20e8b78fb03a0aa6d"
+        ]
+      },
+      {
+        "id": "withdrawn-17",
+        "group": "withdrawn",
+        "question": "What was the Egret trolley exception at the closed satellite facility?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "b805e5d76e4c6499f67d14f3e1b5db2299fb1531393d8318c2c488c60db5f0dc"
+        ]
+      },
+      {
+        "id": "supported-18",
+        "group": "supported",
+        "question": "For Owl, where should staff adjust the equipment gauge?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "4a64b7dac319ef4afeba5c86f6193158",
+        "expected_source": "266e60d2592b65b3458e2e72b1b1c6dcfa5971256d5d6320fa3a4859ecf9ae6a"
+      },
+      {
+        "id": "nearby-18",
+        "group": "cross-project",
+        "question": "Does Owl trolley equipment go to the restricted annex?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "ed72ef14fccc8f8ec27a5afcc5c48f592ab4b480c2ced6cfc652e6ee1e9a2c6e"
+        ]
+      },
+      {
+        "id": "withdrawn-18",
+        "group": "withdrawn",
+        "question": "What was the Owl trolley exception at the closed satellite facility?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "924fbef4d330b49f3fcd02b75b732dfd9b132614b329c0f4a5035cc1264d3fb2"
+        ]
+      },
+      {
+        "id": "supported-19",
+        "group": "supported",
+        "question": "For Finch, where is trolley calibration carried out?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "a2c0f3cc55e30936ba78515358a8e0c1",
+        "expected_source": "047e99b5d902bddbbbd45860582bccb7d40b4b9f4eb51f21e6d23474f37cccee"
+      },
+      {
+        "id": "nearby-19",
+        "group": "cross-project",
+        "question": "Does Finch trolley equipment go to the restricted annex?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "403a244a28acee1a97c6408e06e64c72361915fab2872711743a39b53bb17e2e"
+        ]
+      },
+      {
+        "id": "withdrawn-19",
+        "group": "withdrawn",
+        "question": "What was the Finch trolley exception at the closed satellite facility?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "2af3fbf1ee487437409fb79ef2b1895060fdecdf3e4221ecac8499f88a2c55b9"
+        ]
+      },
+      {
+        "id": "supported-20",
+        "group": "supported",
+        "question": "For Amber, where are valve samples preserved?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "17b06f2f2acd7c48c8b0f1869536f028",
+        "expected_source": "df6470c6ee0658142cb29843d6a04802fea0c6a1756dc8966bc5e7406cf3dada"
+      },
+      {
+        "id": "nearby-20",
+        "group": "cross-project",
+        "question": "Does Amber valve equipment go to the restricted annex?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "2a68fcaf09cefe729149ba2c4bb56fa558ddfdeb177ed83f0612c8251a6feae6"
+        ]
+      },
+      {
+        "id": "withdrawn-20",
+        "group": "withdrawn",
+        "question": "What was the Amber valve exception at the closed satellite facility?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "95f8781b3a44d9056f73af48580c92297d8e49a4a215a9f95491787bddcbae25"
+        ]
+      },
+      {
+        "id": "supported-21",
+        "group": "supported",
+        "question": "For Indigo, where are valve samples preserved?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "3cf261c2c92fc5bf2e33a7ba11a53dcc",
+        "expected_source": "7d1b9ed5e02060fd49a9ae93d835cbb38276916637b056a7c36573511a2e433e"
+      },
+      {
+        "id": "nearby-21",
+        "group": "cross-project",
+        "question": "Does Indigo valve equipment go to the restricted annex?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "d2d09bc407051406e6b707b13c32d5fed9c9c548a98811eb6ec7c2dbdd41806f"
+        ]
+      },
+      {
+        "id": "withdrawn-21",
+        "group": "withdrawn",
+        "question": "What was the Indigo valve exception at the closed satellite facility?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "7a67172281627ff265bd5cd15090e8e031db1eeeec1839cd9f9b8cbec976731a"
+        ]
+      },
+      {
+        "id": "supported-22",
+        "group": "supported",
+        "question": "For Violet, where are valve samples preserved?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "5c3e15d0599d94c60247cf396370bc3b",
+        "expected_source": "cb7b3a62bc701357ca56132a983a5c0979c44767139b9fc66adf7d594eaefef0"
+      },
+      {
+        "id": "nearby-22",
+        "group": "cross-project",
+        "question": "Does Violet valve equipment go to the restricted annex?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "989c09b93efa76b64c526b4b97e2c2fe92429dc33c29e2482434abf4253f30ef"
+        ]
+      },
+      {
+        "id": "withdrawn-22",
+        "group": "withdrawn",
+        "question": "What was the Violet valve exception at the closed satellite facility?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "4856195fc6d2a18f8c7d2f1a49082068320a573e642dc67940bf5dde4876f96e"
+        ]
+      },
+      {
+        "id": "supported-23",
+        "group": "supported",
+        "question": "For Copper, where do operators keep the testing specimens?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "777e29a90d020418dd1e0b55a13b4980",
+        "expected_source": "551a8c6d160191cc848f6b3141f0ee9b3bd4af8a6056ba4ce8932cfd0c6ef73b"
+      },
+      {
+        "id": "nearby-23",
+        "group": "cross-project",
+        "question": "Does Copper valve equipment go to the restricted annex?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "c8d80178201b07afb17af07c4e3558c2f0f79b55635f77f39c640ce5acf25aac"
+        ]
+      },
+      {
+        "id": "withdrawn-23",
+        "group": "withdrawn",
+        "question": "What was the Copper valve exception at the closed satellite facility?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "7689040ad50c293466119ebe507e4b2a435208191ce6eab7551e8690559bcac2"
+        ]
+      },
+      {
+        "id": "supported-24",
+        "group": "supported",
+        "question": "For Silver, where are valve samples preserved?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "a6dd2565b560737af4b91753061615e1",
+        "expected_source": "1c05cf487c7f9c98bd8a20672e9a3a86be18c0f15ee50554b9b01f0936c46ed5"
+      },
+      {
+        "id": "nearby-24",
+        "group": "cross-project",
+        "question": "Does Silver valve equipment go to the restricted annex?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "3f7a5a9d63db18d42cc971cf5f979231aa448561481a0bd37c62ebf74c7fad9f"
+        ]
+      },
+      {
+        "id": "withdrawn-24",
+        "group": "withdrawn",
+        "question": "What was the Silver valve exception at the closed satellite facility?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "forbidden_sources": [
+          "67a13e5c27a4a8939f417b486134b607aa6e6fc0590d6692ea1b990d6d5cb79d"
+        ]
+      },
+      {
+        "id": "supported-25",
+        "group": "supported",
+        "question": "For Coral, who counts filament stock?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "e668873eb884b5bdac95b585f4fddb82",
+        "expected_source": "af67d3f9148a9c7886cad92f2c62a52134a7aa26e6909844dc51b13affb8d33c"
+      },
+      {
+        "id": "supported-26",
+        "group": "supported",
+        "question": "For Azure, who counts filament stock?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "14f352cf306d5c7419374333bdc0e567",
+        "expected_source": "a01c9a5a75ada724f0548e642bac782e0d7e943ad321854deab2d451499c5ae1"
+      },
+      {
+        "id": "supported-27",
+        "group": "supported",
+        "question": "For Olive, who counts filament stock?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "0ef77af720f257dcd33207058c8e841c",
+        "expected_source": "80363815f676de9e2488b0ac5cbe7f87ad042e1de0a472d5f83e1d6956304230"
+      },
+      {
+        "id": "supported-28",
+        "group": "supported",
+        "question": "For Ivory, who checks the thread inventory after dark?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "9ac154852677dd49b6a27c6341ac94dc",
+        "expected_source": "955f7e3dbd423f552873eff468e5dfb5f66fa862a41918018a3a2035b7f9f740"
+      },
+      {
+        "id": "supported-29",
+        "group": "supported",
+        "question": "For Slate, who counts filament stock?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "d181d6a42fb37285efb2dab4873caa6d",
+        "expected_source": "9f0dfb9541bc2ecea1bcdf6202c9f6a488cba5bd4f1e7e18c1246fe7b8bdb1cb"
+      },
+      {
+        "id": "supported-30",
+        "group": "supported",
+        "question": "For Comet, how are sensor alarms checked?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "a6b6e1bc3bdaa6b43870262ed6d23803",
+        "expected_source": "d99f32c3a52b8328cfea85fe22872d927b9b047266e2cf34a33367bc04d86fe3"
+      },
+      {
+        "id": "supported-31",
+        "group": "supported",
+        "question": "For Meteor, how are sensor alarms checked?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "ff46e90f38e42353ca00be6d24ae4e6c",
+        "expected_source": "f14b41bcc35f60b9c29ad6123d27f5e4152311c4ac5fe14d0321ce07e85728b1"
+      },
+      {
+        "id": "supported-32",
+        "group": "supported",
+        "question": "For Eclipse, how are sensor alarms checked?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "85d64e0152d2c44357e1fe43c809aa6b",
+        "expected_source": "0c4d03e0909f2c1ab5af67c80de5664b8e78b4f4ccf11d34cf56ffeaa0a465cc"
+      },
+      {
+        "id": "supported-33",
+        "group": "supported",
+        "question": "For Orbit, which device confirms an instrument alert?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "db547a66ab1f1dfac3561ebf7cd882b9",
+        "expected_source": "f35ed2b602fea08d1ab40eec13e9f2d26fe63829a171265209917a16a5ee7e51"
+      },
+      {
+        "id": "supported-34",
+        "group": "supported",
+        "question": "For Nebula, how are sensor alarms checked?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "82fe2640c4fcd34d06eb326497989887",
+        "expected_source": "725efc34e4ce6f67789d8b8d483ad6d80d13961d4059b414fa69dd45795d287f"
+      },
+      {
+        "id": "supported-35",
+        "group": "supported",
+        "question": "For Pulsar, who authorizes relay replacements?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "64d27c62d1a4e4d802aa50acc8b63601",
+        "expected_source": "49580a15df5523a5a7d5e76bd6435417a935e46fd8bbc70cc17c788a6caf2a13"
+      },
+      {
+        "id": "supported-36",
+        "group": "supported",
+        "question": "For Aurora, who authorizes relay replacements?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "7e3e82af27c218c3d7182773fc5e170e",
+        "expected_source": "63a96dcd2024f8e8d591dc7a0e412e590f9d63641f8dee8b3fa4fc83dcd4c5e9"
+      },
+      {
+        "id": "supported-37",
+        "group": "supported",
+        "question": "For Zenith, who authorizes relay replacements?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "6ec4b2a81ed27ed18bef562ea879681a",
+        "expected_source": "2327e6d516eb5540b15747d74778928a53d830cf5e22c146691d355c79163c05"
+      },
+      {
+        "id": "supported-38",
+        "group": "supported",
+        "question": "For Solstice, which staff member approves changing the electrical component?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "6d93ee5c1006f5db206eaf2837a107ff",
+        "expected_source": "065c6d688cd0fc9c0ae46a629139ea8be7c41e1cd4c320f08b995f534c1ed126"
+      },
+      {
+        "id": "supported-39",
+        "group": "supported",
+        "question": "For Equinox, who authorizes relay replacements?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "1f717479af7bce6a84715015fa54707c",
+        "expected_source": "e17ef10a66ceaf7e77812ccfd55faf003e27b5d341c3a45b70d3e175cf3739f3"
+      },
+      {
+        "id": "supported-40",
+        "group": "supported",
+        "question": "For Quartz, where are coupling defects recorded?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "208ad9eaff144e3b18c68e48502508fb",
+        "expected_source": "adcbdf69672f7da8d9ee4d573f64f35ebe3989de19019cd95e1fcbdf5f6cbdd7"
+      },
+      {
+        "id": "supported-41",
+        "group": "supported",
+        "question": "For Basalt, where are coupling defects recorded?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "80e330aa78c63190de0ad5dd222fa7a9",
+        "expected_source": "19e4aa267840707b59b59112dba637d7f17d45e1fab9fddaf1de23c1a1d8f37e"
+      },
+      {
+        "id": "supported-42",
+        "group": "supported",
+        "question": "For Marble, where are coupling defects recorded?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "b344cd402490de89f8641089b1b09725",
+        "expected_source": "4dcbe776ed0d7bf6cd098c5a57ffca0193c3ea3411925c4cd09de05b65e0fdab"
+      },
+      {
+        "id": "supported-43",
+        "group": "supported",
+        "question": "For Granite, where should the connector faults be documented?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "9bb68db6aaa3644cb9c93a2e07bf70c9",
+        "expected_source": "acbbb4a5a386a7e6a2a3293c2b3341a7d99d2c90e349f1dda44a3c40c7b22f2d"
+      },
+      {
+        "id": "supported-44",
+        "group": "supported",
+        "question": "For Jasper, where are coupling defects recorded?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "c70f9742028338a138bf6f23a2a3442d",
+        "expected_source": "3ac8fe403c34781be061b05c89d8589fb6b9b62280b803c4ba6f66f5c34374ee"
+      },
+      {
+        "id": "supported-45",
+        "group": "supported",
+        "question": "For Flint, where do filter cartridges dry?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "4dc685287619599e5a44d336bcdc026f",
+        "expected_source": "5b182e043a19df989bd1ff9d9bb979770fe83b42c446b0712de11c5c5c655bab"
+      },
+      {
+        "id": "supported-46",
+        "group": "supported",
+        "question": "For Obsidian, where do filter cartridges dry?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "277119a5617b13f93bc7bcc936eb86e9",
+        "expected_source": "91bcc7998015a84eebe9271a357c0ea3aa8a7b8f266c9a94dc8f23e48a76644b"
+      },
+      {
+        "id": "supported-47",
+        "group": "supported",
+        "question": "For Onyx, where do filter cartridges dry?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "16ebb2e3be82356fe9f7eb661304d62f",
+        "expected_source": "35c5b827df1d3dec81bbe903568448153f530625166c7aa8cf89aa85f15e33c3"
+      },
+      {
+        "id": "supported-48",
+        "group": "supported",
+        "question": "For Agate, where are cleaned inserts left to air out?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "d04d3058689ca518240ff71c56574243",
+        "expected_source": "63f1ce075f03c3600f10fa4b9fcea4e26c15ed221332f235dd6d7ce08b0489d6"
+      },
+      {
+        "id": "supported-49",
+        "group": "supported",
+        "question": "For Mica, where do filter cartridges dry?",
+        "as_of": "2026-11-28T03:20:17.1886519Z",
+        "claim_id": "957a3f700e3ed53baab8e93d78c260f1",
+        "expected_source": "bd9a06103df003063d4b92d497eef7ecf1116dda62ceedaf5e60be840379dc7d"
+      }
+    ]
+  },
+  "mysql": "8.4.13",
+  "name": "qwen3-embedding-0.6b",
+  "platform": "windows/amd64",
+  "receipt": {
+    "evaluation_id": "2d619b58f1610b08c01062ea66d4fc48",
+    "frozen_sha256": "b0a5d21733e1641f78b322859cfc81d4848c34db394109e5ee7d7ac38811d681",
+    "summary": {
+      "hybrid": {
+        "queries": 100,
+        "supported": 50,
+        "top_five_correct": 50,
+        "refused": 0,
+        "leaks": 0,
+        "model_queries": 100,
+        "keyword_fallbacks": 0
+      },
+      "keywords": {
+        "queries": 100,
+        "supported": 50,
+        "top_five_correct": 50,
+        "refused": 0,
+        "leaks": 0,
+        "model_queries": 0,
+        "keyword_fallbacks": 0
+      }
+    },
+    "rows": [
+      {
+        "case_id": "supported-00",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "1c1b850e7c07e1e6a6ce2b65a4c9245d",
+          "461a5bd7e5f9c3a0b17e26c5c73a83b9",
+          "bcc3ccaa916ad07e49430767e0dda046",
+          "d7d770cbfb93a693b492f6a4f536bce5",
+          "f1ba8052613c58a2af41cbbab6a698fc"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "nearby-00",
+        "group": "cross-project",
+        "mode": "keywords",
+        "claim_ids": [
+          "f1ba8052613c58a2af41cbbab6a698fc",
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "a31e05ee13c260604de1c2853a9de2b1"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "withdrawn-00",
+        "group": "withdrawn",
+        "mode": "keywords",
+        "claim_ids": [
+          "f1ba8052613c58a2af41cbbab6a698fc",
+          "1c1b850e7c07e1e6a6ce2b65a4c9245d",
+          "461a5bd7e5f9c3a0b17e26c5c73a83b9",
+          "bcc3ccaa916ad07e49430767e0dda046",
+          "d7d770cbfb93a693b492f6a4f536bce5"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-01",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "1c1b850e7c07e1e6a6ce2b65a4c9245d",
+          "461a5bd7e5f9c3a0b17e26c5c73a83b9",
+          "bcc3ccaa916ad07e49430767e0dda046",
+          "d7d770cbfb93a693b492f6a4f536bce5",
+          "f1ba8052613c58a2af41cbbab6a698fc"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "nearby-01",
+        "group": "cross-project",
+        "mode": "keywords",
+        "claim_ids": [
+          "d7d770cbfb93a693b492f6a4f536bce5",
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "a31e05ee13c260604de1c2853a9de2b1"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "withdrawn-01",
+        "group": "withdrawn",
+        "mode": "keywords",
+        "claim_ids": [
+          "d7d770cbfb93a693b492f6a4f536bce5",
+          "1c1b850e7c07e1e6a6ce2b65a4c9245d",
+          "461a5bd7e5f9c3a0b17e26c5c73a83b9",
+          "bcc3ccaa916ad07e49430767e0dda046",
+          "f1ba8052613c58a2af41cbbab6a698fc"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-02",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "1c1b850e7c07e1e6a6ce2b65a4c9245d",
+          "461a5bd7e5f9c3a0b17e26c5c73a83b9",
+          "bcc3ccaa916ad07e49430767e0dda046",
+          "d7d770cbfb93a693b492f6a4f536bce5",
+          "f1ba8052613c58a2af41cbbab6a698fc"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "nearby-02",
+        "group": "cross-project",
+        "mode": "keywords",
+        "claim_ids": [
+          "bcc3ccaa916ad07e49430767e0dda046",
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "a31e05ee13c260604de1c2853a9de2b1"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "withdrawn-02",
+        "group": "withdrawn",
+        "mode": "keywords",
+        "claim_ids": [
+          "bcc3ccaa916ad07e49430767e0dda046",
+          "1c1b850e7c07e1e6a6ce2b65a4c9245d",
+          "461a5bd7e5f9c3a0b17e26c5c73a83b9",
+          "d7d770cbfb93a693b492f6a4f536bce5",
+          "f1ba8052613c58a2af41cbbab6a698fc"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-03",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "461a5bd7e5f9c3a0b17e26c5c73a83b9",
+          "1c1b850e7c07e1e6a6ce2b65a4c9245d",
+          "bcc3ccaa916ad07e49430767e0dda046",
+          "d7d770cbfb93a693b492f6a4f536bce5",
+          "f1ba8052613c58a2af41cbbab6a698fc"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "nearby-03",
+        "group": "cross-project",
+        "mode": "keywords",
+        "claim_ids": [
+          "461a5bd7e5f9c3a0b17e26c5c73a83b9",
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "a31e05ee13c260604de1c2853a9de2b1"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "withdrawn-03",
+        "group": "withdrawn",
+        "mode": "keywords",
+        "claim_ids": [
+          "461a5bd7e5f9c3a0b17e26c5c73a83b9",
+          "1c1b850e7c07e1e6a6ce2b65a4c9245d",
+          "bcc3ccaa916ad07e49430767e0dda046",
+          "d7d770cbfb93a693b492f6a4f536bce5",
+          "f1ba8052613c58a2af41cbbab6a698fc"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-04",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "1c1b850e7c07e1e6a6ce2b65a4c9245d",
+          "461a5bd7e5f9c3a0b17e26c5c73a83b9",
+          "bcc3ccaa916ad07e49430767e0dda046",
+          "d7d770cbfb93a693b492f6a4f536bce5",
+          "f1ba8052613c58a2af41cbbab6a698fc"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "nearby-04",
+        "group": "cross-project",
+        "mode": "keywords",
+        "claim_ids": [
+          "1c1b850e7c07e1e6a6ce2b65a4c9245d",
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "a31e05ee13c260604de1c2853a9de2b1"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "withdrawn-04",
+        "group": "withdrawn",
+        "mode": "keywords",
+        "claim_ids": [
+          "1c1b850e7c07e1e6a6ce2b65a4c9245d",
+          "461a5bd7e5f9c3a0b17e26c5c73a83b9",
+          "bcc3ccaa916ad07e49430767e0dda046",
+          "d7d770cbfb93a693b492f6a4f536bce5",
+          "f1ba8052613c58a2af41cbbab6a698fc"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-05",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "35d342fa23bde56c2f73396d9e077a63",
+          "203dd99a27dea5eade14ae9891354c27",
+          "22bf58821e81c9dd300d64a760406a71",
+          "342f04c70d9a5f975c64971dfb6ef26b",
+          "fb318382f0d61ca8678da8b172c80699"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "nearby-05",
+        "group": "cross-project",
+        "mode": "keywords",
+        "claim_ids": [
+          "35d342fa23bde56c2f73396d9e077a63",
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "a31e05ee13c260604de1c2853a9de2b1"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "withdrawn-05",
+        "group": "withdrawn",
+        "mode": "keywords",
+        "claim_ids": [
+          "35d342fa23bde56c2f73396d9e077a63",
+          "203dd99a27dea5eade14ae9891354c27",
+          "22bf58821e81c9dd300d64a760406a71",
+          "342f04c70d9a5f975c64971dfb6ef26b",
+          "fb318382f0d61ca8678da8b172c80699"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-06",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "fb318382f0d61ca8678da8b172c80699",
+          "203dd99a27dea5eade14ae9891354c27",
+          "22bf58821e81c9dd300d64a760406a71",
+          "342f04c70d9a5f975c64971dfb6ef26b",
+          "35d342fa23bde56c2f73396d9e077a63"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "nearby-06",
+        "group": "cross-project",
+        "mode": "keywords",
+        "claim_ids": [
+          "fb318382f0d61ca8678da8b172c80699",
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "a31e05ee13c260604de1c2853a9de2b1"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "withdrawn-06",
+        "group": "withdrawn",
+        "mode": "keywords",
+        "claim_ids": [
+          "fb318382f0d61ca8678da8b172c80699",
+          "203dd99a27dea5eade14ae9891354c27",
+          "22bf58821e81c9dd300d64a760406a71",
+          "342f04c70d9a5f975c64971dfb6ef26b",
+          "35d342fa23bde56c2f73396d9e077a63"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-07",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "22bf58821e81c9dd300d64a760406a71",
+          "203dd99a27dea5eade14ae9891354c27",
+          "342f04c70d9a5f975c64971dfb6ef26b",
+          "35d342fa23bde56c2f73396d9e077a63",
+          "fb318382f0d61ca8678da8b172c80699"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "nearby-07",
+        "group": "cross-project",
+        "mode": "keywords",
+        "claim_ids": [
+          "22bf58821e81c9dd300d64a760406a71",
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "a31e05ee13c260604de1c2853a9de2b1"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "withdrawn-07",
+        "group": "withdrawn",
+        "mode": "keywords",
+        "claim_ids": [
+          "22bf58821e81c9dd300d64a760406a71",
+          "203dd99a27dea5eade14ae9891354c27",
+          "342f04c70d9a5f975c64971dfb6ef26b",
+          "35d342fa23bde56c2f73396d9e077a63",
+          "fb318382f0d61ca8678da8b172c80699"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-08",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "203dd99a27dea5eade14ae9891354c27"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "nearby-08",
+        "group": "cross-project",
+        "mode": "keywords",
+        "claim_ids": [
+          "203dd99a27dea5eade14ae9891354c27",
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "a31e05ee13c260604de1c2853a9de2b1"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "withdrawn-08",
+        "group": "withdrawn",
+        "mode": "keywords",
+        "claim_ids": [
+          "203dd99a27dea5eade14ae9891354c27",
+          "22bf58821e81c9dd300d64a760406a71",
+          "342f04c70d9a5f975c64971dfb6ef26b",
+          "35d342fa23bde56c2f73396d9e077a63",
+          "fb318382f0d61ca8678da8b172c80699"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-09",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "342f04c70d9a5f975c64971dfb6ef26b",
+          "203dd99a27dea5eade14ae9891354c27",
+          "22bf58821e81c9dd300d64a760406a71",
+          "35d342fa23bde56c2f73396d9e077a63",
+          "fb318382f0d61ca8678da8b172c80699"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "nearby-09",
+        "group": "cross-project",
+        "mode": "keywords",
+        "claim_ids": [
+          "342f04c70d9a5f975c64971dfb6ef26b",
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "a31e05ee13c260604de1c2853a9de2b1"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "withdrawn-09",
+        "group": "withdrawn",
+        "mode": "keywords",
+        "claim_ids": [
+          "342f04c70d9a5f975c64971dfb6ef26b",
+          "203dd99a27dea5eade14ae9891354c27",
+          "22bf58821e81c9dd300d64a760406a71",
+          "35d342fa23bde56c2f73396d9e077a63",
+          "fb318382f0d61ca8678da8b172c80699"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-10",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "a31e05ee13c260604de1c2853a9de2b1",
+          "d16e578883ea45da5e1354c4ac68bc63"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "nearby-10",
+        "group": "cross-project",
+        "mode": "keywords",
+        "claim_ids": [
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "0176ea54c35e573950fb45c945a470d5",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "a31e05ee13c260604de1c2853a9de2b1",
+          "d16e578883ea45da5e1354c4ac68bc63"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "withdrawn-10",
+        "group": "withdrawn",
+        "mode": "keywords",
+        "claim_ids": [
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "0176ea54c35e573950fb45c945a470d5",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "a31e05ee13c260604de1c2853a9de2b1",
+          "d16e578883ea45da5e1354c4ac68bc63"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-11",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "a31e05ee13c260604de1c2853a9de2b1",
+          "d16e578883ea45da5e1354c4ac68bc63"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "nearby-11",
+        "group": "cross-project",
+        "mode": "keywords",
+        "claim_ids": [
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "a31e05ee13c260604de1c2853a9de2b1",
+          "d16e578883ea45da5e1354c4ac68bc63"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "withdrawn-11",
+        "group": "withdrawn",
+        "mode": "keywords",
+        "claim_ids": [
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "a31e05ee13c260604de1c2853a9de2b1",
+          "d16e578883ea45da5e1354c4ac68bc63"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-12",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "a31e05ee13c260604de1c2853a9de2b1",
+          "d16e578883ea45da5e1354c4ac68bc63"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "nearby-12",
+        "group": "cross-project",
+        "mode": "keywords",
+        "claim_ids": [
+          "d16e578883ea45da5e1354c4ac68bc63",
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "a31e05ee13c260604de1c2853a9de2b1"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "withdrawn-12",
+        "group": "withdrawn",
+        "mode": "keywords",
+        "claim_ids": [
+          "d16e578883ea45da5e1354c4ac68bc63",
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "a31e05ee13c260604de1c2853a9de2b1"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-13",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "a31e05ee13c260604de1c2853a9de2b1",
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "d16e578883ea45da5e1354c4ac68bc63"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "nearby-13",
+        "group": "cross-project",
+        "mode": "keywords",
+        "claim_ids": [
+          "a31e05ee13c260604de1c2853a9de2b1",
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "d16e578883ea45da5e1354c4ac68bc63"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "withdrawn-13",
+        "group": "withdrawn",
+        "mode": "keywords",
+        "claim_ids": [
+          "a31e05ee13c260604de1c2853a9de2b1",
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "d16e578883ea45da5e1354c4ac68bc63"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-14",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "a31e05ee13c260604de1c2853a9de2b1",
+          "d16e578883ea45da5e1354c4ac68bc63"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "nearby-14",
+        "group": "cross-project",
+        "mode": "keywords",
+        "claim_ids": [
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "a31e05ee13c260604de1c2853a9de2b1",
+          "d16e578883ea45da5e1354c4ac68bc63"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "withdrawn-14",
+        "group": "withdrawn",
+        "mode": "keywords",
+        "claim_ids": [
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "a31e05ee13c260604de1c2853a9de2b1",
+          "d16e578883ea45da5e1354c4ac68bc63"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-15",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "33cd47a6c11b7ccc27a0988063188a3a",
+          "3786aae2260ac49356345d46e71d6bd5",
+          "4a64b7dac319ef4afeba5c86f6193158",
+          "a2c0f3cc55e30936ba78515358a8e0c1",
+          "e5c77dea798ec17a9558b52daff1e3b9"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "nearby-15",
+        "group": "cross-project",
+        "mode": "keywords",
+        "claim_ids": [
+          "33cd47a6c11b7ccc27a0988063188a3a",
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "a31e05ee13c260604de1c2853a9de2b1"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "withdrawn-15",
+        "group": "withdrawn",
+        "mode": "keywords",
+        "claim_ids": [
+          "33cd47a6c11b7ccc27a0988063188a3a",
+          "3786aae2260ac49356345d46e71d6bd5",
+          "4a64b7dac319ef4afeba5c86f6193158",
+          "a2c0f3cc55e30936ba78515358a8e0c1",
+          "e5c77dea798ec17a9558b52daff1e3b9"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-16",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "33cd47a6c11b7ccc27a0988063188a3a",
+          "3786aae2260ac49356345d46e71d6bd5",
+          "4a64b7dac319ef4afeba5c86f6193158",
+          "a2c0f3cc55e30936ba78515358a8e0c1",
+          "e5c77dea798ec17a9558b52daff1e3b9"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "nearby-16",
+        "group": "cross-project",
+        "mode": "keywords",
+        "claim_ids": [
+          "e5c77dea798ec17a9558b52daff1e3b9",
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "a31e05ee13c260604de1c2853a9de2b1"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "withdrawn-16",
+        "group": "withdrawn",
+        "mode": "keywords",
+        "claim_ids": [
+          "e5c77dea798ec17a9558b52daff1e3b9",
+          "33cd47a6c11b7ccc27a0988063188a3a",
+          "3786aae2260ac49356345d46e71d6bd5",
+          "4a64b7dac319ef4afeba5c86f6193158",
+          "a2c0f3cc55e30936ba78515358a8e0c1"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-17",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "33cd47a6c11b7ccc27a0988063188a3a",
+          "3786aae2260ac49356345d46e71d6bd5",
+          "4a64b7dac319ef4afeba5c86f6193158",
+          "a2c0f3cc55e30936ba78515358a8e0c1",
+          "e5c77dea798ec17a9558b52daff1e3b9"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "nearby-17",
+        "group": "cross-project",
+        "mode": "keywords",
+        "claim_ids": [
+          "3786aae2260ac49356345d46e71d6bd5",
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "a31e05ee13c260604de1c2853a9de2b1"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "withdrawn-17",
+        "group": "withdrawn",
+        "mode": "keywords",
+        "claim_ids": [
+          "3786aae2260ac49356345d46e71d6bd5",
+          "33cd47a6c11b7ccc27a0988063188a3a",
+          "4a64b7dac319ef4afeba5c86f6193158",
+          "a2c0f3cc55e30936ba78515358a8e0c1",
+          "e5c77dea798ec17a9558b52daff1e3b9"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-18",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "4a64b7dac319ef4afeba5c86f6193158",
+          "0176ea54c35e573950fb45c945a470d5",
+          "0ef77af720f257dcd33207058c8e841c",
+          "14f352cf306d5c7419374333bdc0e567",
+          "16ebb2e3be82356fe9f7eb661304d62f"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "nearby-18",
+        "group": "cross-project",
+        "mode": "keywords",
+        "claim_ids": [
+          "4a64b7dac319ef4afeba5c86f6193158",
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "a31e05ee13c260604de1c2853a9de2b1"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "withdrawn-18",
+        "group": "withdrawn",
+        "mode": "keywords",
+        "claim_ids": [
+          "4a64b7dac319ef4afeba5c86f6193158",
+          "33cd47a6c11b7ccc27a0988063188a3a",
+          "3786aae2260ac49356345d46e71d6bd5",
+          "a2c0f3cc55e30936ba78515358a8e0c1",
+          "e5c77dea798ec17a9558b52daff1e3b9"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-19",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "33cd47a6c11b7ccc27a0988063188a3a",
+          "3786aae2260ac49356345d46e71d6bd5",
+          "4a64b7dac319ef4afeba5c86f6193158",
+          "a2c0f3cc55e30936ba78515358a8e0c1",
+          "e5c77dea798ec17a9558b52daff1e3b9"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "nearby-19",
+        "group": "cross-project",
+        "mode": "keywords",
+        "claim_ids": [
+          "a2c0f3cc55e30936ba78515358a8e0c1",
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "a31e05ee13c260604de1c2853a9de2b1"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "withdrawn-19",
+        "group": "withdrawn",
+        "mode": "keywords",
+        "claim_ids": [
+          "a2c0f3cc55e30936ba78515358a8e0c1",
+          "33cd47a6c11b7ccc27a0988063188a3a",
+          "3786aae2260ac49356345d46e71d6bd5",
+          "4a64b7dac319ef4afeba5c86f6193158",
+          "e5c77dea798ec17a9558b52daff1e3b9"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-20",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "17b06f2f2acd7c48c8b0f1869536f028",
+          "3cf261c2c92fc5bf2e33a7ba11a53dcc",
+          "5c3e15d0599d94c60247cf396370bc3b",
+          "777e29a90d020418dd1e0b55a13b4980",
+          "a6dd2565b560737af4b91753061615e1"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "nearby-20",
+        "group": "cross-project",
+        "mode": "keywords",
+        "claim_ids": [
+          "17b06f2f2acd7c48c8b0f1869536f028",
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "a31e05ee13c260604de1c2853a9de2b1"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "withdrawn-20",
+        "group": "withdrawn",
+        "mode": "keywords",
+        "claim_ids": [
+          "17b06f2f2acd7c48c8b0f1869536f028",
+          "3cf261c2c92fc5bf2e33a7ba11a53dcc",
+          "5c3e15d0599d94c60247cf396370bc3b",
+          "777e29a90d020418dd1e0b55a13b4980",
+          "a6dd2565b560737af4b91753061615e1"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-21",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "17b06f2f2acd7c48c8b0f1869536f028",
+          "3cf261c2c92fc5bf2e33a7ba11a53dcc",
+          "5c3e15d0599d94c60247cf396370bc3b",
+          "777e29a90d020418dd1e0b55a13b4980",
+          "a6dd2565b560737af4b91753061615e1"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "nearby-21",
+        "group": "cross-project",
+        "mode": "keywords",
+        "claim_ids": [
+          "3cf261c2c92fc5bf2e33a7ba11a53dcc",
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "a31e05ee13c260604de1c2853a9de2b1"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "withdrawn-21",
+        "group": "withdrawn",
+        "mode": "keywords",
+        "claim_ids": [
+          "3cf261c2c92fc5bf2e33a7ba11a53dcc",
+          "17b06f2f2acd7c48c8b0f1869536f028",
+          "5c3e15d0599d94c60247cf396370bc3b",
+          "777e29a90d020418dd1e0b55a13b4980",
+          "a6dd2565b560737af4b91753061615e1"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-22",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "17b06f2f2acd7c48c8b0f1869536f028",
+          "3cf261c2c92fc5bf2e33a7ba11a53dcc",
+          "5c3e15d0599d94c60247cf396370bc3b",
+          "777e29a90d020418dd1e0b55a13b4980",
+          "a6dd2565b560737af4b91753061615e1"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "nearby-22",
+        "group": "cross-project",
+        "mode": "keywords",
+        "claim_ids": [
+          "5c3e15d0599d94c60247cf396370bc3b",
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "a31e05ee13c260604de1c2853a9de2b1"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "withdrawn-22",
+        "group": "withdrawn",
+        "mode": "keywords",
+        "claim_ids": [
+          "5c3e15d0599d94c60247cf396370bc3b",
+          "17b06f2f2acd7c48c8b0f1869536f028",
+          "3cf261c2c92fc5bf2e33a7ba11a53dcc",
+          "777e29a90d020418dd1e0b55a13b4980",
+          "a6dd2565b560737af4b91753061615e1"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-23",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "777e29a90d020418dd1e0b55a13b4980"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "nearby-23",
+        "group": "cross-project",
+        "mode": "keywords",
+        "claim_ids": [
+          "777e29a90d020418dd1e0b55a13b4980",
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "a31e05ee13c260604de1c2853a9de2b1"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "withdrawn-23",
+        "group": "withdrawn",
+        "mode": "keywords",
+        "claim_ids": [
+          "777e29a90d020418dd1e0b55a13b4980",
+          "17b06f2f2acd7c48c8b0f1869536f028",
+          "3cf261c2c92fc5bf2e33a7ba11a53dcc",
+          "5c3e15d0599d94c60247cf396370bc3b",
+          "a6dd2565b560737af4b91753061615e1"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-24",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "17b06f2f2acd7c48c8b0f1869536f028",
+          "3cf261c2c92fc5bf2e33a7ba11a53dcc",
+          "5c3e15d0599d94c60247cf396370bc3b",
+          "777e29a90d020418dd1e0b55a13b4980",
+          "a6dd2565b560737af4b91753061615e1"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "nearby-24",
+        "group": "cross-project",
+        "mode": "keywords",
+        "claim_ids": [
+          "a6dd2565b560737af4b91753061615e1",
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "a31e05ee13c260604de1c2853a9de2b1"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "withdrawn-24",
+        "group": "withdrawn",
+        "mode": "keywords",
+        "claim_ids": [
+          "a6dd2565b560737af4b91753061615e1",
+          "17b06f2f2acd7c48c8b0f1869536f028",
+          "3cf261c2c92fc5bf2e33a7ba11a53dcc",
+          "5c3e15d0599d94c60247cf396370bc3b",
+          "777e29a90d020418dd1e0b55a13b4980"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-25",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "e668873eb884b5bdac95b585f4fddb82",
+          "0ef77af720f257dcd33207058c8e841c",
+          "14f352cf306d5c7419374333bdc0e567",
+          "9ac154852677dd49b6a27c6341ac94dc",
+          "d181d6a42fb37285efb2dab4873caa6d"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-26",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "14f352cf306d5c7419374333bdc0e567",
+          "0ef77af720f257dcd33207058c8e841c",
+          "9ac154852677dd49b6a27c6341ac94dc",
+          "d181d6a42fb37285efb2dab4873caa6d",
+          "e668873eb884b5bdac95b585f4fddb82"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-27",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "0ef77af720f257dcd33207058c8e841c",
+          "14f352cf306d5c7419374333bdc0e567",
+          "9ac154852677dd49b6a27c6341ac94dc",
+          "d181d6a42fb37285efb2dab4873caa6d",
+          "e668873eb884b5bdac95b585f4fddb82"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-28",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "9ac154852677dd49b6a27c6341ac94dc"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-29",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "d181d6a42fb37285efb2dab4873caa6d",
+          "0ef77af720f257dcd33207058c8e841c",
+          "14f352cf306d5c7419374333bdc0e567",
+          "9ac154852677dd49b6a27c6341ac94dc",
+          "e668873eb884b5bdac95b585f4fddb82"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-30",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "82fe2640c4fcd34d06eb326497989887",
+          "85d64e0152d2c44357e1fe43c809aa6b",
+          "a6b6e1bc3bdaa6b43870262ed6d23803",
+          "db547a66ab1f1dfac3561ebf7cd882b9",
+          "ff46e90f38e42353ca00be6d24ae4e6c"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-31",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "82fe2640c4fcd34d06eb326497989887",
+          "85d64e0152d2c44357e1fe43c809aa6b",
+          "a6b6e1bc3bdaa6b43870262ed6d23803",
+          "db547a66ab1f1dfac3561ebf7cd882b9",
+          "ff46e90f38e42353ca00be6d24ae4e6c"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-32",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "82fe2640c4fcd34d06eb326497989887",
+          "85d64e0152d2c44357e1fe43c809aa6b",
+          "a6b6e1bc3bdaa6b43870262ed6d23803",
+          "db547a66ab1f1dfac3561ebf7cd882b9",
+          "ff46e90f38e42353ca00be6d24ae4e6c"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-33",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "db547a66ab1f1dfac3561ebf7cd882b9"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-34",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "82fe2640c4fcd34d06eb326497989887",
+          "85d64e0152d2c44357e1fe43c809aa6b",
+          "a6b6e1bc3bdaa6b43870262ed6d23803",
+          "db547a66ab1f1dfac3561ebf7cd882b9",
+          "ff46e90f38e42353ca00be6d24ae4e6c"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-35",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "64d27c62d1a4e4d802aa50acc8b63601",
+          "1f717479af7bce6a84715015fa54707c",
+          "6d93ee5c1006f5db206eaf2837a107ff",
+          "6ec4b2a81ed27ed18bef562ea879681a",
+          "7e3e82af27c218c3d7182773fc5e170e"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-36",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "7e3e82af27c218c3d7182773fc5e170e",
+          "1f717479af7bce6a84715015fa54707c",
+          "64d27c62d1a4e4d802aa50acc8b63601",
+          "6d93ee5c1006f5db206eaf2837a107ff",
+          "6ec4b2a81ed27ed18bef562ea879681a"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-37",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "6ec4b2a81ed27ed18bef562ea879681a",
+          "1f717479af7bce6a84715015fa54707c",
+          "64d27c62d1a4e4d802aa50acc8b63601",
+          "6d93ee5c1006f5db206eaf2837a107ff",
+          "7e3e82af27c218c3d7182773fc5e170e"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-38",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "6d93ee5c1006f5db206eaf2837a107ff"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-39",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "1f717479af7bce6a84715015fa54707c",
+          "64d27c62d1a4e4d802aa50acc8b63601",
+          "6d93ee5c1006f5db206eaf2837a107ff",
+          "6ec4b2a81ed27ed18bef562ea879681a",
+          "7e3e82af27c218c3d7182773fc5e170e"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-40",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "208ad9eaff144e3b18c68e48502508fb",
+          "80e330aa78c63190de0ad5dd222fa7a9",
+          "9bb68db6aaa3644cb9c93a2e07bf70c9",
+          "b344cd402490de89f8641089b1b09725",
+          "c70f9742028338a138bf6f23a2a3442d"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-41",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "208ad9eaff144e3b18c68e48502508fb",
+          "80e330aa78c63190de0ad5dd222fa7a9",
+          "9bb68db6aaa3644cb9c93a2e07bf70c9",
+          "b344cd402490de89f8641089b1b09725",
+          "c70f9742028338a138bf6f23a2a3442d"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-42",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "208ad9eaff144e3b18c68e48502508fb",
+          "80e330aa78c63190de0ad5dd222fa7a9",
+          "9bb68db6aaa3644cb9c93a2e07bf70c9",
+          "b344cd402490de89f8641089b1b09725",
+          "c70f9742028338a138bf6f23a2a3442d"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-43",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "9bb68db6aaa3644cb9c93a2e07bf70c9"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-44",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "208ad9eaff144e3b18c68e48502508fb",
+          "80e330aa78c63190de0ad5dd222fa7a9",
+          "9bb68db6aaa3644cb9c93a2e07bf70c9",
+          "b344cd402490de89f8641089b1b09725",
+          "c70f9742028338a138bf6f23a2a3442d"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-45",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "16ebb2e3be82356fe9f7eb661304d62f",
+          "277119a5617b13f93bc7bcc936eb86e9",
+          "4dc685287619599e5a44d336bcdc026f",
+          "957a3f700e3ed53baab8e93d78c260f1",
+          "d04d3058689ca518240ff71c56574243"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-46",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "16ebb2e3be82356fe9f7eb661304d62f",
+          "277119a5617b13f93bc7bcc936eb86e9",
+          "4dc685287619599e5a44d336bcdc026f",
+          "957a3f700e3ed53baab8e93d78c260f1",
+          "d04d3058689ca518240ff71c56574243"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-47",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "16ebb2e3be82356fe9f7eb661304d62f",
+          "277119a5617b13f93bc7bcc936eb86e9",
+          "4dc685287619599e5a44d336bcdc026f",
+          "957a3f700e3ed53baab8e93d78c260f1",
+          "d04d3058689ca518240ff71c56574243"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-48",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "d04d3058689ca518240ff71c56574243",
+          "33cd47a6c11b7ccc27a0988063188a3a",
+          "3786aae2260ac49356345d46e71d6bd5",
+          "4a64b7dac319ef4afeba5c86f6193158",
+          "a2c0f3cc55e30936ba78515358a8e0c1"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-49",
+        "group": "supported",
+        "mode": "keywords",
+        "claim_ids": [
+          "16ebb2e3be82356fe9f7eb661304d62f",
+          "277119a5617b13f93bc7bcc936eb86e9",
+          "4dc685287619599e5a44d336bcdc026f",
+          "957a3f700e3ed53baab8e93d78c260f1",
+          "d04d3058689ca518240ff71c56574243"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0
+      },
+      {
+        "case_id": "supported-00",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "f1ba8052613c58a2af41cbbab6a698fc",
+          "461a5bd7e5f9c3a0b17e26c5c73a83b9",
+          "bcc3ccaa916ad07e49430767e0dda046",
+          "1c1b850e7c07e1e6a6ce2b65a4c9245d",
+          "d7d770cbfb93a693b492f6a4f536bce5"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "2f6fefd0ef70c9825ecf67dc9d3558045d32335faa43b12864f5d4eb4fb380d6",
+          "response_sha256": "6e2ab28c270037208ae9ae894133d57bf3f7c61bac7d9404e3fe6cb3a1fad9a5",
+          "duration_ms": 95,
+          "prompt_tokens": 24
+        }
+      },
+      {
+        "case_id": "nearby-00",
+        "group": "cross-project",
+        "mode": "hybrid",
+        "claim_ids": [
+          "f1ba8052613c58a2af41cbbab6a698fc",
+          "d16e578883ea45da5e1354c4ac68bc63",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "bd5e7f55d1ab811e6097678c8d149f54da07fa4fdc6162662be62c583bcd6f4e",
+          "response_sha256": "05793805e387e9ae8ee0995c8910e3e0e567023caa47db0e4db195954937dd66",
+          "duration_ms": 113,
+          "prompt_tokens": 25
+        }
+      },
+      {
+        "case_id": "withdrawn-00",
+        "group": "withdrawn",
+        "mode": "hybrid",
+        "claim_ids": [
+          "f1ba8052613c58a2af41cbbab6a698fc",
+          "461a5bd7e5f9c3a0b17e26c5c73a83b9",
+          "1c1b850e7c07e1e6a6ce2b65a4c9245d",
+          "bcc3ccaa916ad07e49430767e0dda046",
+          "4dc685287619599e5a44d336bcdc026f"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "9587c7aa0dc3f19cef087057e8f5cbdfb859e10f1f1ff5318d36476f988803eb",
+          "response_sha256": "780b4556f8104902c7e8646fec386ff5060332b48d18a49d9a6a924b02816385",
+          "duration_ms": 112,
+          "prompt_tokens": 27
+        }
+      },
+      {
+        "case_id": "supported-01",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "d7d770cbfb93a693b492f6a4f536bce5",
+          "461a5bd7e5f9c3a0b17e26c5c73a83b9",
+          "f1ba8052613c58a2af41cbbab6a698fc",
+          "bcc3ccaa916ad07e49430767e0dda046",
+          "1c1b850e7c07e1e6a6ce2b65a4c9245d"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "0e5e081bc07448dd1f50d25582607054a2960195e6d2b9505c0a6c575a5665c0",
+          "response_sha256": "9bed2b3dc15d3e084e5c3a507bb350a738fb7b5a97ed35fabc332235d5792bd0",
+          "duration_ms": 127,
+          "prompt_tokens": 24
+        }
+      },
+      {
+        "case_id": "nearby-01",
+        "group": "cross-project",
+        "mode": "hybrid",
+        "claim_ids": [
+          "d7d770cbfb93a693b492f6a4f536bce5",
+          "461a5bd7e5f9c3a0b17e26c5c73a83b9",
+          "bcc3ccaa916ad07e49430767e0dda046",
+          "0176ea54c35e573950fb45c945a470d5",
+          "1c1b850e7c07e1e6a6ce2b65a4c9245d"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "94d75028ea52321772cc1d5d059cc0fb694db7cdd4eeb54dda5df179eae7eb87",
+          "response_sha256": "d673cd5d585f440768aeacc16978fba6d5e493fa34bf9dda36b88ca1cbd7d36f",
+          "duration_ms": 111,
+          "prompt_tokens": 25
+        }
+      },
+      {
+        "case_id": "withdrawn-01",
+        "group": "withdrawn",
+        "mode": "hybrid",
+        "claim_ids": [
+          "d7d770cbfb93a693b492f6a4f536bce5",
+          "461a5bd7e5f9c3a0b17e26c5c73a83b9",
+          "1c1b850e7c07e1e6a6ce2b65a4c9245d",
+          "f1ba8052613c58a2af41cbbab6a698fc",
+          "bcc3ccaa916ad07e49430767e0dda046"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "59968fe07fa37c12cad9230fc1fa3141da84ce890aa058062710f4112aab731a",
+          "response_sha256": "235ed34fdc41b0d44def3f63aa28eb734c8460c9f7f15d1449f2a5f81edf057d",
+          "duration_ms": 125,
+          "prompt_tokens": 27
+        }
+      },
+      {
+        "case_id": "supported-02",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "bcc3ccaa916ad07e49430767e0dda046",
+          "461a5bd7e5f9c3a0b17e26c5c73a83b9",
+          "f1ba8052613c58a2af41cbbab6a698fc",
+          "d7d770cbfb93a693b492f6a4f536bce5",
+          "1c1b850e7c07e1e6a6ce2b65a4c9245d"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "1655c11ac0ecf32444729ca7c55bd867eabdadd649692950974ceabbb2f1e34a",
+          "response_sha256": "0ae1de309156095999c12826ff8c28cceb74ca250814bb0bda81726e50b1667b",
+          "duration_ms": 100,
+          "prompt_tokens": 24
+        }
+      },
+      {
+        "case_id": "nearby-02",
+        "group": "cross-project",
+        "mode": "hybrid",
+        "claim_ids": [
+          "bcc3ccaa916ad07e49430767e0dda046",
+          "461a5bd7e5f9c3a0b17e26c5c73a83b9",
+          "0176ea54c35e573950fb45c945a470d5",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "5fe3fcea5eb25dd6e49437533cfc7862"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "f6e87f5eca5cad5228931fb66eb1154c9b158ce3e25f4a95f361b68661bce12d",
+          "response_sha256": "ea7a4c73c0555fabe1271b1d20e4a94e59c74ebb83c8d0ff5c96ebec6fe5a287",
+          "duration_ms": 104,
+          "prompt_tokens": 25
+        }
+      },
+      {
+        "case_id": "withdrawn-02",
+        "group": "withdrawn",
+        "mode": "hybrid",
+        "claim_ids": [
+          "bcc3ccaa916ad07e49430767e0dda046",
+          "461a5bd7e5f9c3a0b17e26c5c73a83b9",
+          "1c1b850e7c07e1e6a6ce2b65a4c9245d",
+          "f1ba8052613c58a2af41cbbab6a698fc",
+          "4dc685287619599e5a44d336bcdc026f"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "0ec85f4177fd8efd089b48e118dc12881769142c180c2f1da0a2f16cfc08abfe",
+          "response_sha256": "1dee0c9c60f1dfb77c8770d5699dd9758630a99b37fdf6570c12afc939acafd7",
+          "duration_ms": 111,
+          "prompt_tokens": 27
+        }
+      },
+      {
+        "case_id": "supported-03",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "461a5bd7e5f9c3a0b17e26c5c73a83b9",
+          "bcc3ccaa916ad07e49430767e0dda046",
+          "1c1b850e7c07e1e6a6ce2b65a4c9245d",
+          "d7d770cbfb93a693b492f6a4f536bce5",
+          "f1ba8052613c58a2af41cbbab6a698fc"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "1ab66175d7f4104fbe63ef445048c8a9b7ca58df6dbcae83b0b907e18d62c613",
+          "response_sha256": "4eb618872f0480df18d8110bb455385be5b75960a8678a38c848897c85696c3a",
+          "duration_ms": 103,
+          "prompt_tokens": 26
+        }
+      },
+      {
+        "case_id": "nearby-03",
+        "group": "cross-project",
+        "mode": "hybrid",
+        "claim_ids": [
+          "461a5bd7e5f9c3a0b17e26c5c73a83b9",
+          "bcc3ccaa916ad07e49430767e0dda046",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "f1ba8052613c58a2af41cbbab6a698fc",
+          "1c1b850e7c07e1e6a6ce2b65a4c9245d"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "efe6366cc81c4dac02ea76dc2c94a780055bfaffd3d9784676c1ef9320817366",
+          "response_sha256": "fb686929547551b1fb77cf2e42c09be341da886d9bcc75d703d4dc7203b91689",
+          "duration_ms": 113,
+          "prompt_tokens": 26
+        }
+      },
+      {
+        "case_id": "withdrawn-03",
+        "group": "withdrawn",
+        "mode": "hybrid",
+        "claim_ids": [
+          "461a5bd7e5f9c3a0b17e26c5c73a83b9",
+          "bcc3ccaa916ad07e49430767e0dda046",
+          "f1ba8052613c58a2af41cbbab6a698fc",
+          "1c1b850e7c07e1e6a6ce2b65a4c9245d",
+          "64d27c62d1a4e4d802aa50acc8b63601"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "d1fd8cec234f3a278c1218162fb6725c86ed1fe36cfacaef243debceab1e7a96",
+          "response_sha256": "f8f247a0f2c5381f62ee4bbdf2b95e484a145f0b970f76eb4d8ee82afaf82eb7",
+          "duration_ms": 115,
+          "prompt_tokens": 28
+        }
+      },
+      {
+        "case_id": "supported-04",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "1c1b850e7c07e1e6a6ce2b65a4c9245d",
+          "461a5bd7e5f9c3a0b17e26c5c73a83b9",
+          "f1ba8052613c58a2af41cbbab6a698fc",
+          "bcc3ccaa916ad07e49430767e0dda046",
+          "d7d770cbfb93a693b492f6a4f536bce5"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "31fa28cc3e36bc3a817328de3ca75072cc6355845378ad659c65d83201a6bb05",
+          "response_sha256": "14ed56141e38157c124c7061b5d5aff5f263808f946905851737fcad4de51bfd",
+          "duration_ms": 121,
+          "prompt_tokens": 25
+        }
+      },
+      {
+        "case_id": "nearby-04",
+        "group": "cross-project",
+        "mode": "hybrid",
+        "claim_ids": [
+          "1c1b850e7c07e1e6a6ce2b65a4c9245d",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "0176ea54c35e573950fb45c945a470d5",
+          "461a5bd7e5f9c3a0b17e26c5c73a83b9",
+          "bcc3ccaa916ad07e49430767e0dda046"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "78fdb4c3113efdc173b88e84dff173a53b1918fd3507054f8cfe44e476fd19b5",
+          "response_sha256": "dd2ede4241a4584c717686929fc4c1627e02a8fbf3790a55a283f7063cccb1c7",
+          "duration_ms": 122,
+          "prompt_tokens": 26
+        }
+      },
+      {
+        "case_id": "withdrawn-04",
+        "group": "withdrawn",
+        "mode": "hybrid",
+        "claim_ids": [
+          "1c1b850e7c07e1e6a6ce2b65a4c9245d",
+          "461a5bd7e5f9c3a0b17e26c5c73a83b9",
+          "f1ba8052613c58a2af41cbbab6a698fc",
+          "bcc3ccaa916ad07e49430767e0dda046",
+          "d7d770cbfb93a693b492f6a4f536bce5"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "761f672c4880f01ef8ddd71cc9ee1442addda5ff2413d74fc5773abb33b69aa5",
+          "response_sha256": "aa8821e0d7c4aa19efebc503cb71e69a4718414bb425fb2c74cc9b5dcaedc677",
+          "duration_ms": 126,
+          "prompt_tokens": 28
+        }
+      },
+      {
+        "case_id": "supported-05",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "35d342fa23bde56c2f73396d9e077a63",
+          "22bf58821e81c9dd300d64a760406a71",
+          "342f04c70d9a5f975c64971dfb6ef26b",
+          "fb318382f0d61ca8678da8b172c80699",
+          "203dd99a27dea5eade14ae9891354c27"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "9646dffe52fd1fd775c38457c201bcf12a1c216a9552a5a4f10e517c5144bc2e",
+          "response_sha256": "e93c5c8c867cf001ebd3164159c348b1ea3202b1d770affcaf0d5bbcf646c59a",
+          "duration_ms": 106,
+          "prompt_tokens": 24
+        }
+      },
+      {
+        "case_id": "nearby-05",
+        "group": "cross-project",
+        "mode": "hybrid",
+        "claim_ids": [
+          "35d342fa23bde56c2f73396d9e077a63",
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "22bf58821e81c9dd300d64a760406a71",
+          "6a107753cf88bda1819b3bc44bd63ba8"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "095783a9d8d707bed3ef9e25eed62cd17c511dc5c3db00bd48f619cda4fb6ae2",
+          "response_sha256": "009fd1805724213f1e3758726ad45c2ed89cbba589431b73262c6cf14d1a1d9a",
+          "duration_ms": 100,
+          "prompt_tokens": 25
+        }
+      },
+      {
+        "case_id": "withdrawn-05",
+        "group": "withdrawn",
+        "mode": "hybrid",
+        "claim_ids": [
+          "35d342fa23bde56c2f73396d9e077a63",
+          "203dd99a27dea5eade14ae9891354c27",
+          "22bf58821e81c9dd300d64a760406a71",
+          "342f04c70d9a5f975c64971dfb6ef26b",
+          "80e330aa78c63190de0ad5dd222fa7a9"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "2f77d4c0354bababd58f4f0c2825c730bc6e68c9ba1b310521a88efbc8b070c3",
+          "response_sha256": "5f71fbe9bd9b9a98e9696611a03db9c9e886410e84bace7d97976df0c355e3b3",
+          "duration_ms": 114,
+          "prompt_tokens": 27
+        }
+      },
+      {
+        "case_id": "supported-06",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "fb318382f0d61ca8678da8b172c80699",
+          "22bf58821e81c9dd300d64a760406a71",
+          "35d342fa23bde56c2f73396d9e077a63",
+          "203dd99a27dea5eade14ae9891354c27",
+          "342f04c70d9a5f975c64971dfb6ef26b"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "45a563f35e7233b432e5dd09c1c1fa373f672984e19c1dff020ff1c7fa504737",
+          "response_sha256": "e510319802c8d9f8f5f19f6cf48c51f24852b53d215bf7e3fd674e16e831568a",
+          "duration_ms": 105,
+          "prompt_tokens": 25
+        }
+      },
+      {
+        "case_id": "nearby-06",
+        "group": "cross-project",
+        "mode": "hybrid",
+        "claim_ids": [
+          "fb318382f0d61ca8678da8b172c80699",
+          "0176ea54c35e573950fb45c945a470d5",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "a31e05ee13c260604de1c2853a9de2b1"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "feaf0ec1ef68be8b46600f59ac7f926cbcf71262a05d60e5f88fa08160b94094",
+          "response_sha256": "b0684a8bca45382464080b5f96676574735031f236e42fe7a8059094a7de6cab",
+          "duration_ms": 112,
+          "prompt_tokens": 26
+        }
+      },
+      {
+        "case_id": "withdrawn-06",
+        "group": "withdrawn",
+        "mode": "hybrid",
+        "claim_ids": [
+          "fb318382f0d61ca8678da8b172c80699",
+          "208ad9eaff144e3b18c68e48502508fb",
+          "80e330aa78c63190de0ad5dd222fa7a9",
+          "9bb68db6aaa3644cb9c93a2e07bf70c9",
+          "203dd99a27dea5eade14ae9891354c27"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "49c632292adce86e54f8d36c41d6e46d6f90327d215da0c4732cc89c4b35d3e3",
+          "response_sha256": "73d7b3926f58fd9ba7348231f6bf4be146f30fa192914713cd7355e7b8a3ed45",
+          "duration_ms": 111,
+          "prompt_tokens": 28
+        }
+      },
+      {
+        "case_id": "supported-07",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "22bf58821e81c9dd300d64a760406a71",
+          "fb318382f0d61ca8678da8b172c80699",
+          "342f04c70d9a5f975c64971dfb6ef26b",
+          "35d342fa23bde56c2f73396d9e077a63",
+          "203dd99a27dea5eade14ae9891354c27"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "c9ce6ec254089cc2e26d7ca146a017f51fd2a21f37c6684231a0e8ad1129c38c",
+          "response_sha256": "b6e99a61e9cea9360d69defc2dcaf2f6b53950b3d1a83a7aff05adb977dbe903",
+          "duration_ms": 101,
+          "prompt_tokens": 24
+        }
+      },
+      {
+        "case_id": "nearby-07",
+        "group": "cross-project",
+        "mode": "hybrid",
+        "claim_ids": [
+          "22bf58821e81c9dd300d64a760406a71",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "a31e05ee13c260604de1c2853a9de2b1"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "868b1cc5d8ec5bac4ce85abbcc7d424e2a7ff7ffa15463bfcd0cafbf189e4cdc",
+          "response_sha256": "49961e63997c3284eac3066d39d32b004bf93acb1a9c155291a7bde8bcff9571",
+          "duration_ms": 108,
+          "prompt_tokens": 25
+        }
+      },
+      {
+        "case_id": "withdrawn-07",
+        "group": "withdrawn",
+        "mode": "hybrid",
+        "claim_ids": [
+          "22bf58821e81c9dd300d64a760406a71",
+          "203dd99a27dea5eade14ae9891354c27",
+          "342f04c70d9a5f975c64971dfb6ef26b",
+          "35d342fa23bde56c2f73396d9e077a63",
+          "0ef77af720f257dcd33207058c8e841c"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "415cc2d3b343bc56bf9fcce3cc5ad4ff93cead6df6630c48f9d3d4a289c6798f",
+          "response_sha256": "11b1a8a392cdd5adef87fa61bcd9a29edeef32277e0fda589d21e264f9f741d5",
+          "duration_ms": 118,
+          "prompt_tokens": 27
+        }
+      },
+      {
+        "case_id": "supported-08",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "203dd99a27dea5eade14ae9891354c27",
+          "22bf58821e81c9dd300d64a760406a71",
+          "fb318382f0d61ca8678da8b172c80699",
+          "35d342fa23bde56c2f73396d9e077a63",
+          "342f04c70d9a5f975c64971dfb6ef26b"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "02f4d91c250d40cf3324090da4a01b25fa7f7c0d28d754f9acbcad97f48719dc",
+          "response_sha256": "94725d9d702101fd18a4571f54dbd7f120d9da65a74e7edc930b8f2b82fb2d14",
+          "duration_ms": 102,
+          "prompt_tokens": 26
+        }
+      },
+      {
+        "case_id": "nearby-08",
+        "group": "cross-project",
+        "mode": "hybrid",
+        "claim_ids": [
+          "203dd99a27dea5eade14ae9891354c27",
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "22bf58821e81c9dd300d64a760406a71",
+          "a31e05ee13c260604de1c2853a9de2b1"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "2d1595451e658853352407aad5b51b32beaca5d5b9c090dcc35444c92e89d404",
+          "response_sha256": "b32248d6f1cc8f7c90e05ced8a8594c409f952753868d9cb59d4c2fb9fa5fbef",
+          "duration_ms": 113,
+          "prompt_tokens": 25
+        }
+      },
+      {
+        "case_id": "withdrawn-08",
+        "group": "withdrawn",
+        "mode": "hybrid",
+        "claim_ids": [
+          "203dd99a27dea5eade14ae9891354c27",
+          "22bf58821e81c9dd300d64a760406a71",
+          "342f04c70d9a5f975c64971dfb6ef26b",
+          "35d342fa23bde56c2f73396d9e077a63",
+          "fb318382f0d61ca8678da8b172c80699"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "19ca32fe8f69e9acf06582850a297fe2c0bca7826cf52e1f203bc39f2c02fcbb",
+          "response_sha256": "065800437d4d9c7784816edf942c3f619545739f4c309044219453fd68a676f6",
+          "duration_ms": 117,
+          "prompt_tokens": 27
+        }
+      },
+      {
+        "case_id": "supported-09",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "342f04c70d9a5f975c64971dfb6ef26b",
+          "22bf58821e81c9dd300d64a760406a71",
+          "fb318382f0d61ca8678da8b172c80699",
+          "35d342fa23bde56c2f73396d9e077a63",
+          "203dd99a27dea5eade14ae9891354c27"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "4fbf59bd6e1d1d367e11b61351b2ef49b269da82da1e0c463205e6e8614d1f70",
+          "response_sha256": "395508c7f56b59c3fa9f0a540427feb67bc0feef4c26b4c9a0cf4ed87493d95c",
+          "duration_ms": 109,
+          "prompt_tokens": 24
+        }
+      },
+      {
+        "case_id": "nearby-09",
+        "group": "cross-project",
+        "mode": "hybrid",
+        "claim_ids": [
+          "342f04c70d9a5f975c64971dfb6ef26b",
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "22bf58821e81c9dd300d64a760406a71",
+          "d16e578883ea45da5e1354c4ac68bc63"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "397bed787ea25281aa7fd3633ccd7466291a7772ca288686baa486bbeefcf9c4",
+          "response_sha256": "83420a48a02a2ea242025ec4c82c54e3d0eb7731cbbc44c953c72f92f9d89489",
+          "duration_ms": 152,
+          "prompt_tokens": 25
+        }
+      },
+      {
+        "case_id": "withdrawn-09",
+        "group": "withdrawn",
+        "mode": "hybrid",
+        "claim_ids": [
+          "342f04c70d9a5f975c64971dfb6ef26b",
+          "22bf58821e81c9dd300d64a760406a71",
+          "203dd99a27dea5eade14ae9891354c27",
+          "35d342fa23bde56c2f73396d9e077a63",
+          "fb318382f0d61ca8678da8b172c80699"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "915b5d490c43abce85fe155905c000f4634bcf5c8096f69f8fc0ea9d4955fde1",
+          "response_sha256": "91418d7c6046c065a595521e8e5cb10edd57fdb9700c8636d426a5d833846907",
+          "duration_ms": 116,
+          "prompt_tokens": 27
+        }
+      },
+      {
+        "case_id": "supported-10",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "d16e578883ea45da5e1354c4ac68bc63",
+          "a31e05ee13c260604de1c2853a9de2b1",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "0176ea54c35e573950fb45c945a470d5"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "e5e26d82a3e235a94fd18c9e3c534177df84ed693ca965f0f1715f958e403ea8",
+          "response_sha256": "140b7ca29ca62530cdfc4dab8cf5ac30a9d3c376e51cb6deaf38b360218730fa",
+          "duration_ms": 102,
+          "prompt_tokens": 25
+        }
+      },
+      {
+        "case_id": "nearby-10",
+        "group": "cross-project",
+        "mode": "hybrid",
+        "claim_ids": [
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "0176ea54c35e573950fb45c945a470d5",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "a31e05ee13c260604de1c2853a9de2b1",
+          "d16e578883ea45da5e1354c4ac68bc63"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "000bc666ffed554fa881e2d1e355bea046a2f5d26a8b609bc152c71698a0606b",
+          "response_sha256": "916e8d3389b2bf9030944c6e83ef3492f887258156a2cf58c238991d17d037c1",
+          "duration_ms": 106,
+          "prompt_tokens": 26
+        }
+      },
+      {
+        "case_id": "withdrawn-10",
+        "group": "withdrawn",
+        "mode": "hybrid",
+        "claim_ids": [
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "d16e578883ea45da5e1354c4ac68bc63",
+          "0176ea54c35e573950fb45c945a470d5",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "a31e05ee13c260604de1c2853a9de2b1"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "589acccf9af99b06e11837477d862130e31c9239d3a1419d99c3bece091d2e84",
+          "response_sha256": "86a640122ed554a1545f95ae84af246a02fbcd91f583400024e67a23a3f875d7",
+          "duration_ms": 115,
+          "prompt_tokens": 28
+        }
+      },
+      {
+        "case_id": "supported-11",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "0176ea54c35e573950fb45c945a470d5",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "a31e05ee13c260604de1c2853a9de2b1",
+          "d16e578883ea45da5e1354c4ac68bc63",
+          "5fe3fcea5eb25dd6e49437533cfc7862"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "d5d4f7d2c66efb94c226cde54fdde3510bf05d033eb3cea034990c8b58edaa36",
+          "response_sha256": "0c182606057b1f230d2437021c0d93209a7b64d0c4b811e4596e7ae0bd26bfcd",
+          "duration_ms": 96,
+          "prompt_tokens": 24
+        }
+      },
+      {
+        "case_id": "nearby-11",
+        "group": "cross-project",
+        "mode": "hybrid",
+        "claim_ids": [
+          "0176ea54c35e573950fb45c945a470d5",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "a31e05ee13c260604de1c2853a9de2b1",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "d16e578883ea45da5e1354c4ac68bc63"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "1f12b3b39b570555a90761f670d25defecad9de9d3df41714b4a44d3f074248b",
+          "response_sha256": "f7cdebfa2a0283bf02416e410ed2b126720da0834299e926bfd4291ec171480e",
+          "duration_ms": 103,
+          "prompt_tokens": 25
+        }
+      },
+      {
+        "case_id": "withdrawn-11",
+        "group": "withdrawn",
+        "mode": "hybrid",
+        "claim_ids": [
+          "0176ea54c35e573950fb45c945a470d5",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "d16e578883ea45da5e1354c4ac68bc63",
+          "a31e05ee13c260604de1c2853a9de2b1"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "65adb636bf02234a0d6becef2b58002b812bb67891e3221198e67bfcba2e7240",
+          "response_sha256": "d9cae101397ee9adb369976366506f35ec31501aeb86d6f3c88760024660fdb0",
+          "duration_ms": 117,
+          "prompt_tokens": 27
+        }
+      },
+      {
+        "case_id": "supported-12",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "d16e578883ea45da5e1354c4ac68bc63",
+          "a31e05ee13c260604de1c2853a9de2b1",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "44d6bb43fe02396ce940e78ad320595199459d4c66345507fe970eed7c4cd82c",
+          "response_sha256": "f29b4791f000b85c0096b541f2fbccbd4ab0a80d1771fcf84d4afacd26eb5a9f",
+          "duration_ms": 105,
+          "prompt_tokens": 24
+        }
+      },
+      {
+        "case_id": "nearby-12",
+        "group": "cross-project",
+        "mode": "hybrid",
+        "claim_ids": [
+          "d16e578883ea45da5e1354c4ac68bc63",
+          "0176ea54c35e573950fb45c945a470d5",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "a31e05ee13c260604de1c2853a9de2b1"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "589ec7a34d112b0a421800f88f0867375b454fb924fdf1a7c7ead3b95df34a13",
+          "response_sha256": "cc3334cdd1e7ab18b1c517c104f011cefedd86541bd19ba14522d788340b6ccb",
+          "duration_ms": 107,
+          "prompt_tokens": 25
+        }
+      },
+      {
+        "case_id": "withdrawn-12",
+        "group": "withdrawn",
+        "mode": "hybrid",
+        "claim_ids": [
+          "d16e578883ea45da5e1354c4ac68bc63",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "0176ea54c35e573950fb45c945a470d5",
+          "a31e05ee13c260604de1c2853a9de2b1"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "e0ee15adb7f133e60bff274f690b4f47e58319cb4f82b797da3a02cbc9423d3a",
+          "response_sha256": "e2301dbdfca92493b1d8ee2c4e042239e30ceab21c10a62eef2a50ae1456aa78",
+          "duration_ms": 111,
+          "prompt_tokens": 27
+        }
+      },
+      {
+        "case_id": "supported-13",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "a31e05ee13c260604de1c2853a9de2b1",
+          "0176ea54c35e573950fb45c945a470d5",
+          "d16e578883ea45da5e1354c4ac68bc63",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "6a107753cf88bda1819b3bc44bd63ba8"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "72f4f1f27776c87a6fb0795f0baab2ad36f6665ba6bde9ef70277d647551eb3f",
+          "response_sha256": "471055931fff4abea6f2318ac026f21adfcc9a0a89b3dd7ccc5dede8c31b2f5f",
+          "duration_ms": 103,
+          "prompt_tokens": 25
+        }
+      },
+      {
+        "case_id": "nearby-13",
+        "group": "cross-project",
+        "mode": "hybrid",
+        "claim_ids": [
+          "a31e05ee13c260604de1c2853a9de2b1",
+          "0176ea54c35e573950fb45c945a470d5",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "d16e578883ea45da5e1354c4ac68bc63"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "aedac458d1612b7a6b6cef59405b712f198a3b8f121a8806cd5edc7afb03672f",
+          "response_sha256": "08829dc28a8995d5daac63b0a5ca3a103ac09cc4f24c8f3631078bfc6522d7d5",
+          "duration_ms": 110,
+          "prompt_tokens": 26
+        }
+      },
+      {
+        "case_id": "withdrawn-13",
+        "group": "withdrawn",
+        "mode": "hybrid",
+        "claim_ids": [
+          "a31e05ee13c260604de1c2853a9de2b1",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "d16e578883ea45da5e1354c4ac68bc63",
+          "0176ea54c35e573950fb45c945a470d5",
+          "6a107753cf88bda1819b3bc44bd63ba8"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "ba4a016ddd4aa1821b0e8912ebc660ce448d48fd9079152f1498f0e8f0718bfa",
+          "response_sha256": "d75d93c9565e8698e6ddab38ee63bd1c66d66fc12ca1d9ca518dfbf03fe06082",
+          "duration_ms": 124,
+          "prompt_tokens": 28
+        }
+      },
+      {
+        "case_id": "supported-14",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "d16e578883ea45da5e1354c4ac68bc63",
+          "0176ea54c35e573950fb45c945a470d5",
+          "a31e05ee13c260604de1c2853a9de2b1",
+          "5fe3fcea5eb25dd6e49437533cfc7862"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "56bc0f11b478163cd8bc56115933b6135a1fe554ac0074c8dfd98aa0d3a809c0",
+          "response_sha256": "54defb406e55644f0c031001ddb94d98ff730e4eceb2dd4cf2722e5b42e5e5b5",
+          "duration_ms": 115,
+          "prompt_tokens": 25
+        }
+      },
+      {
+        "case_id": "nearby-14",
+        "group": "cross-project",
+        "mode": "hybrid",
+        "claim_ids": [
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "0176ea54c35e573950fb45c945a470d5",
+          "d16e578883ea45da5e1354c4ac68bc63",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "a31e05ee13c260604de1c2853a9de2b1"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "638574ed8d65e49b0e8f79b1b6187ad908bb67d63c99d389f77f691b3eb68bc2",
+          "response_sha256": "2b425068aa0e4cc93f8758551de07236d7f11fa613ad2e80303eb9a98cbd5b89",
+          "duration_ms": 110,
+          "prompt_tokens": 26
+        }
+      },
+      {
+        "case_id": "withdrawn-14",
+        "group": "withdrawn",
+        "mode": "hybrid",
+        "claim_ids": [
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "0176ea54c35e573950fb45c945a470d5",
+          "d16e578883ea45da5e1354c4ac68bc63",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "a31e05ee13c260604de1c2853a9de2b1"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "03b9b1834e0fb4aa6bbadfd32c5489a98e90efd3cb9274c09f1898d506df5e81",
+          "response_sha256": "954b4871ae3ea1623743c23468d9c973e99656ab691fe3a230d402c5dd42ee5d",
+          "duration_ms": 119,
+          "prompt_tokens": 28
+        }
+      },
+      {
+        "case_id": "supported-15",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "33cd47a6c11b7ccc27a0988063188a3a",
+          "a2c0f3cc55e30936ba78515358a8e0c1",
+          "4a64b7dac319ef4afeba5c86f6193158",
+          "e5c77dea798ec17a9558b52daff1e3b9",
+          "3786aae2260ac49356345d46e71d6bd5"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "fab6ae52d5d38111ebe0ac45e89f2f8f87176fd0fcee0b5988bd6431f3bd14e4",
+          "response_sha256": "26c6a13e7c714e92759e0fe0863c58618e76a4a6838a5214447e3ce3e8702f9e",
+          "duration_ms": 99,
+          "prompt_tokens": 26
+        }
+      },
+      {
+        "case_id": "nearby-15",
+        "group": "cross-project",
+        "mode": "hybrid",
+        "claim_ids": [
+          "33cd47a6c11b7ccc27a0988063188a3a",
+          "0176ea54c35e573950fb45c945a470d5",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "a31e05ee13c260604de1c2853a9de2b1",
+          "5fe3fcea5eb25dd6e49437533cfc7862"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "914447a45d8e80c13c1c45e958d2c887af75a79642d9fb93e3a69da4608bb573",
+          "response_sha256": "22b059d40ecba5957e6bdf428fea8beba53982ec923af0340898f46d6facd9ea",
+          "duration_ms": 119,
+          "prompt_tokens": 26
+        }
+      },
+      {
+        "case_id": "withdrawn-15",
+        "group": "withdrawn",
+        "mode": "hybrid",
+        "claim_ids": [
+          "33cd47a6c11b7ccc27a0988063188a3a",
+          "a2c0f3cc55e30936ba78515358a8e0c1",
+          "4a64b7dac319ef4afeba5c86f6193158",
+          "e5c77dea798ec17a9558b52daff1e3b9",
+          "0176ea54c35e573950fb45c945a470d5"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "eefb97bb49a2dd38ea8bb500a320494ba84fbabcb924ee2870b1f11970483047",
+          "response_sha256": "acbf89b341410a5aab418d9a01fbb5ca00453881ec50945ae22fcd5bf30c84c9",
+          "duration_ms": 122,
+          "prompt_tokens": 28
+        }
+      },
+      {
+        "case_id": "supported-16",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "e5c77dea798ec17a9558b52daff1e3b9",
+          "4a64b7dac319ef4afeba5c86f6193158",
+          "3786aae2260ac49356345d46e71d6bd5",
+          "33cd47a6c11b7ccc27a0988063188a3a",
+          "a2c0f3cc55e30936ba78515358a8e0c1"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "161903750f9ec035776536da6b4dc547e954afbbd706fe6db82abf2b035b324b",
+          "response_sha256": "46e1c29032b102e9f53bb75a152ecb1a82729fb74382861b47a7338a10b32eaa",
+          "duration_ms": 127,
+          "prompt_tokens": 28
+        }
+      },
+      {
+        "case_id": "nearby-16",
+        "group": "cross-project",
+        "mode": "hybrid",
+        "claim_ids": [
+          "e5c77dea798ec17a9558b52daff1e3b9",
+          "0176ea54c35e573950fb45c945a470d5",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "a31e05ee13c260604de1c2853a9de2b1",
+          "6a107753cf88bda1819b3bc44bd63ba8"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "3d0e01ebcb5044b0918b59d2b4d4be66591d0ffbab4e57444233a6a2c8c0c5c8",
+          "response_sha256": "f26525631b44318385d71f2c8f41466978ee8e5aa4b6b6418be2a22d6700ff19",
+          "duration_ms": 111,
+          "prompt_tokens": 28
+        }
+      },
+      {
+        "case_id": "withdrawn-16",
+        "group": "withdrawn",
+        "mode": "hybrid",
+        "claim_ids": [
+          "e5c77dea798ec17a9558b52daff1e3b9",
+          "3786aae2260ac49356345d46e71d6bd5",
+          "4a64b7dac319ef4afeba5c86f6193158",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "0176ea54c35e573950fb45c945a470d5"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "e0b1539b5afe8d9d8fdbb4215fc5a0d7e8d0740792b364b9be627545779a01cd",
+          "response_sha256": "b9b6bd3ce9e8ccc394a08c4cc841cd4224128faff14b3aa689495be4475709ee",
+          "duration_ms": 125,
+          "prompt_tokens": 30
+        }
+      },
+      {
+        "case_id": "supported-17",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "3786aae2260ac49356345d46e71d6bd5",
+          "e5c77dea798ec17a9558b52daff1e3b9",
+          "4a64b7dac319ef4afeba5c86f6193158",
+          "a2c0f3cc55e30936ba78515358a8e0c1",
+          "33cd47a6c11b7ccc27a0988063188a3a"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "37c5730ff8a74cf0323e3b529d5fd47d8beca0d15f57dae4908784cdeae7d4bc",
+          "response_sha256": "65a74a06c33322b17fdc1aeb80143b2bc29dd81d8e53e4124c7f92f6ac8ad629",
+          "duration_ms": 108,
+          "prompt_tokens": 27
+        }
+      },
+      {
+        "case_id": "nearby-17",
+        "group": "cross-project",
+        "mode": "hybrid",
+        "claim_ids": [
+          "3786aae2260ac49356345d46e71d6bd5",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "a31e05ee13c260604de1c2853a9de2b1",
+          "0176ea54c35e573950fb45c945a470d5",
+          "6a107753cf88bda1819b3bc44bd63ba8"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "cae7f92d6ec6ca5a1870b0d672dd8708042a1e9080c90943d96771d5213d9836",
+          "response_sha256": "37d13d20e1de17d9a7e8a3fd74217843576d9e66dd51e6b788741e6c9327d808",
+          "duration_ms": 107,
+          "prompt_tokens": 27
+        }
+      },
+      {
+        "case_id": "withdrawn-17",
+        "group": "withdrawn",
+        "mode": "hybrid",
+        "claim_ids": [
+          "3786aae2260ac49356345d46e71d6bd5",
+          "e5c77dea798ec17a9558b52daff1e3b9",
+          "4a64b7dac319ef4afeba5c86f6193158",
+          "a2c0f3cc55e30936ba78515358a8e0c1",
+          "5fe3fcea5eb25dd6e49437533cfc7862"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "12398b4f43716157264590558c4c148db70ca6e36d3328cf5126cdf57dc504a9",
+          "response_sha256": "ed46217c914ba787018214792d420bab94251d485dce6f2be83dffe29249ffb5",
+          "duration_ms": 127,
+          "prompt_tokens": 29
+        }
+      },
+      {
+        "case_id": "supported-18",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "4a64b7dac319ef4afeba5c86f6193158",
+          "0ef77af720f257dcd33207058c8e841c",
+          "1c1b850e7c07e1e6a6ce2b65a4c9245d",
+          "e5c77dea798ec17a9558b52daff1e3b9",
+          "1f717479af7bce6a84715015fa54707c"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "26eaea6e7454851f8c09c9dfaae48b2178398f3d43a6a8c0cc4f4aa3f9c1b64c",
+          "response_sha256": "ed46f32d064c8edeb816fd46df666db2f1c856a3feb0443b4de2d15d05a6060c",
+          "duration_ms": 115,
+          "prompt_tokens": 26
+        }
+      },
+      {
+        "case_id": "nearby-18",
+        "group": "cross-project",
+        "mode": "hybrid",
+        "claim_ids": [
+          "4a64b7dac319ef4afeba5c86f6193158",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "0176ea54c35e573950fb45c945a470d5",
+          "a31e05ee13c260604de1c2853a9de2b1"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "2520450964c20b7b137bd85237e3720a853c00e06c2640f728959f17e1ee85cf",
+          "response_sha256": "47ff9cdfc41b5780c59b1b456b3caba663bb608ac4fdfcc1b11a75567d6a92eb",
+          "duration_ms": 101,
+          "prompt_tokens": 26
+        }
+      },
+      {
+        "case_id": "withdrawn-18",
+        "group": "withdrawn",
+        "mode": "hybrid",
+        "claim_ids": [
+          "4a64b7dac319ef4afeba5c86f6193158",
+          "e5c77dea798ec17a9558b52daff1e3b9",
+          "3786aae2260ac49356345d46e71d6bd5",
+          "a2c0f3cc55e30936ba78515358a8e0c1",
+          "0ef77af720f257dcd33207058c8e841c"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "8ffad48da1cf3c1cadee0e07a86dc971a76f9de97ef5f6d39386554917dd289f",
+          "response_sha256": "fdd497f33780157687610f484b8ea07c7219b3ce8f73ec3fa58996da053d585a",
+          "duration_ms": 126,
+          "prompt_tokens": 28
+        }
+      },
+      {
+        "case_id": "supported-19",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "a2c0f3cc55e30936ba78515358a8e0c1",
+          "33cd47a6c11b7ccc27a0988063188a3a",
+          "4a64b7dac319ef4afeba5c86f6193158",
+          "3786aae2260ac49356345d46e71d6bd5",
+          "e5c77dea798ec17a9558b52daff1e3b9"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "0bdae56688d943af8833b43116922f8c97ce088b7a094c487b23430082dd0d6b",
+          "response_sha256": "fa2eb543c2c4be7154e2783f939bf2c29b26f03e43bf8b288d4d40de91e3c3d7",
+          "duration_ms": 120,
+          "prompt_tokens": 26
+        }
+      },
+      {
+        "case_id": "nearby-19",
+        "group": "cross-project",
+        "mode": "hybrid",
+        "claim_ids": [
+          "a2c0f3cc55e30936ba78515358a8e0c1",
+          "0176ea54c35e573950fb45c945a470d5",
+          "6a107753cf88bda1819b3bc44bd63ba8",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "d16e578883ea45da5e1354c4ac68bc63"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "a27df33dc21d5e28cd175f05fb2c6bc9add583b6c40d338a41d0f4dccec80289",
+          "response_sha256": "f002a34935cf916d07eab0e2c809b805b53e865ce71b506a8846d5fef0f1fda3",
+          "duration_ms": 111,
+          "prompt_tokens": 26
+        }
+      },
+      {
+        "case_id": "withdrawn-19",
+        "group": "withdrawn",
+        "mode": "hybrid",
+        "claim_ids": [
+          "a2c0f3cc55e30936ba78515358a8e0c1",
+          "4dc685287619599e5a44d336bcdc026f",
+          "d181d6a42fb37285efb2dab4873caa6d",
+          "5fe3fcea5eb25dd6e49437533cfc7862",
+          "0176ea54c35e573950fb45c945a470d5"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "618c77c19ec0f8ab7a69e842d0e102bef54dfb1fc065ae25e76b9ccdb72c8498",
+          "response_sha256": "f6ff32eaa406ff749a47d386b19291384c26b8c07cf7bf8526f59b55501b0329",
+          "duration_ms": 127,
+          "prompt_tokens": 28
+        }
+      },
+      {
+        "case_id": "supported-20",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "17b06f2f2acd7c48c8b0f1869536f028",
+          "a6dd2565b560737af4b91753061615e1",
+          "777e29a90d020418dd1e0b55a13b4980",
+          "5c3e15d0599d94c60247cf396370bc3b",
+          "3cf261c2c92fc5bf2e33a7ba11a53dcc"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "d1368d17915c5e5d7fbd0069fba44ee88b2603a2631db153c540ff18c86ef6c4",
+          "response_sha256": "940e5f72bce1c4f3a74ceca94e5ce9ab7fbc295292f7c16ca6ecb2c4dc89db83",
+          "duration_ms": 105,
+          "prompt_tokens": 24
+        }
+      },
+      {
+        "case_id": "nearby-20",
+        "group": "cross-project",
+        "mode": "hybrid",
+        "claim_ids": [
+          "17b06f2f2acd7c48c8b0f1869536f028",
+          "a6dd2565b560737af4b91753061615e1",
+          "5c3e15d0599d94c60247cf396370bc3b",
+          "0176ea54c35e573950fb45c945a470d5",
+          "777e29a90d020418dd1e0b55a13b4980"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "ac119258bbc9a00f4e4d50ed564aebca067aa03d0f48b0546923af302ba9d5f8",
+          "response_sha256": "f441736d01b3ff0c4ac25e4585ec353c953514ea0efac928351faf3b591bd804",
+          "duration_ms": 114,
+          "prompt_tokens": 25
+        }
+      },
+      {
+        "case_id": "withdrawn-20",
+        "group": "withdrawn",
+        "mode": "hybrid",
+        "claim_ids": [
+          "17b06f2f2acd7c48c8b0f1869536f028",
+          "a6dd2565b560737af4b91753061615e1",
+          "5c3e15d0599d94c60247cf396370bc3b",
+          "3cf261c2c92fc5bf2e33a7ba11a53dcc",
+          "777e29a90d020418dd1e0b55a13b4980"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "c863f40965d4deb3637405e084164a8a678a116f360ad707bba6525b90fb8bfa",
+          "response_sha256": "f9fc576afba7a0548bb804bde087b849c326356e201c827320807316e5ef644e",
+          "duration_ms": 121,
+          "prompt_tokens": 27
+        }
+      },
+      {
+        "case_id": "supported-21",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "3cf261c2c92fc5bf2e33a7ba11a53dcc",
+          "a6dd2565b560737af4b91753061615e1",
+          "5c3e15d0599d94c60247cf396370bc3b",
+          "777e29a90d020418dd1e0b55a13b4980",
+          "17b06f2f2acd7c48c8b0f1869536f028"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "de0684801c52a3d054bbc17be512419654b3469ac584a2b4de3300e30f00f83a",
+          "response_sha256": "33548dc22c95d7c8261237cd4073c87ad3a7c84b4ac705187c4d8c38dff63bd8",
+          "duration_ms": 118,
+          "prompt_tokens": 25
+        }
+      },
+      {
+        "case_id": "nearby-21",
+        "group": "cross-project",
+        "mode": "hybrid",
+        "claim_ids": [
+          "3cf261c2c92fc5bf2e33a7ba11a53dcc",
+          "a6dd2565b560737af4b91753061615e1",
+          "5c3e15d0599d94c60247cf396370bc3b",
+          "17b06f2f2acd7c48c8b0f1869536f028",
+          "0176ea54c35e573950fb45c945a470d5"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "aa4fef5ecdfe8b1506be474d5633b370addf91559ac1759dea67b8d80cd71cc6",
+          "response_sha256": "300cfbff4e0e2d2f1a61f01d23603eaf566d864923cbd54f7f4ba887e7c4186a",
+          "duration_ms": 110,
+          "prompt_tokens": 26
+        }
+      },
+      {
+        "case_id": "withdrawn-21",
+        "group": "withdrawn",
+        "mode": "hybrid",
+        "claim_ids": [
+          "3cf261c2c92fc5bf2e33a7ba11a53dcc",
+          "a6dd2565b560737af4b91753061615e1",
+          "5c3e15d0599d94c60247cf396370bc3b",
+          "777e29a90d020418dd1e0b55a13b4980",
+          "277119a5617b13f93bc7bcc936eb86e9"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "119a1e1fbab93076a744ca36640607cdf80f3f98208f71be8bbc8a54b9a847a8",
+          "response_sha256": "7bc99a45d7a7e21860a045b24cc47412f455050f093991bce7eb9c1b7f3d39e3",
+          "duration_ms": 112,
+          "prompt_tokens": 28
+        }
+      },
+      {
+        "case_id": "supported-22",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "5c3e15d0599d94c60247cf396370bc3b",
+          "a6dd2565b560737af4b91753061615e1",
+          "3cf261c2c92fc5bf2e33a7ba11a53dcc",
+          "777e29a90d020418dd1e0b55a13b4980",
+          "17b06f2f2acd7c48c8b0f1869536f028"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "7a233b93c3286a5777d7b0275521c8c81bc8205300b7c5f6d859944979fd4de0",
+          "response_sha256": "5336c45b9b9d628b05b0ada26d0039c9e1140dff3e86a2b72eb8c68e50c10105",
+          "duration_ms": 102,
+          "prompt_tokens": 24
+        }
+      },
+      {
+        "case_id": "nearby-22",
+        "group": "cross-project",
+        "mode": "hybrid",
+        "claim_ids": [
+          "5c3e15d0599d94c60247cf396370bc3b",
+          "a6dd2565b560737af4b91753061615e1",
+          "0176ea54c35e573950fb45c945a470d5",
+          "17b06f2f2acd7c48c8b0f1869536f028",
+          "3cf261c2c92fc5bf2e33a7ba11a53dcc"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "4931755a173ee909886106f84578d9907c84d42dae43cf57211c8bd28b0c9cdb",
+          "response_sha256": "052b593cbe6d1661ca837f0cc05271a5dc1b518a52908b70911a7335376eb0e9",
+          "duration_ms": 106,
+          "prompt_tokens": 25
+        }
+      },
+      {
+        "case_id": "withdrawn-22",
+        "group": "withdrawn",
+        "mode": "hybrid",
+        "claim_ids": [
+          "5c3e15d0599d94c60247cf396370bc3b",
+          "a6dd2565b560737af4b91753061615e1",
+          "3cf261c2c92fc5bf2e33a7ba11a53dcc",
+          "777e29a90d020418dd1e0b55a13b4980",
+          "17b06f2f2acd7c48c8b0f1869536f028"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "cc33f33a835a88156cb86510867fc82d5f86a2089223539d5f76a5c72664936c",
+          "response_sha256": "934c382f2820563f63942012450d6bc6c0d125af24ae436937435ad27fcb934f",
+          "duration_ms": 110,
+          "prompt_tokens": 27
+        }
+      },
+      {
+        "case_id": "supported-23",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "777e29a90d020418dd1e0b55a13b4980",
+          "a6dd2565b560737af4b91753061615e1",
+          "3cf261c2c92fc5bf2e33a7ba11a53dcc",
+          "17b06f2f2acd7c48c8b0f1869536f028",
+          "5c3e15d0599d94c60247cf396370bc3b"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "ae90f311ee19afee3dc167bfa452fd49511b3fa4fff4c7f9ba8ba71222101729",
+          "response_sha256": "ed76b92d02402fb689a8dfe6216d986f93a024ed656a21a84e89eb6c78080493",
+          "duration_ms": 112,
+          "prompt_tokens": 26
+        }
+      },
+      {
+        "case_id": "nearby-23",
+        "group": "cross-project",
+        "mode": "hybrid",
+        "claim_ids": [
+          "777e29a90d020418dd1e0b55a13b4980",
+          "a6dd2565b560737af4b91753061615e1",
+          "5c3e15d0599d94c60247cf396370bc3b",
+          "17b06f2f2acd7c48c8b0f1869536f028",
+          "0176ea54c35e573950fb45c945a470d5"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "2ea4ee09f29cdfcd0cce59d70cad6c6588a1d6c97fef3e8624d4ab66e00c84cb",
+          "response_sha256": "97b3fbc30c452e270d47cdc107aa8590bf95bc5e74cb31ea56b98b23679abebf",
+          "duration_ms": 108,
+          "prompt_tokens": 25
+        }
+      },
+      {
+        "case_id": "withdrawn-23",
+        "group": "withdrawn",
+        "mode": "hybrid",
+        "claim_ids": [
+          "777e29a90d020418dd1e0b55a13b4980",
+          "a6dd2565b560737af4b91753061615e1",
+          "5c3e15d0599d94c60247cf396370bc3b",
+          "3cf261c2c92fc5bf2e33a7ba11a53dcc",
+          "17b06f2f2acd7c48c8b0f1869536f028"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "a07f4ca63fb05a919f2abdcf547d8202de62589d7cedcef139f78f9b7f688101",
+          "response_sha256": "87233611ef1bee5de89a2355d755b798f9b60681f10b4cbc5c1f253ebc95d72f",
+          "duration_ms": 115,
+          "prompt_tokens": 27
+        }
+      },
+      {
+        "case_id": "supported-24",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "a6dd2565b560737af4b91753061615e1",
+          "777e29a90d020418dd1e0b55a13b4980",
+          "3cf261c2c92fc5bf2e33a7ba11a53dcc",
+          "5c3e15d0599d94c60247cf396370bc3b",
+          "17b06f2f2acd7c48c8b0f1869536f028"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "c4a7ff2aa7a8c4d1033b22564cf309691c74228e663cc1064abdd551c33c5e9e",
+          "response_sha256": "b458a059fc721258fd58d490b8e4e6fb288e2519f9ced4317eb16f626558230e",
+          "duration_ms": 112,
+          "prompt_tokens": 24
+        }
+      },
+      {
+        "case_id": "nearby-24",
+        "group": "cross-project",
+        "mode": "hybrid",
+        "claim_ids": [
+          "a6dd2565b560737af4b91753061615e1",
+          "777e29a90d020418dd1e0b55a13b4980",
+          "5c3e15d0599d94c60247cf396370bc3b",
+          "17b06f2f2acd7c48c8b0f1869536f028",
+          "3cf261c2c92fc5bf2e33a7ba11a53dcc"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "abc1ca0b428cd481dceeb6d0fa55f484db880f2f40e02afd64f5ff9e4d06df1b",
+          "response_sha256": "650126806b50fa3491a53ebb8cd6099dde705219e756f73e062fc4d1b710febc",
+          "duration_ms": 106,
+          "prompt_tokens": 25
+        }
+      },
+      {
+        "case_id": "withdrawn-24",
+        "group": "withdrawn",
+        "mode": "hybrid",
+        "claim_ids": [
+          "a6dd2565b560737af4b91753061615e1",
+          "777e29a90d020418dd1e0b55a13b4980",
+          "5c3e15d0599d94c60247cf396370bc3b",
+          "3cf261c2c92fc5bf2e33a7ba11a53dcc",
+          "17b06f2f2acd7c48c8b0f1869536f028"
+        ],
+        "correct": false,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "ecc9841a76464885d30ea9d6449a5f96a794165ba0f7b56c1240faf3776d2f58",
+          "response_sha256": "280e8eb9d9fe9c81f34687251c2bbeea5ea74f9806a45f7987720c22cb90d349",
+          "duration_ms": 114,
+          "prompt_tokens": 27
+        }
+      },
+      {
+        "case_id": "supported-25",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "e668873eb884b5bdac95b585f4fddb82",
+          "9ac154852677dd49b6a27c6341ac94dc",
+          "d181d6a42fb37285efb2dab4873caa6d",
+          "0ef77af720f257dcd33207058c8e841c",
+          "14f352cf306d5c7419374333bdc0e567"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "0c19652de591065a830fddbb95b00c1d3de51d6fbd62df9d8c503cff36a5b10e",
+          "response_sha256": "70d73d6b696f9c2ab7b0f1925b14db2a332f2af52a90b60a3c13cd88e5538324",
+          "duration_ms": 101,
+          "prompt_tokens": 23
+        }
+      },
+      {
+        "case_id": "supported-26",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "14f352cf306d5c7419374333bdc0e567",
+          "e668873eb884b5bdac95b585f4fddb82",
+          "d181d6a42fb37285efb2dab4873caa6d",
+          "0ef77af720f257dcd33207058c8e841c",
+          "9ac154852677dd49b6a27c6341ac94dc"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "096fe705f152c395319d111f5654b3dca661482f4aa14ffdc64e6a9524c6c77d",
+          "response_sha256": "fc716c976e221dd4e1e7a050b785c5693b834acaf33fe942632c82540c739394",
+          "duration_ms": 102,
+          "prompt_tokens": 23
+        }
+      },
+      {
+        "case_id": "supported-27",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "0ef77af720f257dcd33207058c8e841c",
+          "e668873eb884b5bdac95b585f4fddb82",
+          "9ac154852677dd49b6a27c6341ac94dc",
+          "d181d6a42fb37285efb2dab4873caa6d",
+          "14f352cf306d5c7419374333bdc0e567"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "ceb4139ddff0af15da0510c75420257a8217d723a53d1f2eb95daf788b9d5fbd",
+          "response_sha256": "440d36d338a228ee5ed7e715f29143dfde6146c9e55df1e59a3039a3403d005f",
+          "duration_ms": 96,
+          "prompt_tokens": 23
+        }
+      },
+      {
+        "case_id": "supported-28",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "9ac154852677dd49b6a27c6341ac94dc",
+          "0ef77af720f257dcd33207058c8e841c",
+          "5c3e15d0599d94c60247cf396370bc3b",
+          "e668873eb884b5bdac95b585f4fddb82",
+          "d181d6a42fb37285efb2dab4873caa6d"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "24008d8a1c8bcb3bda2328be9a83218ee9dcefa548eea974da56b91025e69864",
+          "response_sha256": "930afda69bb54723b515717a429b0c30e902ca4e4be908d94054aa26107448dd",
+          "duration_ms": 125,
+          "prompt_tokens": 26
+        }
+      },
+      {
+        "case_id": "supported-29",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "d181d6a42fb37285efb2dab4873caa6d",
+          "e668873eb884b5bdac95b585f4fddb82",
+          "9ac154852677dd49b6a27c6341ac94dc",
+          "0ef77af720f257dcd33207058c8e841c",
+          "14f352cf306d5c7419374333bdc0e567"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "ec94fa6bb92d3e6c9815a60089180e4e3529bfbc9ab5e278760e4408970c944b",
+          "response_sha256": "37752d6b03801974c498f4e501ff3ca7797348837efa616d811e20a59cb9a165",
+          "duration_ms": 101,
+          "prompt_tokens": 23
+        }
+      },
+      {
+        "case_id": "supported-30",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "a6b6e1bc3bdaa6b43870262ed6d23803",
+          "db547a66ab1f1dfac3561ebf7cd882b9",
+          "82fe2640c4fcd34d06eb326497989887",
+          "ff46e90f38e42353ca00be6d24ae4e6c",
+          "85d64e0152d2c44357e1fe43c809aa6b"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "2f2eca44aca92bf72e91794c0ea47cc680623f6cc76a0a75b39b6514cbcaa114",
+          "response_sha256": "a5420840ae9a4fcf00d46811bb382f1b3f4dc6b40bc600524adc2263b618ef55",
+          "duration_ms": 108,
+          "prompt_tokens": 24
+        }
+      },
+      {
+        "case_id": "supported-31",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "ff46e90f38e42353ca00be6d24ae4e6c",
+          "db547a66ab1f1dfac3561ebf7cd882b9",
+          "85d64e0152d2c44357e1fe43c809aa6b",
+          "a6b6e1bc3bdaa6b43870262ed6d23803",
+          "82fe2640c4fcd34d06eb326497989887"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "a6d381f929bf4ee55c6aa2a46def90b697d718481f5776130c812225ce5ff20d",
+          "response_sha256": "3c1c8ac7366738a989721347fbd102a40b1fe920ff9d7c903f176bc02c5ca0be",
+          "duration_ms": 100,
+          "prompt_tokens": 24
+        }
+      },
+      {
+        "case_id": "supported-32",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "85d64e0152d2c44357e1fe43c809aa6b",
+          "db547a66ab1f1dfac3561ebf7cd882b9",
+          "a6b6e1bc3bdaa6b43870262ed6d23803",
+          "82fe2640c4fcd34d06eb326497989887",
+          "ff46e90f38e42353ca00be6d24ae4e6c"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "d7a2b467396b1c541185927f2f361f8e0810172730b5dad7ae76d51b518f1b68",
+          "response_sha256": "c841083e97cd515c2d76f6224f86124f60d539fdce9c78346342db11489aaa33",
+          "duration_ms": 108,
+          "prompt_tokens": 24
+        }
+      },
+      {
+        "case_id": "supported-33",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "db547a66ab1f1dfac3561ebf7cd882b9",
+          "a6b6e1bc3bdaa6b43870262ed6d23803",
+          "85d64e0152d2c44357e1fe43c809aa6b",
+          "ff46e90f38e42353ca00be6d24ae4e6c",
+          "82fe2640c4fcd34d06eb326497989887"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "059095a20ac99dcd80603f8cb93bbb9aba9e4753e1240cd01532edc766508784",
+          "response_sha256": "998df784e6c20d8b781c8daf1ba6b1c4119b4b8268f684bc3c71faf828735ff9",
+          "duration_ms": 109,
+          "prompt_tokens": 25
+        }
+      },
+      {
+        "case_id": "supported-34",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "82fe2640c4fcd34d06eb326497989887",
+          "a6b6e1bc3bdaa6b43870262ed6d23803",
+          "db547a66ab1f1dfac3561ebf7cd882b9",
+          "ff46e90f38e42353ca00be6d24ae4e6c",
+          "85d64e0152d2c44357e1fe43c809aa6b"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "c1993b6a15837b5120c421a0992e15fb804d774b916f0c6f969f618b93568278",
+          "response_sha256": "ca5bf0dcaff657b34b9ed330bb1342b7571d035f2ef707c545d6e11d303328db",
+          "duration_ms": 153,
+          "prompt_tokens": 25
+        }
+      },
+      {
+        "case_id": "supported-35",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "64d27c62d1a4e4d802aa50acc8b63601",
+          "7e3e82af27c218c3d7182773fc5e170e",
+          "6d93ee5c1006f5db206eaf2837a107ff",
+          "6ec4b2a81ed27ed18bef562ea879681a",
+          "1f717479af7bce6a84715015fa54707c"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "f239d89306f3c67600be5958178782e5af8bff0f87223891a38d8c9b112b12f3",
+          "response_sha256": "1cb4dc58c239c3bd0894ecf820f4dad37e353c1d53885fd09c0e26bc308c0abf",
+          "duration_ms": 127,
+          "prompt_tokens": 26
+        }
+      },
+      {
+        "case_id": "supported-36",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "7e3e82af27c218c3d7182773fc5e170e",
+          "64d27c62d1a4e4d802aa50acc8b63601",
+          "1f717479af7bce6a84715015fa54707c",
+          "6ec4b2a81ed27ed18bef562ea879681a",
+          "6d93ee5c1006f5db206eaf2837a107ff"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "ee58d9ae056287a06122478be9468f3f5f6b95538ec7e0abdd608f10070c551e",
+          "response_sha256": "9025a0e307b9ab21ff0465185ad89677611e0c5f99c2b985accccaac399cdb45",
+          "duration_ms": 122,
+          "prompt_tokens": 24
+        }
+      },
+      {
+        "case_id": "supported-37",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "6ec4b2a81ed27ed18bef562ea879681a",
+          "1f717479af7bce6a84715015fa54707c",
+          "7e3e82af27c218c3d7182773fc5e170e",
+          "6d93ee5c1006f5db206eaf2837a107ff",
+          "64d27c62d1a4e4d802aa50acc8b63601"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "1616f7758023b0e361c311e6679e610996ec114930865a43fa773bd32c17bbf1",
+          "response_sha256": "712ab95d24c3cd28944d892c7435e15f0515dd7ab1318f4d2694a5b3f3ff470a",
+          "duration_ms": 132,
+          "prompt_tokens": 25
+        }
+      },
+      {
+        "case_id": "supported-38",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "6d93ee5c1006f5db206eaf2837a107ff",
+          "6ec4b2a81ed27ed18bef562ea879681a",
+          "1f717479af7bce6a84715015fa54707c",
+          "7e3e82af27c218c3d7182773fc5e170e",
+          "d181d6a42fb37285efb2dab4873caa6d"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "5b246b94677330c8023472761fb80fcc3c8260c6901b185dcabcaa9fd99ad345",
+          "response_sha256": "aca2e632cb7f2c1fd6db1ac9920e5a5ce4cab88e32e39fd1624640b6dd714697",
+          "duration_ms": 145,
+          "prompt_tokens": 28
+        }
+      },
+      {
+        "case_id": "supported-39",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "1f717479af7bce6a84715015fa54707c",
+          "7e3e82af27c218c3d7182773fc5e170e",
+          "6d93ee5c1006f5db206eaf2837a107ff",
+          "6ec4b2a81ed27ed18bef562ea879681a",
+          "64d27c62d1a4e4d802aa50acc8b63601"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "87fe572e3fbbef3b8b77c6e66f06fa70bfc667fb95e3f58c5eb7ae4f7cdbbbe8",
+          "response_sha256": "ff02f7972150334330fdb3561cecf6c0a33a52b7f9e89446b675cf556eb3fb92",
+          "duration_ms": 138,
+          "prompt_tokens": 25
+        }
+      },
+      {
+        "case_id": "supported-40",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "208ad9eaff144e3b18c68e48502508fb",
+          "9bb68db6aaa3644cb9c93a2e07bf70c9",
+          "c70f9742028338a138bf6f23a2a3442d",
+          "b344cd402490de89f8641089b1b09725",
+          "80e330aa78c63190de0ad5dd222fa7a9"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "97a30cea16b4bfb4bec27edf74b5da392e465d1e1784d74d3c8a693a66cfbc27",
+          "response_sha256": "586e9abc5a2f99b2c2742e9a58a408c3efef2b55e861376ec33f81d4bcfa242c",
+          "duration_ms": 116,
+          "prompt_tokens": 24
+        }
+      },
+      {
+        "case_id": "supported-41",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "80e330aa78c63190de0ad5dd222fa7a9",
+          "b344cd402490de89f8641089b1b09725",
+          "9bb68db6aaa3644cb9c93a2e07bf70c9",
+          "208ad9eaff144e3b18c68e48502508fb",
+          "c70f9742028338a138bf6f23a2a3442d"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "f69fd00234fde124f9d0a6e10b9014548dedc3386b3883888130967b7d43978d",
+          "response_sha256": "fbf37fb66e7e4822ed4fdc51a24e914746afdf061712b178b17646a543ffe4bd",
+          "duration_ms": 147,
+          "prompt_tokens": 25
+        }
+      },
+      {
+        "case_id": "supported-42",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "b344cd402490de89f8641089b1b09725",
+          "9bb68db6aaa3644cb9c93a2e07bf70c9",
+          "c70f9742028338a138bf6f23a2a3442d",
+          "208ad9eaff144e3b18c68e48502508fb",
+          "80e330aa78c63190de0ad5dd222fa7a9"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "0a95cf327e1e332e25f1b8e507e08d66440a08509eb7210c7861b54b7842a2f6",
+          "response_sha256": "3e71f6acd92d814e9da944a3904475884486073ab93c9dd157d3887c8f5d7a33",
+          "duration_ms": 126,
+          "prompt_tokens": 24
+        }
+      },
+      {
+        "case_id": "supported-43",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "9bb68db6aaa3644cb9c93a2e07bf70c9",
+          "208ad9eaff144e3b18c68e48502508fb",
+          "b344cd402490de89f8641089b1b09725",
+          "c70f9742028338a138bf6f23a2a3442d",
+          "80e330aa78c63190de0ad5dd222fa7a9"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "00aa8fc2f6bf03fe4a72e4c7a7480a6abb5926867a085348b459eab290e7ba60",
+          "response_sha256": "1a2bf71e9e7f2f41bc88a1b6d08eef1df3aae11cfa57800b671b99d16312ccdb",
+          "duration_ms": 114,
+          "prompt_tokens": 26
+        }
+      },
+      {
+        "case_id": "supported-44",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "c70f9742028338a138bf6f23a2a3442d",
+          "b344cd402490de89f8641089b1b09725",
+          "208ad9eaff144e3b18c68e48502508fb",
+          "9bb68db6aaa3644cb9c93a2e07bf70c9",
+          "80e330aa78c63190de0ad5dd222fa7a9"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "a3cd7bc5b071124e0f4cd5ce047eded20358c8308bb172c8d817e25b552eff11",
+          "response_sha256": "cb1d0b4aacda34cb2ae31273ea0411f0d97d5e7c23aa27f4438069c62525020d",
+          "duration_ms": 99,
+          "prompt_tokens": 24
+        }
+      },
+      {
+        "case_id": "supported-45",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "4dc685287619599e5a44d336bcdc026f",
+          "277119a5617b13f93bc7bcc936eb86e9",
+          "16ebb2e3be82356fe9f7eb661304d62f",
+          "d04d3058689ca518240ff71c56574243",
+          "957a3f700e3ed53baab8e93d78c260f1"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "ac58eed5a6ba5ea4fc87fea7b6350d544e6db0da95493cc4578bede9d137eee5",
+          "response_sha256": "df51196c6e95dcfb10b819cdc5c5053ec6cd47828ccf9a763223ee79b16eeae6",
+          "duration_ms": 102,
+          "prompt_tokens": 24
+        }
+      },
+      {
+        "case_id": "supported-46",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "277119a5617b13f93bc7bcc936eb86e9",
+          "16ebb2e3be82356fe9f7eb661304d62f",
+          "4dc685287619599e5a44d336bcdc026f",
+          "957a3f700e3ed53baab8e93d78c260f1",
+          "d04d3058689ca518240ff71c56574243"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "7c3f246cb3ca5b9d75a47eec9e9549a94c61b9ce1f3cd7a275eb3f2c8b5fd631",
+          "response_sha256": "c46c961835bf8b5eec54f5d9ab28ceb71edbaff82eb6511651ea2ab30d819ea6",
+          "duration_ms": 108,
+          "prompt_tokens": 25
+        }
+      },
+      {
+        "case_id": "supported-47",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "16ebb2e3be82356fe9f7eb661304d62f",
+          "277119a5617b13f93bc7bcc936eb86e9",
+          "957a3f700e3ed53baab8e93d78c260f1",
+          "4dc685287619599e5a44d336bcdc026f",
+          "d04d3058689ca518240ff71c56574243"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "4c34e31246084dc5269612e08c3df0ac3e332719f85d164414826dc5baa83def",
+          "response_sha256": "4130c0994f74fef2f583f850cee4205044c0105cf11e1fd7ac37717bfb763c76",
+          "duration_ms": 106,
+          "prompt_tokens": 25
+        }
+      },
+      {
+        "case_id": "supported-48",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "d04d3058689ca518240ff71c56574243",
+          "3786aae2260ac49356345d46e71d6bd5",
+          "277119a5617b13f93bc7bcc936eb86e9",
+          "4dc685287619599e5a44d336bcdc026f",
+          "16ebb2e3be82356fe9f7eb661304d62f"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "565d41422e470ed33114ac988ee069c461d30860a032a3d98794e21cd25df3a4",
+          "response_sha256": "ba5a4c58ccffa1cd5a96f16a47ff2f2f8259ad44d538f4ce647be15b7fbb54bd",
+          "duration_ms": 119,
+          "prompt_tokens": 28
+        }
+      },
+      {
+        "case_id": "supported-49",
+        "group": "supported",
+        "mode": "hybrid",
+        "claim_ids": [
+          "957a3f700e3ed53baab8e93d78c260f1",
+          "4dc685287619599e5a44d336bcdc026f",
+          "16ebb2e3be82356fe9f7eb661304d62f",
+          "277119a5617b13f93bc7bcc936eb86e9",
+          "d04d3058689ca518240ff71c56574243"
+        ],
+        "correct": true,
+        "refused": false,
+        "unauthorized": 0,
+        "model_provenance": {
+          "model": "qwen3-embedding-0.6b",
+          "mode": "model-endpoint",
+          "request_sha256": "002a46d3a7686ac2e286e4fa903aa5322fc39af3ffef328da7781adcd0e2b22a",
+          "response_sha256": "56be50796a8160288ad31f4aa4dfaa4d79e88b7de590312f90faf6368d4189ee",
+          "duration_ms": 109,
+          "prompt_tokens": 25
+        }
+      }
+    ]
+  },
+  "stale_vectors_retained": true,
+  "weights_sha256": "06507c7b42688469c4e7298b0a1e16deff06caf291cf0a5b278c308249c3e439",
+  "withdrawal_count": 25
+}
